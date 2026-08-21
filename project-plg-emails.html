@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
+  <title>Patsnap Open Platform MCP — PLG Lifecycle Emails</title>
+
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+
+  <style>
+    /* ---------- Font (Apple Mail / modern clients only; Gmail & Outlook fall back to Arial) ---------- */
+    @font-face {
+      font-family: 'Alteix Sans';
+      font-style: normal;
+      font-weight: 400 700;
+      font-display: swap;
+      src: local('Alteix Sans');
+    }
+
+    /* ---------- Resets ---------- */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+    h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+
+    /* ---------- Breathing CTA (Apple Mail + modern webkit clients) ---------- */
+    @keyframes breathe {
+      0%   { box-shadow: 0 0 0 0 rgba(27,122,90,0.55); transform: scale(1); }
+      50%  { box-shadow: 0 0 0 14px rgba(27,122,90,0); transform: scale(1.035); }
+      100% { box-shadow: 0 0 0 0 rgba(27,122,90,0); transform: scale(1); }
+    }
+    .breathe-btn { animation: breathe 2.4s ease-in-out infinite; will-change: transform, box-shadow; }
+    @media (prefers-reduced-motion: reduce) { .breathe-btn { animation: none !important; } }
+
+    /* ---------- Full-bleed photo hero ---------- */
+    .hero-photo { background-color:#0b3d2e; }
+    /* Left-weighted green scrim keeps the headline readable over any photo. */
+    .hero-scrim { background: linear-gradient(100deg, rgba(6,38,28,0.90) 0%, rgba(6,38,28,0.72) 42%, rgba(8,52,38,0.40) 78%, rgba(10,60,44,0.22) 100%); }
+    .hero-title { max-width: 450px; }
+
+    /* ---------- Larger, more inviting CTA (desktop) ---------- */
+    .cta-a { font-size: 18px; padding: 18px 46px; letter-spacing: 0.2px; }
+
+    /* ---------- Responsive ---------- */
+    @media only screen and (max-width: 600px) {
+      .container { width: 100% !important; max-width: 100% !important; }
+      .px { padding-left: 22px !important; padding-right: 22px !important; }
+      .h1 { font-size: 24px !important; line-height: 32px !important; }
+      .cta-a { font-size: 16px !important; padding: 15px 30px !important; }
+      .stack { display: block !important; width: 100% !important; }
+      .scenario-cell { display: block !important; width: 100% !important; padding: 6px 0 !important; }
+      .hero-img { height: auto !important; }
+      .hdr-deco { display: none !important; }
+      .hdr-cell { padding: 18px 22px 18px 22px !important; }
+      .hero-inner { padding: 26px 24px 30px 24px !important; }
+      .hero-h1 { font-size: 30px !important; line-height: 37px !important; }
+      .hero-h1-sm { font-size: 26px !important; line-height: 33px !important; }
+      .hero-title { max-width: 100% !important; }
+    }
+
+    /* ---------- Dark mode ---------- */
+    @media (prefers-color-scheme: dark) {
+      .page-bg { background-color: #0a0f0d !important; }
+      .card { background-color: #11201a !important; }
+      .body-text { color: #d6e4dd !important; }
+      .muted { color: #9fb4aa !important; }
+      .h1, .h2 { color: #eafff6 !important; }
+      .divider { border-color: #24382f !important; }
+      .footer-text { color: #7f948b !important; }
+      .tint { background-color: #17281f !important; border-color: #294a3b !important; }
+      .tint-text { color: #cfe3d9 !important; }
+    }
+  </style>
+</head>
+
+<body style="margin:0; padding:0; background-color:#eef3f0;" class="page-bg">
+
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="page-bg" style="background-color:#eef3f0;">
+    <tr>
+      <td align="center" style="padding: 28px 12px;">
+
+        <!-- Preview index (delete before sending) -->
+        <table role="presentation" width="600" class="container" cellspacing="0" cellpadding="0" border="0" style="max-width:600px; width:100%;">
+          <tr>
+            <td style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height:20px; color:#5c6b64; padding:0 0 20px 0;" class="muted">
+              <strong style="color:#0b3d2e;">Patsnap Open Platform MCP — PLG Lifecycle Series</strong><br>
+              6 behavior-triggered emails · dark-green theme · wave headers · rounded breathing CTAs · resources footer. Each block below is one standalone email.
+            </td>
+          </tr>
+        </table>
+
+
+        <!-- ================================================================ -->
+        <!-- EMAIL 1 — Welcome (trigger: registration complete)  Framework: BAB -->
+        <!-- Subject:  Welcome to Patsnap MCP — your first search in 3 minutes -->
+        <!-- CTA: Start Your First Search -->
+        <!-- ================================================================ -->
+        <div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">One connection, and patent intelligence lives right inside your workflow.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+
+        <table role="presentation" width="600" class="container card" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 2px 10px rgba(11,61,46,0.06);">
+          <!-- Brand bar -->
+          <tr>
+            <td class="hero-photo" background="media/patsnap-email-hero.jpeg" bgcolor="#0b3d2e" valign="top" style="background-color:#0b3d2e; background-image:url('media/patsnap-email-hero.jpeg'); background-position:center center; background-size:cover; padding:0;">
+              <!--[if gte mso 9]>
+              <v:image xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" src="media/patsnap-email-hero.jpeg" style="width:600px; height:210px;" />
+              <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="false" stroke="false" style="position:absolute; width:600px; height:210px;">
+              <v:fill type="gradient" color="#062a1c" color2="#0b3d2e" angle="100" />
+              <v:textbox inset="0,0,0,0"><![endif]-->
+              <div class="hero-scrim" style="background: linear-gradient(100deg, rgba(6,38,28,0.90) 0%, rgba(6,38,28,0.72) 42%, rgba(8,52,38,0.42) 78%, rgba(10,60,44,0.24) 100%);">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                    <td class="hero-inner" valign="top" style="padding:30px 40px 40px 40px;">
+                      <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                        <td style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; color:#ffffff; letter-spacing:0.3px; white-space:nowrap;">PATSNAP <span style="color:#8fe3c0; font-weight:400;">| Open Platform</span></td>
+                        <td style="padding-left:10px;"><span style="display:inline-block; font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; color:#0b3d2e; background-color:#8fe3c0; border-radius:10px; padding:3px 9px;">MCP</span></td>
+                      </tr></table>
+                      <div style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height:18px; color:#c7f2df; padding-top:9px;">Patent intelligence, right inside your workflow.</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size:0; line-height:0;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 34' preserveAspectRatio='none'%3E%3Cpath d='M0,34 L0,14 C130,-2 250,26 380,16 C480,8 560,22 600,6 L600,34 Z' fill='%23ffffff'/%3E%3C/svg%3E" width="600" height="34" alt="" style="display:block; width:100%; height:34px;"></td>
+                  </tr>
+                </table>
+              </div>
+              <!--[if gte mso 9]></v:textbox></v:rect><![endif]-->
+            </td>
+          </tr>
+          <!-- Hero copy -->
+          <tr>
+            <td class="px" style="padding:30px 40px 8px 40px;">
+              <p class="muted" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; color:#1b7a5a; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding-bottom:12px;">Welcome aboard</p>
+              <h1 class="h1 hero-h1" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:36px; line-height:44px; color:#0b3d2e; font-weight:700; letter-spacing:-0.5px;">You're in. Let's run your <em style="font-style:italic; color:#1b7a5a;">first search</em> in 3 minutes.</h1>
+            </td>
+          </tr>
+          <tr>
+            <td class="px body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#39463f; padding:18px 40px 4px 40px;">
+              <p style="padding-bottom:14px;">Right now, patent research lives in a separate tab, a separate login, a separate mental context. You copy, you paste, you switch back.</p>
+              <p style="padding-bottom:14px;">With <strong style="color:#0b3d2e;">Patsnap Open Platform MCP</strong> connected, that friction disappears. Patent search, novelty checks, and FTO analysis answer you <strong style="color:#0b3d2e;">directly inside the tools you already work in</strong> — no context switching, no exports in between.</p>
+              <p style="padding-bottom:12px;">Here's the fastest path to your first result:</p>
+            </td>
+          </tr>
+          <!-- Numbered steps -->
+          <tr>
+            <td class="px" style="padding:2px 40px 8px 40px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td valign="top" width="34" style="padding:4px 0;"><table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr><td width="26" height="26" align="center" valign="middle" bgcolor="#1b7a5a" style="background-color:#1b7a5a; border-radius:13px; font-family:Arial,sans-serif; font-size:13px; font-weight:700; color:#ffffff;">1</td></tr></table></td>
+                  <td class="body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:24px; color:#39463f; padding:2px 0 12px 12px;"><strong style="color:#0b3d2e;">Connect</strong> the MCP endpoint to your client (Claude, Cursor, or your own agent).</td>
+                </tr>
+                <tr>
+                  <td valign="top" width="34" style="padding:4px 0;"><table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr><td width="26" height="26" align="center" valign="middle" bgcolor="#1b7a5a" style="background-color:#1b7a5a; border-radius:13px; font-family:Arial,sans-serif; font-size:13px; font-weight:700; color:#ffffff;">2</td></tr></table></td>
+                  <td class="body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:24px; color:#39463f; padding:2px 0 12px 12px;"><strong style="color:#0b3d2e;">Ask</strong> a plain-language question — <em style="font-style:italic; color:#1b7a5a;">“Find patents on solid-state battery cathodes.”</em></td>
+                </tr>
+                <tr>
+                  <td valign="top" width="34" style="padding:4px 0;"><table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr><td width="26" height="26" align="center" valign="middle" bgcolor="#1b7a5a" style="background-color:#1b7a5a; border-radius:13px; font-family:Arial,sans-serif; font-size:13px; font-weight:700; color:#ffffff;">3</td></tr></table></td>
+                  <td class="body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:24px; color:#39463f; padding:2px 0 4px 12px;"><strong style="color:#0b3d2e;">Watch</strong> structured results land in seconds. That's it.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <!-- CTA -->
+          <tr>
+            <td align="center" style="padding:24px 40px 30px 40px;">
+              <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://open.patsnap.com/mcp/start" style="height:52px;v-text-anchor:middle;width:270px;" arcsize="50%" fillcolor="#1b7a5a" stroke="f"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">Start Your First Search &rarr;</center></v:roundrect><![endif]-->
+              <!--[if !mso]><!-- -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="breathe-btn" style="border-radius:40px;"><tr><td align="center" bgcolor="#1b7a5a" style="background-color:#1b7a5a; border-radius:40px;"><a class="cta-a" href="https://open.patsnap.com/mcp/start" style="display:inline-block; font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:17px; font-weight:700; color:#ffffff; text-decoration:none; padding:16px 38px; border-radius:40px;">Start Your First Search &rarr;</a></td></tr></table>
+              <!--<![endif]-->
+            </td>
+          </tr>
+          <!-- Helpful resources -->
+          <tr>
+            <td class="px" style="padding:0 40px 6px 40px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f7f4" class="tint" style="background-color:#f2f7f4; border:1px solid #dce8e2; border-radius:12px;">
+                <tr><td style="padding:16px 20px 14px 20px;">
+                  <p class="tint-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#1b7a5a; padding-bottom:10px;">Helpful resources</p>
+                  <p style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; padding-bottom:7px;"><a href="https://open.patsnap.com/docs/faq" style="color:#0b3d2e; text-decoration:none;"><span style="color:#1b7a5a;">&rarr;</span> &nbsp;Read the FAQ</a></p>
+                  <p style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:22px;"><a href="https://open.patsnap.com/docs/troubleshooting" style="color:#0b3d2e; text-decoration:none;"><span style="color:#1b7a5a;">&rarr;</span> &nbsp;Troubleshooting guide</a></p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+          <!-- Footer -->
+          <tr><td class="px" style="padding-top:18px;"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td class="divider" style="border-top:1px solid #e3ebe7; font-size:0; line-height:0;">&nbsp;</td></tr></table></td></tr>
+          <!-- Social row. Swap SVG data-uris for hosted PNGs and update hrefs to the live profiles. -->
+          <tr>
+            <td class="px" align="center" style="padding:20px 40px 2px 40px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                <td style="padding:0 6px;"><a href="https://www.linkedin.com/company/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M11 13h2.6v8H11zM12.3 9.2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM15 13h2.5v1.1h.04c.35-.63 1.2-1.3 2.46-1.3 2.6 0 3.1 1.6 3.1 3.7V21h-2.6v-3.5c0-.84-.02-1.9-1.2-1.9-1.2 0-1.4.9-1.4 1.85V21H15z'/%3E%3C/svg%3E" width="30" height="30" alt="LinkedIn" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.facebook.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M17.5 25v-8h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.26 1.3-1.26h1.3V9.2c-.23-.03-1-.1-1.9-.1-1.9 0-3.2 1.16-3.2 3.28v1.83H12.8V17h2.2v8z'/%3E%3C/svg%3E" width="30" height="30" alt="Facebook" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.instagram.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='none' stroke='%23fff' stroke-width='1.6' d='M12 10.5h8a2.5 2.5 0 0 1 2.5 2.5v6a2.5 2.5 0 0 1-2.5 2.5h-8A2.5 2.5 0 0 1 9.5 19v-6A2.5 2.5 0 0 1 12 10.5z'/%3E%3Ccircle cx='16' cy='16' r='3' fill='none' stroke='%23fff' stroke-width='1.6'/%3E%3Ccircle cx='20' cy='12' r='1' fill='%23fff'/%3E%3C/svg%3E" width="30" height="30" alt="Instagram" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://x.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M18.9 9.5h2l-4.4 5 5.2 6.9h-4.1l-3.2-4.2-3.7 4.2H8.7l4.7-5.4L8.4 9.5h4.2l2.9 3.8zm-.7 10.7h1.1L12 10.7h-1.2z'/%3E%3C/svg%3E" width="30" height="30" alt="X" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.patsnap.com" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Ccircle cx='16' cy='16' r='6.3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cellipse cx='16' cy='16' rx='2.6' ry='6.3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cline x1='9.7' y1='16' x2='22.3' y2='16' stroke='%23fff' stroke-width='1.4'/%3E%3C/svg%3E" width="30" height="30" alt="Website" style="display:block; border-radius:50%;"></a></td>
+              </tr></table>
+            </td>
+          </tr>
+          <tr>
+            <td class="px footer-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; line-height:19px; color:#8b9a92; padding:16px 40px 26px 40px;">
+              Patsnap · Open Platform Team<br>
+              9 Battery Road, #28-01, Singapore 049910<br>
+              <a href="https://open.patsnap.com/unsubscribe" style="color:#1b7a5a; text-decoration:underline;">Unsubscribe</a> &nbsp;·&nbsp; <a href="https://open.patsnap.com/preferences" style="color:#1b7a5a; text-decoration:underline;">Email preferences</a>
+            </td>
+          </tr>
+        </table>
+
+        <table role="presentation" width="600" class="container" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;"><tr><td height="40" style="font-size:0; line-height:0;">&nbsp;</td></tr></table>
+
+
+        <!-- ================================================================ -->
+        <!-- EMAIL 2 — Nudge (trigger: no activity in 24h)  Framework: PAS -->
+        <!-- Subject:  Your first search is one tiny question away -->
+        <!-- CTA: Try a Simple Task -->
+        <!-- ================================================================ -->
+        <div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">No setup marathon needed — one plain-language question is enough.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+
+        <table role="presentation" width="600" class="container card" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 2px 10px rgba(11,61,46,0.06);">
+          <tr>
+            <td class="hero-photo" background="media/patsnap-email-hero.jpeg" bgcolor="#0b3d2e" valign="top" style="background-color:#0b3d2e; background-image:url('media/patsnap-email-hero.jpeg'); background-position:center center; background-size:cover; padding:0;">
+              <!--[if gte mso 9]>
+              <v:image xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" src="media/patsnap-email-hero.jpeg" style="width:600px; height:210px;" />
+              <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="false" stroke="false" style="position:absolute; width:600px; height:210px;">
+              <v:fill type="gradient" color="#062a1c" color2="#0b3d2e" angle="100" />
+              <v:textbox inset="0,0,0,0"><![endif]-->
+              <div class="hero-scrim" style="background: linear-gradient(100deg, rgba(6,38,28,0.90) 0%, rgba(6,38,28,0.72) 42%, rgba(8,52,38,0.42) 78%, rgba(10,60,44,0.24) 100%);">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                    <td class="hero-inner" valign="top" style="padding:30px 40px 40px 40px;">
+                      <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                        <td style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; color:#ffffff; letter-spacing:0.3px; white-space:nowrap;">PATSNAP <span style="color:#8fe3c0; font-weight:400;">| Open Platform</span></td>
+                        <td style="padding-left:10px;"><span style="display:inline-block; font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; color:#0b3d2e; background-color:#8fe3c0; border-radius:10px; padding:3px 9px;">MCP</span></td>
+                      </tr></table>
+                      <div style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height:18px; color:#c7f2df; padding-top:9px;">Patent intelligence, right inside your workflow.</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size:0; line-height:0;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 34' preserveAspectRatio='none'%3E%3Cpath d='M0,34 L0,14 C130,-2 250,26 380,16 C480,8 560,22 600,6 L600,34 Z' fill='%23ffffff'/%3E%3C/svg%3E" width="600" height="34" alt="" style="display:block; width:100%; height:34px;"></td>
+                  </tr>
+                </table>
+              </div>
+              <!--[if gte mso 9]></v:textbox></v:rect><![endif]-->
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:22px 40px 8px 40px;">
+              <p class="muted" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; color:#1b7a5a; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding-bottom:12px;">A quick nudge</p>
+              <h1 class="h1 hero-h1-sm" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:33px; line-height:41px; color:#0b3d2e; font-weight:700; letter-spacing:-0.5px;">Getting started <em style="font-style:italic; color:#1b7a5a;">feels</em> heavy. It isn't — promise.</h1>
+            </td>
+          </tr>
+          <tr>
+            <td class="px body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#39463f; padding:18px 40px 4px 40px;">
+              <p style="padding-bottom:14px;">You signed up yesterday and haven't run anything yet. Totally normal — new tools usually mean <em style="font-style:italic;">docs to read</em> and <em style="font-style:italic;">config to wrestle with</em>.</p>
+              <p style="padding-bottom:14px;">Not here. You don't need to learn a query language or map out a workflow. <strong style="color:#0b3d2e;">The MCP takes plain English and does the heavy lifting.</strong></p>
+              <p style="padding-bottom:6px;">Start with the smallest possible task:</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:8px 40px 6px 40px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f7f4" class="tint" style="background-color:#f2f7f4; border:1px solid #dce8e2; border-radius:12px;">
+                <tr><td style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:16px; line-height:24px; color:#0b3d2e; padding:16px 20px; font-style:italic;">“Show me the 10 most recent patents from a company I care about.”</td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="px body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:24px; color:#5c6b64; padding:14px 40px 0 40px;">
+              <p><strong style="color:#0b3d2e;">One question. One result. Under a minute.</strong> That's the whole first win.</p>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:24px 40px 30px 40px;">
+              <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://open.patsnap.com/mcp/quickstart" style="height:52px;v-text-anchor:middle;width:230px;" arcsize="50%" fillcolor="#1b7a5a" stroke="f"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">Try a Simple Task &rarr;</center></v:roundrect><![endif]-->
+              <!--[if !mso]><!-- -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="breathe-btn" style="border-radius:40px;"><tr><td align="center" bgcolor="#1b7a5a" style="background-color:#1b7a5a; border-radius:40px;"><a class="cta-a" href="https://open.patsnap.com/mcp/quickstart" style="display:inline-block; font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:17px; font-weight:700; color:#ffffff; text-decoration:none; padding:16px 38px; border-radius:40px;">Try a Simple Task &rarr;</a></td></tr></table>
+              <!--<![endif]-->
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:0 40px 6px 40px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f7f4" class="tint" style="background-color:#f2f7f4; border:1px solid #dce8e2; border-radius:12px;">
+                <tr><td style="padding:16px 20px 14px 20px;">
+                  <p class="tint-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#1b7a5a; padding-bottom:10px;">Helpful resources</p>
+                  <p style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; padding-bottom:7px;"><a href="https://open.patsnap.com/docs/faq" style="color:#0b3d2e; text-decoration:none;"><span style="color:#1b7a5a;">&rarr;</span> &nbsp;Read the FAQ</a></p>
+                  <p style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:22px;"><a href="https://open.patsnap.com/docs/troubleshooting" style="color:#0b3d2e; text-decoration:none;"><span style="color:#1b7a5a;">&rarr;</span> &nbsp;Troubleshooting guide</a></p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr><td class="px" style="padding-top:18px;"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td class="divider" style="border-top:1px solid #e3ebe7; font-size:0; line-height:0;">&nbsp;</td></tr></table></td></tr>
+          <!-- Social row. Swap SVG data-uris for hosted PNGs and update hrefs to the live profiles. -->
+          <tr>
+            <td class="px" align="center" style="padding:20px 40px 2px 40px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                <td style="padding:0 6px;"><a href="https://www.linkedin.com/company/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M11 13h2.6v8H11zM12.3 9.2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM15 13h2.5v1.1h.04c.35-.63 1.2-1.3 2.46-1.3 2.6 0 3.1 1.6 3.1 3.7V21h-2.6v-3.5c0-.84-.02-1.9-1.2-1.9-1.2 0-1.4.9-1.4 1.85V21H15z'/%3E%3C/svg%3E" width="30" height="30" alt="LinkedIn" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.facebook.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M17.5 25v-8h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.26 1.3-1.26h1.3V9.2c-.23-.03-1-.1-1.9-.1-1.9 0-3.2 1.16-3.2 3.28v1.83H12.8V17h2.2v8z'/%3E%3C/svg%3E" width="30" height="30" alt="Facebook" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.instagram.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='none' stroke='%23fff' stroke-width='1.6' d='M12 10.5h8a2.5 2.5 0 0 1 2.5 2.5v6a2.5 2.5 0 0 1-2.5 2.5h-8A2.5 2.5 0 0 1 9.5 19v-6A2.5 2.5 0 0 1 12 10.5z'/%3E%3Ccircle cx='16' cy='16' r='3' fill='none' stroke='%23fff' stroke-width='1.6'/%3E%3Ccircle cx='20' cy='12' r='1' fill='%23fff'/%3E%3C/svg%3E" width="30" height="30" alt="Instagram" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://x.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M18.9 9.5h2l-4.4 5 5.2 6.9h-4.1l-3.2-4.2-3.7 4.2H8.7l4.7-5.4L8.4 9.5h4.2l2.9 3.8zm-.7 10.7h1.1L12 10.7h-1.2z'/%3E%3C/svg%3E" width="30" height="30" alt="X" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.patsnap.com" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Ccircle cx='16' cy='16' r='6.3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cellipse cx='16' cy='16' rx='2.6' ry='6.3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cline x1='9.7' y1='16' x2='22.3' y2='16' stroke='%23fff' stroke-width='1.4'/%3E%3C/svg%3E" width="30" height="30" alt="Website" style="display:block; border-radius:50%;"></a></td>
+              </tr></table>
+            </td>
+          </tr>
+          <tr>
+            <td class="px footer-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; line-height:19px; color:#8b9a92; padding:16px 40px 26px 40px;">
+              Patsnap · Open Platform Team<br>9 Battery Road, #28-01, Singapore 049910<br>
+              <a href="https://open.patsnap.com/unsubscribe" style="color:#1b7a5a; text-decoration:underline;">Unsubscribe</a> &nbsp;·&nbsp; <a href="https://open.patsnap.com/preferences" style="color:#1b7a5a; text-decoration:underline;">Email preferences</a>
+            </td>
+          </tr>
+        </table>
+
+        <table role="presentation" width="600" class="container" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;"><tr><td height="40" style="font-size:0; line-height:0;">&nbsp;</td></tr></table>
+
+
+        <!-- ================================================================ -->
+        <!-- EMAIL 3 — Close the loop (trigger: generated, not saved/exported)  Framework: AIDA -->
+        <!-- Subject:  You're one click from keeping those results -->
+        <!-- CTA: View & Save Results -->
+        <!-- ================================================================ -->
+        <div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">Your last query is ready to keep — one step to save or export.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+
+        <table role="presentation" width="600" class="container card" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 2px 10px rgba(11,61,46,0.06);">
+          <tr>
+            <td class="hero-photo" background="media/patsnap-email-hero.jpeg" bgcolor="#0b3d2e" valign="top" style="background-color:#0b3d2e; background-image:url('media/patsnap-email-hero.jpeg'); background-position:center center; background-size:cover; padding:0;">
+              <!--[if gte mso 9]>
+              <v:image xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" src="media/patsnap-email-hero.jpeg" style="width:600px; height:210px;" />
+              <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="false" stroke="false" style="position:absolute; width:600px; height:210px;">
+              <v:fill type="gradient" color="#062a1c" color2="#0b3d2e" angle="100" />
+              <v:textbox inset="0,0,0,0"><![endif]-->
+              <div class="hero-scrim" style="background: linear-gradient(100deg, rgba(6,38,28,0.90) 0%, rgba(6,38,28,0.72) 42%, rgba(8,52,38,0.42) 78%, rgba(10,60,44,0.24) 100%);">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                    <td class="hero-inner" valign="top" style="padding:30px 40px 40px 40px;">
+                      <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                        <td style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; color:#ffffff; letter-spacing:0.3px; white-space:nowrap;">PATSNAP <span style="color:#8fe3c0; font-weight:400;">| Open Platform</span></td>
+                        <td style="padding-left:10px;"><span style="display:inline-block; font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; color:#0b3d2e; background-color:#8fe3c0; border-radius:10px; padding:3px 9px;">MCP</span></td>
+                      </tr></table>
+                      <div style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height:18px; color:#c7f2df; padding-top:9px;">Patent intelligence, right inside your workflow.</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size:0; line-height:0;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 34' preserveAspectRatio='none'%3E%3Cpath d='M0,34 L0,14 C130,-2 250,26 380,16 C480,8 560,22 600,6 L600,34 Z' fill='%23ffffff'/%3E%3C/svg%3E" width="600" height="34" alt="" style="display:block; width:100%; height:34px;"></td>
+                  </tr>
+                </table>
+              </div>
+              <!--[if gte mso 9]></v:textbox></v:rect><![endif]-->
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:22px 40px 8px 40px;">
+              <p class="muted" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; color:#1b7a5a; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding-bottom:12px;">Almost there</p>
+              <h1 class="h1 hero-h1-sm" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:33px; line-height:41px; color:#0b3d2e; font-weight:700; letter-spacing:-0.5px;">Nice work — now don't let those results <em style="font-style:italic; color:#1b7a5a;">disappear</em>.</h1>
+            </td>
+          </tr>
+          <tr>
+            <td class="px body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#39463f; padding:18px 40px 4px 40px;">
+              <p style="padding-bottom:14px;">You ran a query and generated a result set — <strong style="color:#0b3d2e;">the hard part is done.</strong> But it isn't saved or exported yet, which means the next time you need it, you'll be starting over.</p>
+              <p style="padding-bottom:10px;">The final step takes one click:</p>
+            </td>
+          </tr>
+          <!-- Bulleted options -->
+          <tr>
+            <td class="px body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:24px; color:#39463f; padding:0 40px 4px 40px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr><td valign="top" width="18" style="font-family:Arial,sans-serif; font-size:16px; color:#1b7a5a; padding:1px 0;">•</td><td style="padding:1px 0 8px 6px;"><strong style="color:#0b3d2e;">Save</strong> it to your workspace for instant re-use.</td></tr>
+                <tr><td valign="top" width="18" style="font-family:Arial,sans-serif; font-size:16px; color:#1b7a5a; padding:1px 0;">•</td><td style="padding:1px 0 4px 6px;"><strong style="color:#0b3d2e;">Export</strong> a clean file for a report, a deck, or a colleague's inbox.</td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="px body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:24px; color:#5c6b64; padding:12px 40px 0 40px;">
+              <p><em style="font-style:italic;">Finish the loop, and this becomes a reusable asset instead of a throwaway search.</em></p>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:24px 40px 30px 40px;">
+              <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://open.patsnap.com/mcp/results" style="height:52px;v-text-anchor:middle;width:250px;" arcsize="50%" fillcolor="#1b7a5a" stroke="f"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">View &amp; Save Results &rarr;</center></v:roundrect><![endif]-->
+              <!--[if !mso]><!-- -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="breathe-btn" style="border-radius:40px;"><tr><td align="center" bgcolor="#1b7a5a" style="background-color:#1b7a5a; border-radius:40px;"><a class="cta-a" href="https://open.patsnap.com/mcp/results" style="display:inline-block; font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:17px; font-weight:700; color:#ffffff; text-decoration:none; padding:16px 38px; border-radius:40px;">View &amp; Save Results &rarr;</a></td></tr></table>
+              <!--<![endif]-->
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:0 40px 6px 40px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f7f4" class="tint" style="background-color:#f2f7f4; border:1px solid #dce8e2; border-radius:12px;">
+                <tr><td style="padding:16px 20px 14px 20px;">
+                  <p class="tint-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#1b7a5a; padding-bottom:10px;">Helpful resources</p>
+                  <p style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; padding-bottom:7px;"><a href="https://open.patsnap.com/docs/export" style="color:#0b3d2e; text-decoration:none;"><span style="color:#1b7a5a;">&rarr;</span> &nbsp;How exporting &amp; saving works</a></p>
+                  <p style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:22px;"><a href="https://open.patsnap.com/docs/troubleshooting" style="color:#0b3d2e; text-decoration:none;"><span style="color:#1b7a5a;">&rarr;</span> &nbsp;Troubleshooting guide</a></p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr><td class="px" style="padding-top:18px;"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td class="divider" style="border-top:1px solid #e3ebe7; font-size:0; line-height:0;">&nbsp;</td></tr></table></td></tr>
+          <!-- Social row. Swap SVG data-uris for hosted PNGs and update hrefs to the live profiles. -->
+          <tr>
+            <td class="px" align="center" style="padding:20px 40px 2px 40px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                <td style="padding:0 6px;"><a href="https://www.linkedin.com/company/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M11 13h2.6v8H11zM12.3 9.2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM15 13h2.5v1.1h.04c.35-.63 1.2-1.3 2.46-1.3 2.6 0 3.1 1.6 3.1 3.7V21h-2.6v-3.5c0-.84-.02-1.9-1.2-1.9-1.2 0-1.4.9-1.4 1.85V21H15z'/%3E%3C/svg%3E" width="30" height="30" alt="LinkedIn" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.facebook.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M17.5 25v-8h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.26 1.3-1.26h1.3V9.2c-.23-.03-1-.1-1.9-.1-1.9 0-3.2 1.16-3.2 3.28v1.83H12.8V17h2.2v8z'/%3E%3C/svg%3E" width="30" height="30" alt="Facebook" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.instagram.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='none' stroke='%23fff' stroke-width='1.6' d='M12 10.5h8a2.5 2.5 0 0 1 2.5 2.5v6a2.5 2.5 0 0 1-2.5 2.5h-8A2.5 2.5 0 0 1 9.5 19v-6A2.5 2.5 0 0 1 12 10.5z'/%3E%3Ccircle cx='16' cy='16' r='3' fill='none' stroke='%23fff' stroke-width='1.6'/%3E%3Ccircle cx='20' cy='12' r='1' fill='%23fff'/%3E%3C/svg%3E" width="30" height="30" alt="Instagram" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://x.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M18.9 9.5h2l-4.4 5 5.2 6.9h-4.1l-3.2-4.2-3.7 4.2H8.7l4.7-5.4L8.4 9.5h4.2l2.9 3.8zm-.7 10.7h1.1L12 10.7h-1.2z'/%3E%3C/svg%3E" width="30" height="30" alt="X" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.patsnap.com" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Ccircle cx='16' cy='16' r='6.3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cellipse cx='16' cy='16' rx='2.6' ry='6.3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cline x1='9.7' y1='16' x2='22.3' y2='16' stroke='%23fff' stroke-width='1.4'/%3E%3C/svg%3E" width="30" height="30" alt="Website" style="display:block; border-radius:50%;"></a></td>
+              </tr></table>
+            </td>
+          </tr>
+          <tr>
+            <td class="px footer-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; line-height:19px; color:#8b9a92; padding:16px 40px 26px 40px;">
+              Patsnap · Open Platform Team<br>9 Battery Road, #28-01, Singapore 049910<br>
+              <a href="https://open.patsnap.com/unsubscribe" style="color:#1b7a5a; text-decoration:underline;">Unsubscribe</a> &nbsp;·&nbsp; <a href="https://open.patsnap.com/preferences" style="color:#1b7a5a; text-decoration:underline;">Email preferences</a>
+            </td>
+          </tr>
+        </table>
+
+        <table role="presentation" width="600" class="container" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;"><tr><td height="40" style="font-size:0; line-height:0;">&nbsp;</td></tr></table>
+
+
+        <!-- ================================================================ -->
+        <!-- EMAIL 4 — Celebrate + level up (trigger: first export)  Framework: BAB -->
+        <!-- Subject:  First export done. Make the next one instant -->
+        <!-- CTA: Save as Template -->
+        <!-- ================================================================ -->
+        <div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">Turn the workflow you just ran into a one-click reusable template.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+
+        <table role="presentation" width="600" class="container card" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 2px 10px rgba(11,61,46,0.06);">
+          <tr>
+            <td class="hero-photo" background="media/patsnap-email-hero.jpeg" bgcolor="#0b3d2e" valign="top" style="background-color:#0b3d2e; background-image:url('media/patsnap-email-hero.jpeg'); background-position:center center; background-size:cover; padding:0;">
+              <!--[if gte mso 9]>
+              <v:image xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" src="media/patsnap-email-hero.jpeg" style="width:600px; height:210px;" />
+              <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="false" stroke="false" style="position:absolute; width:600px; height:210px;">
+              <v:fill type="gradient" color="#062a1c" color2="#0b3d2e" angle="100" />
+              <v:textbox inset="0,0,0,0"><![endif]-->
+              <div class="hero-scrim" style="background: linear-gradient(100deg, rgba(6,38,28,0.90) 0%, rgba(6,38,28,0.72) 42%, rgba(8,52,38,0.42) 78%, rgba(10,60,44,0.24) 100%);">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                    <td class="hero-inner" valign="top" style="padding:30px 40px 40px 40px;">
+                      <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                        <td style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; color:#ffffff; letter-spacing:0.3px; white-space:nowrap;">PATSNAP <span style="color:#8fe3c0; font-weight:400;">| Open Platform</span></td>
+                        <td style="padding-left:10px;"><span style="display:inline-block; font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; color:#0b3d2e; background-color:#8fe3c0; border-radius:10px; padding:3px 9px;">MCP</span></td>
+                      </tr></table>
+                      <div style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height:18px; color:#c7f2df; padding-top:9px;">Patent intelligence, right inside your workflow.</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size:0; line-height:0;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 34' preserveAspectRatio='none'%3E%3Cpath d='M0,34 L0,14 C130,-2 250,26 380,16 C480,8 560,22 600,6 L600,34 Z' fill='%23ffffff'/%3E%3C/svg%3E" width="600" height="34" alt="" style="display:block; width:100%; height:34px;"></td>
+                  </tr>
+                </table>
+              </div>
+              <!--[if gte mso 9]></v:textbox></v:rect><![endif]-->
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:30px 40px 8px 40px;">
+              <p class="muted" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; color:#1b7a5a; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding-bottom:12px;">🎉 &nbsp;Milestone unlocked</p>
+              <h1 class="h1 hero-h1" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:36px; line-height:44px; color:#0b3d2e; font-weight:700; letter-spacing:-0.5px;">You just completed your <em style="font-style:italic; color:#1b7a5a;">first export</em>.</h1>
+            </td>
+          </tr>
+          <tr>
+            <td class="px body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#39463f; padding:16px 40px 4px 40px;">
+              <p style="padding-bottom:14px;">That's the full loop — <strong style="color:#0b3d2e;">search &rarr; generate &rarr; export.</strong> You now know exactly how the platform earns its keep.</p>
+              <p style="padding-bottom:14px;">Here's the upgrade most power users miss: you don't have to rebuild that query next time. Save it as a <strong style="color:#0b3d2e;">template</strong>, and the same analysis becomes <em style="font-style:italic; color:#1b7a5a;">a single click</em> — every week, every project, every teammate.</p>
+              <p style="padding-bottom:6px;">Do it once now, thank yourself every time after.</p>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:24px 40px 22px 40px;">
+              <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://open.patsnap.com/mcp/templates/new" style="height:52px;v-text-anchor:middle;width:230px;" arcsize="50%" fillcolor="#1b7a5a" stroke="f"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">Save as Template &rarr;</center></v:roundrect><![endif]-->
+              <!--[if !mso]><!-- -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="breathe-btn" style="border-radius:40px;"><tr><td align="center" bgcolor="#1b7a5a" style="background-color:#1b7a5a; border-radius:40px;"><a class="cta-a" href="https://open.patsnap.com/mcp/templates/new" style="display:inline-block; font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:17px; font-weight:700; color:#ffffff; text-decoration:none; padding:16px 38px; border-radius:40px;">Save as Template &rarr;</a></td></tr></table>
+              <!--<![endif]-->
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:0 40px 6px 40px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f7f4" class="tint" style="background-color:#f2f7f4; border:1px solid #dce8e2; border-radius:12px;">
+                <tr><td style="padding:16px 20px 14px 20px;">
+                  <p class="tint-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#1b7a5a; padding-bottom:10px;">Level up next</p>
+                  <p style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; padding-bottom:7px;"><a href="https://open.patsnap.com/mcp/explore" style="color:#0b3d2e; text-decoration:none;"><span style="color:#1b7a5a;">&rarr;</span> &nbsp;Explore advanced queries — FTO, novelty &amp; landscape</a></p>
+                  <p style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:22px;"><a href="https://open.patsnap.com/docs/faq" style="color:#0b3d2e; text-decoration:none;"><span style="color:#1b7a5a;">&rarr;</span> &nbsp;Read the FAQ</a></p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr><td class="px" style="padding-top:18px;"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td class="divider" style="border-top:1px solid #e3ebe7; font-size:0; line-height:0;">&nbsp;</td></tr></table></td></tr>
+          <!-- Social row. Swap SVG data-uris for hosted PNGs and update hrefs to the live profiles. -->
+          <tr>
+            <td class="px" align="center" style="padding:20px 40px 2px 40px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                <td style="padding:0 6px;"><a href="https://www.linkedin.com/company/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M11 13h2.6v8H11zM12.3 9.2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM15 13h2.5v1.1h.04c.35-.63 1.2-1.3 2.46-1.3 2.6 0 3.1 1.6 3.1 3.7V21h-2.6v-3.5c0-.84-.02-1.9-1.2-1.9-1.2 0-1.4.9-1.4 1.85V21H15z'/%3E%3C/svg%3E" width="30" height="30" alt="LinkedIn" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.facebook.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M17.5 25v-8h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.26 1.3-1.26h1.3V9.2c-.23-.03-1-.1-1.9-.1-1.9 0-3.2 1.16-3.2 3.28v1.83H12.8V17h2.2v8z'/%3E%3C/svg%3E" width="30" height="30" alt="Facebook" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.instagram.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='none' stroke='%23fff' stroke-width='1.6' d='M12 10.5h8a2.5 2.5 0 0 1 2.5 2.5v6a2.5 2.5 0 0 1-2.5 2.5h-8A2.5 2.5 0 0 1 9.5 19v-6A2.5 2.5 0 0 1 12 10.5z'/%3E%3Ccircle cx='16' cy='16' r='3' fill='none' stroke='%23fff' stroke-width='1.6'/%3E%3Ccircle cx='20' cy='12' r='1' fill='%23fff'/%3E%3C/svg%3E" width="30" height="30" alt="Instagram" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://x.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M18.9 9.5h2l-4.4 5 5.2 6.9h-4.1l-3.2-4.2-3.7 4.2H8.7l4.7-5.4L8.4 9.5h4.2l2.9 3.8zm-.7 10.7h1.1L12 10.7h-1.2z'/%3E%3C/svg%3E" width="30" height="30" alt="X" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.patsnap.com" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Ccircle cx='16' cy='16' r='6.3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cellipse cx='16' cy='16' rx='2.6' ry='6.3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cline x1='9.7' y1='16' x2='22.3' y2='16' stroke='%23fff' stroke-width='1.4'/%3E%3C/svg%3E" width="30" height="30" alt="Website" style="display:block; border-radius:50%;"></a></td>
+              </tr></table>
+            </td>
+          </tr>
+          <tr>
+            <td class="px footer-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; line-height:19px; color:#8b9a92; padding:16px 40px 26px 40px;">
+              Patsnap · Open Platform Team<br>9 Battery Road, #28-01, Singapore 049910<br>
+              <a href="https://open.patsnap.com/unsubscribe" style="color:#1b7a5a; text-decoration:underline;">Unsubscribe</a> &nbsp;·&nbsp; <a href="https://open.patsnap.com/preferences" style="color:#1b7a5a; text-decoration:underline;">Email preferences</a>
+            </td>
+          </tr>
+        </table>
+
+        <table role="presentation" width="600" class="container" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;"><tr><td height="40" style="font-size:0; line-height:0;">&nbsp;</td></tr></table>
+
+
+        <!-- ================================================================ -->
+        <!-- EMAIL 5 — Export failed (trigger: export error)  Framework: PAS + support handoff -->
+        <!-- Subject:  That export didn't go through — let's fix it fast -->
+        <!-- CTA: Get Human Help -->
+        <!-- ================================================================ -->
+        <div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">A quick retry usually works — and if not, a human is standing by.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+
+        <table role="presentation" width="600" class="container card" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 2px 10px rgba(11,61,46,0.06);">
+          <tr>
+            <td class="hero-photo" background="media/patsnap-email-hero.jpeg" bgcolor="#0b3d2e" valign="top" style="background-color:#0b3d2e; background-image:url('media/patsnap-email-hero.jpeg'); background-position:center center; background-size:cover; padding:0;">
+              <!--[if gte mso 9]>
+              <v:image xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" src="media/patsnap-email-hero.jpeg" style="width:600px; height:210px;" />
+              <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="false" stroke="false" style="position:absolute; width:600px; height:210px;">
+              <v:fill type="gradient" color="#062a1c" color2="#0b3d2e" angle="100" />
+              <v:textbox inset="0,0,0,0"><![endif]-->
+              <div class="hero-scrim" style="background: linear-gradient(100deg, rgba(6,38,28,0.90) 0%, rgba(6,38,28,0.72) 42%, rgba(8,52,38,0.42) 78%, rgba(10,60,44,0.24) 100%);">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                    <td class="hero-inner" valign="top" style="padding:30px 40px 40px 40px;">
+                      <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                        <td style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; color:#ffffff; letter-spacing:0.3px; white-space:nowrap;">PATSNAP <span style="color:#8fe3c0; font-weight:400;">| Open Platform</span></td>
+                        <td style="padding-left:10px;"><span style="display:inline-block; font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; color:#0b3d2e; background-color:#8fe3c0; border-radius:10px; padding:3px 9px;">MCP</span></td>
+                      </tr></table>
+                      <div style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height:18px; color:#c7f2df; padding-top:9px;">Patent intelligence, right inside your workflow.</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size:0; line-height:0;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 34' preserveAspectRatio='none'%3E%3Cpath d='M0,34 L0,14 C130,-2 250,26 380,16 C480,8 560,22 600,6 L600,34 Z' fill='%23ffffff'/%3E%3C/svg%3E" width="600" height="34" alt="" style="display:block; width:100%; height:34px;"></td>
+                  </tr>
+                </table>
+              </div>
+              <!--[if gte mso 9]></v:textbox></v:rect><![endif]-->
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:22px 40px 8px 40px;">
+              <p class="muted" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; color:#c2703a; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding-bottom:12px;">Something went sideways</p>
+              <h1 class="h1 hero-h1-sm" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:33px; line-height:41px; color:#0b3d2e; font-weight:700; letter-spacing:-0.5px;">Your export didn't complete. Let's <em style="font-style:italic; color:#1b7a5a;">sort it out</em>.</h1>
+            </td>
+          </tr>
+          <tr>
+            <td class="px body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#39463f; padding:18px 40px 4px 40px;">
+              <p style="padding-bottom:14px;">We noticed your last export failed. <strong style="color:#0b3d2e;">That's on us to help fix</strong> — you shouldn't lose the work you already did.</p>
+              <p style="padding-bottom:10px;">Two quick things to try first:</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="px body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:24px; color:#39463f; padding:0 40px 4px 40px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr><td valign="top" width="18" style="font-family:Arial,sans-serif; font-size:16px; color:#1b7a5a; padding:1px 0;">•</td><td style="padding:1px 0 8px 6px;"><strong style="color:#0b3d2e;">Re-run the export</strong> — most failures are a transient timeout and clear on the second attempt.</td></tr>
+                <tr><td valign="top" width="18" style="font-family:Arial,sans-serif; font-size:16px; color:#1b7a5a; padding:1px 0;">•</td><td style="padding:1px 0 4px 6px;">If the result set is very large, <strong style="color:#0b3d2e;">narrow the query</strong> and export in smaller batches.</td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="px body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:24px; color:#5c6b64; padding:12px 40px 0 40px;">
+              <p><em style="font-style:italic;">Still stuck?</em> Skip the guesswork. Our team can look at your specific case and get you unblocked — <strong style="color:#0b3d2e;">usually same business day.</strong></p>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:24px 40px 16px 40px;">
+              <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://open.patsnap.com/support/contact" style="height:52px;v-text-anchor:middle;width:220px;" arcsize="50%" fillcolor="#1b7a5a" stroke="f"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">Get Human Help &rarr;</center></v:roundrect><![endif]-->
+              <!--[if !mso]><!-- -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="breathe-btn" style="border-radius:40px;"><tr><td align="center" bgcolor="#1b7a5a" style="background-color:#1b7a5a; border-radius:40px;"><a class="cta-a" href="https://open.patsnap.com/support/contact" style="display:inline-block; font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:17px; font-weight:700; color:#ffffff; text-decoration:none; padding:16px 38px; border-radius:40px;">Get Human Help &rarr;</a></td></tr></table>
+              <!--<![endif]-->
+            </td>
+          </tr>
+          <tr><td class="px" align="center" style="padding:0 40px 24px 40px;"><a href="https://open.patsnap.com/mcp/export/retry" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; color:#1b7a5a; text-decoration:underline; font-weight:600;">Retry the export first</a></td></tr>
+          <tr>
+            <td class="px" style="padding:0 40px 6px 40px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f7f4" class="tint" style="background-color:#f2f7f4; border:1px solid #dce8e2; border-radius:12px;">
+                <tr><td style="padding:16px 20px 14px 20px;">
+                  <p class="tint-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#1b7a5a; padding-bottom:10px;">Helpful resources</p>
+                  <p style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; padding-bottom:7px;"><a href="https://open.patsnap.com/docs/troubleshooting" style="color:#0b3d2e; text-decoration:none;"><span style="color:#1b7a5a;">&rarr;</span> &nbsp;Troubleshooting guide</a></p>
+                  <p style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:22px;"><a href="https://open.patsnap.com/docs/faq" style="color:#0b3d2e; text-decoration:none;"><span style="color:#1b7a5a;">&rarr;</span> &nbsp;Read the FAQ</a></p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr><td class="px" style="padding-top:18px;"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td class="divider" style="border-top:1px solid #e3ebe7; font-size:0; line-height:0;">&nbsp;</td></tr></table></td></tr>
+          <!-- Social row. Swap SVG data-uris for hosted PNGs and update hrefs to the live profiles. -->
+          <tr>
+            <td class="px" align="center" style="padding:20px 40px 2px 40px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                <td style="padding:0 6px;"><a href="https://www.linkedin.com/company/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M11 13h2.6v8H11zM12.3 9.2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM15 13h2.5v1.1h.04c.35-.63 1.2-1.3 2.46-1.3 2.6 0 3.1 1.6 3.1 3.7V21h-2.6v-3.5c0-.84-.02-1.9-1.2-1.9-1.2 0-1.4.9-1.4 1.85V21H15z'/%3E%3C/svg%3E" width="30" height="30" alt="LinkedIn" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.facebook.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M17.5 25v-8h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.26 1.3-1.26h1.3V9.2c-.23-.03-1-.1-1.9-.1-1.9 0-3.2 1.16-3.2 3.28v1.83H12.8V17h2.2v8z'/%3E%3C/svg%3E" width="30" height="30" alt="Facebook" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.instagram.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='none' stroke='%23fff' stroke-width='1.6' d='M12 10.5h8a2.5 2.5 0 0 1 2.5 2.5v6a2.5 2.5 0 0 1-2.5 2.5h-8A2.5 2.5 0 0 1 9.5 19v-6A2.5 2.5 0 0 1 12 10.5z'/%3E%3Ccircle cx='16' cy='16' r='3' fill='none' stroke='%23fff' stroke-width='1.6'/%3E%3Ccircle cx='20' cy='12' r='1' fill='%23fff'/%3E%3C/svg%3E" width="30" height="30" alt="Instagram" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://x.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M18.9 9.5h2l-4.4 5 5.2 6.9h-4.1l-3.2-4.2-3.7 4.2H8.7l4.7-5.4L8.4 9.5h4.2l2.9 3.8zm-.7 10.7h1.1L12 10.7h-1.2z'/%3E%3C/svg%3E" width="30" height="30" alt="X" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.patsnap.com" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Ccircle cx='16' cy='16' r='6.3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cellipse cx='16' cy='16' rx='2.6' ry='6.3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cline x1='9.7' y1='16' x2='22.3' y2='16' stroke='%23fff' stroke-width='1.4'/%3E%3C/svg%3E" width="30" height="30" alt="Website" style="display:block; border-radius:50%;"></a></td>
+              </tr></table>
+            </td>
+          </tr>
+          <tr>
+            <td class="px footer-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; line-height:19px; color:#8b9a92; padding:16px 40px 26px 40px;">
+              Patsnap · Open Platform Team<br>9 Battery Road, #28-01, Singapore 049910<br>
+              <a href="https://open.patsnap.com/unsubscribe" style="color:#1b7a5a; text-decoration:underline;">Unsubscribe</a> &nbsp;·&nbsp; <a href="https://open.patsnap.com/preferences" style="color:#1b7a5a; text-decoration:underline;">Email preferences</a>
+            </td>
+          </tr>
+        </table>
+
+        <table role="presentation" width="600" class="container" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;"><tr><td height="40" style="font-size:0; line-height:0;">&nbsp;</td></tr></table>
+
+
+        <!-- ================================================================ -->
+        <!-- EMAIL 6 — Win-back (trigger: no action in 7 days)  Framework: re-engagement -->
+        <!-- Subject:  Pick a scenario, see results in 10 minutes -->
+        <!-- CTA: Start a Query -->
+        <!-- ================================================================ -->
+        <div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">Your patent question, answered before your coffee cools.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+
+        <table role="presentation" width="600" class="container card" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 2px 10px rgba(11,61,46,0.06);">
+          <tr>
+            <td class="hero-photo" background="media/patsnap-email-hero.jpeg" bgcolor="#0b3d2e" valign="top" style="background-color:#0b3d2e; background-image:url('media/patsnap-email-hero.jpeg'); background-position:center center; background-size:cover; padding:0;">
+              <!--[if gte mso 9]>
+              <v:image xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" src="media/patsnap-email-hero.jpeg" style="width:600px; height:210px;" />
+              <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="false" stroke="false" style="position:absolute; width:600px; height:210px;">
+              <v:fill type="gradient" color="#062a1c" color2="#0b3d2e" angle="100" />
+              <v:textbox inset="0,0,0,0"><![endif]-->
+              <div class="hero-scrim" style="background: linear-gradient(100deg, rgba(6,38,28,0.90) 0%, rgba(6,38,28,0.72) 42%, rgba(8,52,38,0.42) 78%, rgba(10,60,44,0.24) 100%);">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                    <td class="hero-inner" valign="top" style="padding:30px 40px 40px 40px;">
+                      <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                        <td style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; color:#ffffff; letter-spacing:0.3px; white-space:nowrap;">PATSNAP <span style="color:#8fe3c0; font-weight:400;">| Open Platform</span></td>
+                        <td style="padding-left:10px;"><span style="display:inline-block; font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; color:#0b3d2e; background-color:#8fe3c0; border-radius:10px; padding:3px 9px;">MCP</span></td>
+                      </tr></table>
+                      <div style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height:18px; color:#c7f2df; padding-top:9px;">Patent intelligence, right inside your workflow.</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size:0; line-height:0;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 34' preserveAspectRatio='none'%3E%3Cpath d='M0,34 L0,14 C130,-2 250,26 380,16 C480,8 560,22 600,6 L600,34 Z' fill='%23ffffff'/%3E%3C/svg%3E" width="600" height="34" alt="" style="display:block; width:100%; height:34px;"></td>
+                  </tr>
+                </table>
+              </div>
+              <!--[if gte mso 9]></v:textbox></v:rect><![endif]-->
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:22px 40px 8px 40px;">
+              <p class="muted" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; color:#1b7a5a; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding-bottom:12px;">Still here for you</p>
+              <h1 class="h1 hero-h1" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:36px; line-height:44px; color:#0b3d2e; font-weight:700; letter-spacing:-0.5px;">It's been a week. Let's get you <em style="font-style:italic; color:#1b7a5a;">one real result</em>.</h1>
+            </td>
+          </tr>
+          <tr>
+            <td class="px body-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:16px; line-height:26px; color:#39463f; padding:18px 40px 4px 40px;">
+              <p style="padding-bottom:14px;">Getting value out of a new platform is hard when you're not sure where to point it. So let's <em style="font-style:italic;">remove that decision entirely.</em></p>
+              <p style="padding-bottom:16px;"><strong style="color:#0b3d2e;">Choose any IP scenario below, enter your background, and see results in 10 minutes.</strong></p>
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:2px 40px 6px 40px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td class="scenario-cell stack" width="50%" valign="top" style="padding:0 6px 12px 0;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f7f4" class="tint" style="background-color:#f2f7f4; border:1px solid #dce8e2; border-radius:12px;">
+                      <tr><td style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:14px; line-height:20px; color:#0b3d2e; padding:14px 16px;"><strong>🔍 Prior-art / novelty</strong><br><span style="color:#5c6b64;"><em style="font-style:italic;">Is my idea already patented?</em></span></td></tr>
+                    </table>
+                  </td>
+                  <td class="scenario-cell stack" width="50%" valign="top" style="padding:0 0 12px 6px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f7f4" class="tint" style="background-color:#f2f7f4; border:1px solid #dce8e2; border-radius:12px;">
+                      <tr><td style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:14px; line-height:20px; color:#0b3d2e; padding:14px 16px;"><strong>⚖️ FTO risk check</strong><br><span style="color:#5c6b64;"><em style="font-style:italic;">Can I launch without infringing?</em></span></td></tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="scenario-cell stack" width="50%" valign="top" style="padding:0 6px 4px 0;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f7f4" class="tint" style="background-color:#f2f7f4; border:1px solid #dce8e2; border-radius:12px;">
+                      <tr><td style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:14px; line-height:20px; color:#0b3d2e; padding:14px 16px;"><strong>🏢 Competitor watch</strong><br><span style="color:#5c6b64;"><em style="font-style:italic;">What is a rival filing lately?</em></span></td></tr>
+                    </table>
+                  </td>
+                  <td class="scenario-cell stack" width="50%" valign="top" style="padding:0 0 4px 6px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f7f4" class="tint" style="background-color:#f2f7f4; border:1px solid #dce8e2; border-radius:12px;">
+                      <tr><td style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:14px; line-height:20px; color:#0b3d2e; padding:14px 16px;"><strong>🌐 Tech landscape</strong><br><span style="color:#5c6b64;"><em style="font-style:italic;">Who owns this space?</em></span></td></tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:22px 40px 30px 40px;">
+              <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://open.patsnap.com/mcp/start" style="height:52px;v-text-anchor:middle;width:210px;" arcsize="50%" fillcolor="#1b7a5a" stroke="f"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">Start a Query &rarr;</center></v:roundrect><![endif]-->
+              <!--[if !mso]><!-- -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="breathe-btn" style="border-radius:40px;"><tr><td align="center" bgcolor="#1b7a5a" style="background-color:#1b7a5a; border-radius:40px;"><a class="cta-a" href="https://open.patsnap.com/mcp/start" style="display:inline-block; font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:17px; font-weight:700; color:#ffffff; text-decoration:none; padding:16px 40px; border-radius:40px;">Start a Query &rarr;</a></td></tr></table>
+              <!--<![endif]-->
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:0 40px 6px 40px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f7f4" class="tint" style="background-color:#f2f7f4; border:1px solid #dce8e2; border-radius:12px;">
+                <tr><td style="padding:16px 20px 14px 20px;">
+                  <p class="tint-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#1b7a5a; padding-bottom:10px;">Helpful resources</p>
+                  <p style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; padding-bottom:7px;"><a href="https://open.patsnap.com/docs/faq" style="color:#0b3d2e; text-decoration:none;"><span style="color:#1b7a5a;">&rarr;</span> &nbsp;Read the FAQ</a></p>
+                  <p style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:22px;"><a href="https://open.patsnap.com/docs/troubleshooting" style="color:#0b3d2e; text-decoration:none;"><span style="color:#1b7a5a;">&rarr;</span> &nbsp;Troubleshooting guide</a></p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr><td class="px" style="padding-top:18px;"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td class="divider" style="border-top:1px solid #e3ebe7; font-size:0; line-height:0;">&nbsp;</td></tr></table></td></tr>
+          <!-- Social row. Swap SVG data-uris for hosted PNGs and update hrefs to the live profiles. -->
+          <tr>
+            <td class="px" align="center" style="padding:20px 40px 2px 40px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                <td style="padding:0 6px;"><a href="https://www.linkedin.com/company/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M11 13h2.6v8H11zM12.3 9.2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM15 13h2.5v1.1h.04c.35-.63 1.2-1.3 2.46-1.3 2.6 0 3.1 1.6 3.1 3.7V21h-2.6v-3.5c0-.84-.02-1.9-1.2-1.9-1.2 0-1.4.9-1.4 1.85V21H15z'/%3E%3C/svg%3E" width="30" height="30" alt="LinkedIn" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.facebook.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M17.5 25v-8h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.26 1.3-1.26h1.3V9.2c-.23-.03-1-.1-1.9-.1-1.9 0-3.2 1.16-3.2 3.28v1.83H12.8V17h2.2v8z'/%3E%3C/svg%3E" width="30" height="30" alt="Facebook" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.instagram.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='none' stroke='%23fff' stroke-width='1.6' d='M12 10.5h8a2.5 2.5 0 0 1 2.5 2.5v6a2.5 2.5 0 0 1-2.5 2.5h-8A2.5 2.5 0 0 1 9.5 19v-6A2.5 2.5 0 0 1 12 10.5z'/%3E%3Ccircle cx='16' cy='16' r='3' fill='none' stroke='%23fff' stroke-width='1.6'/%3E%3Ccircle cx='20' cy='12' r='1' fill='%23fff'/%3E%3C/svg%3E" width="30" height="30" alt="Instagram" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://x.com/patsnap" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Cpath fill='%23fff' d='M18.9 9.5h2l-4.4 5 5.2 6.9h-4.1l-3.2-4.2-3.7 4.2H8.7l4.7-5.4L8.4 9.5h4.2l2.9 3.8zm-.7 10.7h1.1L12 10.7h-1.2z'/%3E%3C/svg%3E" width="30" height="30" alt="X" style="display:block; border-radius:50%;"></a></td>
+                <td style="padding:0 6px;"><a href="https://www.patsnap.com" style="text-decoration:none;"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231b7a5a'/%3E%3Ccircle cx='16' cy='16' r='6.3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cellipse cx='16' cy='16' rx='2.6' ry='6.3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cline x1='9.7' y1='16' x2='22.3' y2='16' stroke='%23fff' stroke-width='1.4'/%3E%3C/svg%3E" width="30" height="30" alt="Website" style="display:block; border-radius:50%;"></a></td>
+              </tr></table>
+            </td>
+          </tr>
+          <tr>
+            <td class="px footer-text" style="font-family:'Alteix Sans', Arial, Helvetica, sans-serif; font-size:12px; line-height:19px; color:#8b9a92; padding:16px 40px 26px 40px;">
+              Patsnap · Open Platform Team<br>9 Battery Road, #28-01, Singapore 049910<br>
+              <a href="https://open.patsnap.com/unsubscribe" style="color:#1b7a5a; text-decoration:underline;">Unsubscribe</a> &nbsp;·&nbsp; <a href="https://open.patsnap.com/preferences" style="color:#1b7a5a; text-decoration:underline;">Email preferences</a>
+            </td>
+          </tr>
+        </table>
+
+        <table role="presentation" width="600" class="container" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;"><tr><td height="24" style="font-size:0; line-height:0;">&nbsp;</td></tr></table>
+
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

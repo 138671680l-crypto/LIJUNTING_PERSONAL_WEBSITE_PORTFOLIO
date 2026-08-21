@@ -1,0 +1,2506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>李君婷 · Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #E53E3E;
+  --primary-light: #FC8181;
+  --primary-dark: #9B2C2C;
+  --dark: #1A202C;
+  --dark-2: #2D3748;
+  --gray: #718096;
+  --light: #F7FAFC;
+}
+* { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; box-sizing: border-box; }
+html, body {
+  width: 100vw; height: 100vh; overflow: hidden;
+  font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--dark); background: #000; user-select: none;
+  margin: 0; padding: 0;
+}
+
+/* ===========================
+   DESKTOP
+=========================== */
+#desktop {
+  position: fixed; inset: 0; overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 15%, rgba(229, 62, 62, 0.45), transparent 60%),
+    radial-gradient(ellipse 70% 70% at 10% 90%, rgba(197, 48, 48, 0.25), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 50% 50%, rgba(45, 55, 72, 0.4), transparent 70%),
+    linear-gradient(135deg, #0F0F1E 0%, #15172B 60%, #1F1830 100%);
+  transition: opacity 0.4s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wall-decor { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
+.wall-decor.d1 { width: 720px; height: 720px; top: -260px; right: -180px;
+  background: radial-gradient(circle, rgba(229,62,62,0.55), rgba(229,62,62,0.1) 50%, transparent 70%); filter: blur(40px); }
+.wall-decor.d2 { width: 900px; height: 900px; bottom: -380px; left: -280px;
+  background: radial-gradient(circle, rgba(229,62,62,0.32), transparent 70%); filter: blur(60px); }
+.wall-decor.d4 { width: 320px; height: 320px; top: 20%; right: 32%;
+  background: radial-gradient(circle, rgba(252,129,129,0.18), transparent 70%); filter: blur(30px); }
+
+.wallpaper-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 64px 64px; pointer-events: none; z-index: 0;
+}
+
+/* macOS menu bar */
+.menubar {
+  position: absolute; top: 0; left: 0; right: 0; height: 28px;
+  background: rgba(0,0,0,0.35); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; font-size: 12px; color: rgba(255,255,255,0.95);
+  z-index: 100; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.menubar-left, .menubar-right { display: flex; align-items: center; gap: 14px; }
+.menubar .apple, .menubar .app-name { font-weight: 700; }
+.menubar .menu-item { opacity: 0.85; cursor: pointer; }
+.menubar .menu-item:hover { opacity: 1; }
+
+/* ============================================
+   MAIN STAGE — flex layout, never overflow
+   Left: folders  |  Right: hero card
+============================================ */
+.stage {
+  position: absolute;
+  top: 28px; left: 0; right: 0; bottom: 92px;
+  display: flex; align-items: flex-start;
+  gap: 48px;
+  padding: 36px 48px 24px;
+  z-index: 20;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.stage::-webkit-scrollbar { display: none; }
+
+/* Folders column (left) */
+.folders-col {
+  flex-shrink: 0; width: 500px;
+  display: flex; flex-direction: column; gap: 24px;
+  opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+  padding-right: 8px;
+}
+.folders-col::-webkit-scrollbar { width: 6px; }
+.folders-col::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+.folders-label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.55); font-weight: 600; margin-bottom: 10px;
+}
+.folders-label .num { color: var(--primary); font-weight: 700; }
+.folder-group { display: flex; flex-direction: column; margin-bottom: 30px; }
+.folder-group:last-child { margin-bottom: 0; }
+.folder-group-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.45); font-weight: 600; margin-bottom: 14px; }
+.folders-groups { display: flex; flex-direction: column; gap: 4px; }
+.folder-row { display: flex; gap: 24px; align-items: flex-start; }
+.folder-row .folder-group { flex: 0 0 auto; }
+.desktop-grid {
+  display: grid; grid-template-columns: repeat(4, 104px); gap: 22px 12px;
+  justify-content: start;
+}
+
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* Hero card column (right, fills remaining space, centered) */
+.hero-col {
+  flex: 1; display: flex; align-items: flex-start; justify-content: center;
+  min-width: 0; max-height: 100%;
+}
+.desktop-hero {
+  width: 100%; max-width: 640px;
+  opacity: 0; transform: translateY(14px); animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero-card {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+  padding: 38px 42px 32px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.05) inset;
+  position: relative; overflow: hidden;
+}
+.hero-card::before {
+  content: ''; position: absolute; top: -120px; right: -120px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(229,62,62,0.45), transparent 70%);
+  filter: blur(30px); pointer-events: none;
+}
+.hero-avatar-row { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; position: relative; }
+.hero-avatar {
+  width: 104px; height: 104px; border-radius: 50%;
+  background-image: url('avatar.jpg'), linear-gradient(135deg, rgba(229,62,62,0.35), rgba(45,55,72,0.15));
+  background-size: cover, 100% 100%; background-position: center 42%, center; background-repeat: no-repeat;
+  border: 3px solid rgba(229,62,62,0.7);
+  box-shadow: 0 14px 36px rgba(229,62,62,0.42); flex-shrink: 0; position: relative;
+}
+.hero-status { display: inline-flex; align-items: center; gap: 8px; font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.13em; color: rgba(255,255,255,0.75); font-weight: 600; }
+.hero-status .dot { width: 10px; height: 10px; border-radius: 50%; background: #38D39F;
+  box-shadow: 0 0 0 4px rgba(56,211,159,0.18); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 4px rgba(56,211,159,0.18);} 50%{box-shadow:0 0 0 8px rgba(56,211,159,0);} }
+
+.hero-name { font-size: clamp(34px, 5vw, 52px); font-weight: 800; color: white;
+  letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 8px; }
+.hero-name .accent { color: var(--primary); }
+.hero-sub { font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,0.55);
+  letter-spacing: 0.02em; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.hero-role { font-size: 13px; text-transform: uppercase; letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.85); font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px; }
+.hero-role::after { content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent); max-width: 60px; }
+.hero-desc { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.72);
+  margin-bottom: 20px; }
+.hero-desc .hl { color: white; font-weight: 600;
+  border-bottom: 1.5px solid rgba(229,62,62,0.55); padding-bottom: 1px; }
+.hero-meta { display: flex; gap: 36px; margin-bottom: 22px;
+  border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 15px 0; }
+.hero-meta-item .v { font-size: 22px; font-weight: 700; color: white; line-height: 1; margin-bottom: 4px; }
+.hero-meta-item .v .accent { color: var(--primary); }
+.hero-meta-item .l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.55); font-weight: 600; }
+
+.hero-cta { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  font-size: 13.5px; padding: 12px 20px; border-radius: 100px; font-weight: 600;
+  border: none; cursor: pointer; transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+  text-decoration: none; white-space: nowrap; }
+.btn-primary { background: var(--primary); color: white; box-shadow: 0 8px 22px rgba(229,62,62,0.4); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(229,62,62,0.55); background: #d23535; }
+.btn-outline { background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(255,255,255,0.22); }
+.btn-outline:hover { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.12); padding: 12px 16px; font-size: 13px; }
+.btn-ghost:hover { background: rgba(229,62,62,0.18); border-color: rgba(229,62,62,0.5); color: white; transform: translateY(-2px); }
+
+.hero-socials { display: flex; align-items: center; gap: 6px; }
+.hero-socials .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.13em;
+  color: rgba(255,255,255,0.5); font-weight: 600; margin-right: 8px; }
+.hero-social-link { width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.85); transition: all 0.2s; cursor: pointer; }
+.hero-social-link:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-2px); }
+.hero-social-link svg { width: 14px; height: 14px; }
+.hero-resumes { display: flex; align-items: center; gap: 9px; flex-wrap: wrap;
+  margin: -4px 0 16px; font-size: 12px; color: rgba(255,255,255,0.48); }
+.hero-resumes .label { text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+.resume-link { display: inline-flex; align-items: center; gap: 5px; color: rgba(255,255,255,0.88);
+  text-decoration: none; padding: 5px 9px; border-radius: 8px; background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1); font-weight: 600; transition: all 0.2s; }
+.resume-link:hover { color: white; background: rgba(229,62,62,0.2); border-color: rgba(229,62,62,0.55); transform: translateY(-1px); }
+.about-resumes { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.about-resumes .project-link { display: inline-flex; align-items: center; gap: 5px; }
+
+/* FEATURED PROJECTS + LANGUAGE SWITCH */
+.lang-toggle { border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 3px 9px;
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.08); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.lang-toggle:hover { background: rgba(229,62,62,0.28); border-color: rgba(229,62,62,0.6); }
+.featured-section { margin: 0 0 18px; padding: 13px 14px 14px; border-radius: 15px;
+  background: rgba(9,9,20,0.2); border: 1px solid rgba(255,255,255,0.09); }
+.featured-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.featured-kicker { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--primary-light); font-weight: 800; }
+.featured-title { margin: 0; color: rgba(255,255,255,0.58); font-size: 10.5px; font-weight: 600; }
+.featured-note { display: none; }
+.featured-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 7px; }
+.featured-card { min-width: 0; padding: 9px 30px 9px 10px; border-radius: 10px; cursor: pointer; position: relative;
+  background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.08); transition: transform 0.2s, border-color 0.2s, background 0.2s; }
+.featured-card:hover { transform: translateY(-2px); border-color: rgba(229,62,62,0.55); background: rgba(229,62,62,0.12); }
+.featured-role { font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary-light); font-weight: 800; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.featured-name { color: white; font-size: 11.5px; font-weight: 700; line-height: 1.25; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.featured-open { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: var(--primary-light); font-size: 14px; font-weight: 700; }
+.language-badge { display: inline-flex; margin-top: 8px; padding: 3px 7px; border-radius: 999px;
+  background: #EDF2F7; color: #718096; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; }
+.case-framework { display: grid; gap: 12px; }
+.case-step { display: grid; grid-template-columns: 118px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid #E8EDF3; }
+.case-step:last-child { border-bottom: 0; }
+.case-step-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); font-weight: 800; }
+.case-step-copy { font-size: 15px; line-height: 1.75; color: var(--dark-2); }
+
+/* FOLDER TILE */
+.folder-tile { display: flex; flex-direction: column; align-items: center; width: 104px;
+  cursor: pointer; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1); position: relative; }
+.folder-tile:active { transform: scale(0.96); }
+.folder-tile:hover { transform: translateY(-1px); }
+.folder-tile.selected .folder-name { background: rgba(229,62,62,0.95); }
+.folder-svg-wrap { position: relative; width: 66px; height: 52px; margin-bottom: 12px; transition: transform 0.25s; }
+.folder-tile:hover .folder-svg-wrap { transform: scale(1.05) translateY(-2px); }
+.folder-name { font-size: 11.5px; color: white; text-align: center; padding: 4px 7px; border-radius: 8px;
+  background: rgba(0,0,0,0.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  width: 100%; max-width: 104px; font-weight: 500; line-height: 1.3;
+  white-space: normal; transition: background 0.2s; position: relative; z-index: 5; }
+.folder-lang { display: inline-flex; margin-left: 4px; padding: 1px 4px; border-radius: 4px;
+  background: rgba(255,255,255,0.16); color: rgba(255,255,255,0.82); font-size: 8px; font-weight: 800; vertical-align: 1px; }
+
+/* HOVER PREVIEW POPUP — fixed-positioned above the tile, highest z-index, never clipped */
+.preview-popup { position: fixed; top: 0; left: 0;
+  width: 240px; background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); border-radius: 14px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.2) inset;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s ease; z-index: 999999;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity; }
+.preview-popup.show { opacity: 1; pointer-events: auto; }
+.preview-thumb { width: 100%; height: 120px; display: flex; align-items: center; justify-content: center;
+  color: white; position: relative; overflow: hidden; }
+.preview-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.preview-thumb-icon { font-size: 34px; z-index: 1; }
+.preview-body { padding: 13px 15px 15px; }
+.preview-meta { font-size: 10px; color: var(--gray); margin-bottom: 6px;
+  text-transform: uppercase; letter-spacing: 0.13em; font-weight: 600; }
+.preview-title { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+.preview-desc { font-size: 12px; color: var(--dark-2); line-height: 1.5; opacity: 0.78; }
+
+/* DOCK */
+.dock-container { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 50;
+  opacity: 0; animation: fadeUp 0.6s 0.4s forwards; }
+.dock { background: rgba(255,255,255,0.16); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255,255,255,0.18); border-radius: 18px; padding: 8px 12px;
+  display: flex; align-items: center; gap: 6px; box-shadow: 0 16px 50px rgba(0,0,0,0.35); }
+.dock-item { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: white; position: relative; transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1); }
+.dock-item svg { width: 26px; height: 26px; }
+.dock-item:hover { transform: translateY(-10px) scale(1.1); }
+.dock-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.18); margin: 0 6px; }
+.dock-item .tooltip { position: absolute; bottom: calc(100% + 14px); left: 50%;
+  transform: translateX(-50%) translateY(4px); background: rgba(0,0,0,0.85); color: white;
+  font-size: 11px; padding: 4px 10px; border-radius: 6px; white-space: nowrap;
+  opacity: 0; pointer-events: none; transition: all 0.2s; font-weight: 500; }
+.dock-item:hover .tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ===========================
+   RESPONSIVE — stack on narrow screens
+=========================== */
+@media (max-width: 1080px) {
+  .stage { flex-direction: column; align-items: stretch; justify-content: flex-start;
+    gap: 24px; padding: 24px; overflow-y: auto; }
+  .folders-col { order: 2; width: auto; }
+  .hero-col { order: 1; align-items: flex-start; }
+  .desktop-grid { grid-template-columns: repeat(2, 140px); gap: 20px; }
+  .folder-tile {display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;}
+  .folder-svg-wrap { position: relative;
+  width: 92px;                               /* 72px → 92px，让 SVG 有足够空间 */
+  height: 68px;                              /* 56px → 68px */
+  margin-bottom: 14px;                       /* 18px → 14px 微调 */
+  transition: transform 0.25s; }
+  .folder-name { font-size: 12px;
+  color: white;
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 100%;
+  max-width: 130px;                          /* 112px → 130px */
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: normal;
+  transition: background 0.2s;
+  position: relative;
+  z-index: 5;}
+}
+@media (max-width: 720px) {
+  .stage { padding: 18px 16px 22px; }
+  .hero-card { padding: 28px 24px 24px; }
+  .hero-avatar { width: 96px; height: 96px; }
+  .desktop-grid { grid-template-columns: repeat(2, 108px); gap: 18px; }
+  .folder-tile { width: 108px; }
+  .folder-svg-wrap { width: 72px; height: 56px; }
+  .folder-name { max-width: 108px; font-size: 11px; }
+  .preview-popup { display: none; }
+  .menubar { padding: 0 10px; font-size: 11px; }
+  .menubar-left .menu-item:not(.app-name) { display: none; }
+  .dock { padding: 6px 8px; gap: 2px; }
+  .dock-item { width: 44px; height: 44px; }
+  .hero-meta { gap: 20px; }
+  .featured-section { margin-bottom: 16px; padding: 12px; }
+  .featured-head { margin-bottom: 8px; }
+  .featured-grid { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 3px; scrollbar-width: none; scroll-snap-type: x proximity; }
+  .featured-grid::-webkit-scrollbar { display: none; }
+  .featured-card { flex: 0 0 205px; scroll-snap-align: start; }
+  .case-step { grid-template-columns: 1fr; gap: 6px; padding: 15px 0; }
+}
+
+/* ===========================
+   BROWSER WINDOW
+=========================== */
+#browser { position: fixed; inset: 0; background: white; z-index: 1000;
+  display: none; flex-direction: column; opacity: 0; transform: scale(0.98);
+  transition: opacity 0.35s, transform 0.45s cubic-bezier(0.34,1.56,0.64,1); }
+#browser.active { display: flex; opacity: 1; transform: scale(1); }
+.browser-chrome { background: #ECECEC; border-bottom: 1px solid rgba(0,0,0,0.1); user-select: none; flex-shrink: 0; }
+.traffic-lights { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.traffic-light { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; transition: filter 0.15s; }
+.traffic-light:hover { filter: brightness(1.15); }
+.browser-back-btn { margin-left: 12px; padding: 5px 11px; border-radius: 6px; background: rgba(0,0,0,0.05); color: #4A5568; font-size: 12px; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s; display: flex; align-items: center; gap: 5px; }
+.browser-back-btn:hover { background: rgba(229,62,62,0.12); color: var(--primary-dark); }
+.url-bar { flex: 1; margin-left: 12px; background: rgba(255,255,255,0.6); border-radius: 6px; padding: 4px 12px;
+  font-size: 12px; color: #666; display: flex; align-items: center; gap: 8px; max-width: 480px; }
+.tab-bar { display: flex; align-items: stretch; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; padding: 6px 8px 0; }
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab { display: flex; align-items: center; gap: 8px; padding: 8px 12px 8px 14px;
+  background: rgba(0,0,0,0.07); border-radius: 8px 8px 0 0; cursor: pointer; font-size: 13px; color: #4A5568;
+  min-width: 120px; max-width: 220px; border-right: 1px solid rgba(0,0,0,0.04); position: relative;
+  transition: background 0.15s; flex-shrink: 0; }
+.tab.active { background: white; color: var(--dark); }
+.tab-icon { font-size: 13px; flex-shrink: 0; }
+.tab-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; font-weight: 500; }
+.tab-close { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; line-height: 1; color: #888; transition: background 0.15s, color 0.15s; flex-shrink: 0; }
+.tab-close:hover { background: rgba(0,0,0,0.12); color: var(--dark); }
+.tab-add { padding: 8px 14px; cursor: pointer; color: #888; font-size: 18px; line-height: 1;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: color 0.15s; }
+.tab-add:hover { color: var(--dark); }
+.browser-content { flex: 1; overflow-y: auto; background: white; scroll-behavior: smooth; position: relative; }
+.browser-content::-webkit-scrollbar { width: 8px; }
+.browser-content::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.18); border-radius: 4px; }
+.empty-state { display: flex; align-items: center; justify-content: center; height: 100%;
+  flex-direction: column; gap: 14px; color: var(--gray); padding: 24px; text-align: center; }
+.empty-state-icon { width: 88px; height: 88px; border-radius: 50%; background: #F7FAFC;
+  display: flex; align-items: center; justify-content: center; font-size: 42px; margin-bottom: 4px; }
+.empty-state h2 { font-size: 18px; font-weight: 600; color: var(--dark); }
+.empty-state p { font-size: 13px; max-width: 320px; line-height: 1.5; }
+
+/* WORKS OVERVIEW (grouped gallery with live thumbnails) */
+.works-wrap { max-width: 1040px; margin: 0 auto; padding: 72px 36px 100px; animation: fadeIn 0.5s ease; }
+.works-head { margin-bottom: 44px; }
+.works-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--gray); font-weight: 600; margin-bottom: 12px; }
+.works-title { font-size: clamp(34px, 5vw, 52px); font-weight: 800; letter-spacing: -0.03em; color: var(--dark); line-height: 1.05; margin-bottom: 16px; }
+.works-title .accent { color: var(--primary); }
+.works-intro { font-size: 17px; line-height: 1.6; color: var(--dark-2); opacity: 0.8; max-width: 620px; }
+.works-cat { margin-bottom: 52px; }
+.works-cat-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid #E2E8F0; }
+.works-cat-head h3 { font-size: 21px; font-weight: 800; color: var(--dark); letter-spacing: -0.02em; }
+.works-cat-head .count { font-size: 12px; color: var(--gray); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+.works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.work-card { border: 1px solid #E2E8F0; border-radius: 16px; overflow: hidden; cursor: pointer; background: #fff;
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s, border-color 0.25s; }
+.work-card:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(0,0,0,0.12); border-color: var(--primary); }
+.work-thumb { position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden; background: #f2f4f7;
+  border-bottom: 1px solid #E2E8F0; }
+.work-thumb iframe { position: absolute; top: 0; left: 0; width: 250%; height: 250%;
+  transform: scale(0.4); transform-origin: 0 0; border: 0; pointer-events: none; background: #fff; }
+.work-thumb .thumb-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 40px; }
+.work-thumb .thumb-open { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,0.95); display: flex; align-items: center; justify-content: center; color: var(--primary);
+  opacity: 0; transform: translateY(6px); transition: all 0.25s; box-shadow: 0 4px 14px rgba(0,0,0,0.18); }
+.work-card:hover .thumb-open { opacity: 1; transform: translateY(0); }
+.work-thumb .thumb-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.22); }
+.work-thumb .thumb-play::after { content: ''; width: 0; height: 0; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent rgba(255,255,255,0.95); margin-left: 4px; }
+.work-body { padding: 16px 18px 18px; }
+.work-role { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); font-weight: 700; margin-bottom: 6px; }
+.work-title { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 6px; letter-spacing: -0.01em; }
+.work-desc { font-size: 13px; color: var(--gray); line-height: 1.55; margin-bottom: 12px; }
+.work-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.work-tag { font-size: 11px; padding: 3px 10px; border-radius: 100px; background: var(--light); color: var(--dark-2); font-weight: 500; }
+@media (max-width: 768px) {
+  .works-wrap { padding: 52px 20px 80px; }
+  .works-grid { grid-template-columns: 1fr; }
+}
+
+/* WECHAT-STYLE ARTICLES */
+.wx-articles-section { margin-bottom: 52px; }
+.wx-article { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06); overflow: hidden; margin-bottom: 28px; }
+.wx-article:last-child { margin-bottom: 0; }
+.wx-article-header { padding: 22px 26px 16px; border-bottom: 1px solid #F1F5F9; }
+.wx-article-title { font-size: 20px; font-weight: 700; color: var(--dark); line-height: 1.35; margin-bottom: 8px; letter-spacing: -0.01em; }
+.wx-article-meta { font-size: 12px; color: var(--gray); font-weight: 500; display: flex; flex-wrap: wrap; gap: 10px; }
+.wx-article-summary { font-size: 14px; line-height: 1.6; color: var(--dark-2); margin-top: 10px; }
+.wx-article-body { padding: 24px 26px 28px; font-size: 16px; line-height: 1.85; color: #333; }
+.wx-article-body h2 { font-size: 19px; font-weight: 700; color: #07C160; margin: 28px 0 14px; line-height: 1.4; }
+.wx-article-body h3 { font-size: 16px; font-weight: 700; color: #07C160; margin: 22px 0 10px; }
+.wx-article-body p { margin-bottom: 16px; }
+.wx-article-body strong { color: #07C160; font-weight: 600; }
+.wx-article-body ul { padding-left: 24px; margin-bottom: 16px; }
+.wx-article-body li { margin-bottom: 8px; }
+.wx-article-body img { width: 100%; height: auto; border-radius: 10px; display: block; margin: 20px 0 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.wx-article-body p:has(> span:first-child::before) { } /* placeholder for caption detection via JS */
+.wx-article-caption { text-align: center; font-size: 13px; color: #888; margin: -6px 0 18px; }
+.wx-article-page { width: 100%; height: auto; border-radius: 10px; display: block; margin-bottom: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.wx-article-toggle { width: 100%; padding: 12px; text-align: center; background: #F7FAFC; border: 1px dashed #E2E8F0;
+  border-radius: 10px; color: var(--primary); font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: background 0.15s; margin-top: 4px; }
+.wx-article-toggle:hover { background: #EDF2F7; }
+.wx-article-collapsed { display: none; }
+
+/* VIDEO GALLERY */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+.video-card { position: relative; height: 560px; border-radius: 18px; overflow: hidden;
+  background: #000; box-shadow: 0 14px 36px rgba(0,0,0,0.16); cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s; }
+.video-card:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(0,0,0,0.22); }
+.video-card.wide { grid-column: 1 / -1; height: 480px; }
+.video-card .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-card .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.22); transition: background 0.2s; }
+.video-card:hover .play-overlay { background: rgba(0,0,0,0.1); }
+.video-card .play-btn { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.95);
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.video-card .play-btn::after { content: ''; width: 0; height: 0; border-style: solid;
+  border-width: 12px 0 12px 22px; border-color: transparent transparent transparent #1A202C; margin-left: 5px; }
+.video-card video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; }
+.video-card.playing video { display: block; }
+.video-card.playing .poster, .video-card.playing .play-overlay { display: none; }
+@media (max-width: 768px) { .video-card { height: 460px; } }
+
+/* BRAND STATEMENT CARD */
+.statement-card { border: 1px solid #E2E8F0; border-radius: 16px; padding: 26px 28px;
+  background: linear-gradient(135deg, rgba(229,62,62,0.04), transparent 70%); }
+.statement-card .st-eyebrow { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--primary); font-weight: 700; margin-bottom: 12px; }
+.statement-card p { font-size: 15px; line-height: 1.8; color: var(--dark-2); margin: 0; }
+.statement-card .st-tools { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+.statement-card .st-tools span { font-size: 11.5px; padding: 4px 11px; border-radius: 100px;
+  background: #fff; border: 1px solid #E2E8F0; color: var(--dark-2); font-weight: 500; }
+
+/* PROJECT DETAIL */
+.project-detail { max-width: 920px; margin: 0 auto; padding: 72px 36px 100px; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.project-hero { margin-bottom: 48px; }
+.project-tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.project-pill { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.13em; color: var(--primary);
+  border: 1px solid currentColor; padding: 4px 12px; border-radius: 100px; font-weight: 600; }
+.project-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--gray); font-weight: 600; margin-bottom: 14px; }
+.project-title { font-size: clamp(38px, 6vw, 68px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.03; color: var(--dark); margin-bottom: 22px; }
+.project-title .accent { color: var(--primary); }
+.project-subtitle { font-size: 19px; line-height: 1.5; color: var(--dark-2); opacity: 0.78; max-width: 640px; }
+.project-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 28px;
+  border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; padding: 26px 0; margin: 44px 0 56px; }
+.meta-item { display: flex; flex-direction: column; gap: 6px; }
+.meta-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gray); font-weight: 600; }
+.meta-value { font-size: 15px; font-weight: 500; color: var(--dark); }
+.project-section { margin-bottom: 52px; }
+.section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--gray); font-weight: 700; margin-bottom: 18px; }
+.project-paragraph { font-size: 16.5px; line-height: 1.75; color: var(--dark-2); margin-bottom: 18px; }
+.project-paragraph strong { color: var(--dark); font-weight: 600; }
+.image-placeholder { width: 100%; aspect-ratio: 16/9; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  color: white; position: relative; overflow: hidden; margin-bottom: 20px; box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+.image-placeholder.small { aspect-ratio: 4/3; }
+.image-placeholder::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 50%); }
+.image-placeholder .ph-content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.image-placeholder .ph-label { font-weight: 500; opacity: 0.85; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; }
+.image-placeholder .ph-icon { font-size: 28px; }
+.image-placeholder-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+/* PINTEREST-STYLE MASONRY GALLERY */
+.masonry { column-count: 3; column-gap: 16px; margin: 0; }
+.masonry .doc-image { display: inline-block; width: 100%; margin: 0 0 16px; break-inside: avoid;
+  cursor: zoom-in; transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s; }
+.masonry .doc-image:hover { transform: translateY(-5px); box-shadow: 0 22px 50px rgba(0,0,0,0.18); }
+.masonry .doc-image figcaption { font-size: 12.5px; padding: 11px 14px; }
+@media (max-width: 900px) { .masonry { column-count: 2; } }
+@media (max-width: 560px) { .masonry { column-count: 1; } }
+
+/* LIGHTBOX for gallery images */
+#lightbox { position: fixed; inset: 0; z-index: 98000; display: none; align-items: center; justify-content: center;
+  background: rgba(8,8,14,0.92); backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.28s; padding: 40px; cursor: zoom-out; }
+#lightbox.show { display: flex; opacity: 1; }
+#lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 12px; box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+  transform: scale(0.94); transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+#lightbox.show img { transform: scale(1); }
+#lightbox .lb-cap { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,0.85); font-size: 13.5px; background: rgba(0,0,0,0.5); padding: 8px 18px; border-radius: 100px; }
+#lightbox .lb-close { position: absolute; top: 24px; right: 30px; color: #fff; font-size: 30px; cursor: pointer; opacity: 0.7; }
+#lightbox .lb-close:hover { opacity: 1; }
+#lightbox .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 40px;
+  cursor: pointer; opacity: 0.55; padding: 20px; user-select: none; }
+#lightbox .lb-nav:hover { opacity: 1; }
+#lightbox .lb-prev { left: 10px; } #lightbox .lb-next { right: 10px; }
+
+.doc-image { margin: 0 0 28px; border-radius: 14px; overflow: hidden; box-shadow: 0 12px 32px rgba(0,0,0,0.08); background: #fff; border: 1px solid #E2E8F0; }
+.doc-image:last-child { margin-bottom: 0; }
+.doc-image img { display: block; width: 100%; height: auto; object-fit: cover; }
+.doc-image figcaption { padding: 14px 18px; font-size: 13.5px; color: var(--dark-2); background: #FAFAFA; border-top: 1px solid #E2E8F0; }
+/* DATA TABLES */
+.doc-table-wrap { margin: 0 0 28px; border: 1px solid #E2E8F0; border-radius: 14px; overflow: hidden;
+  background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.doc-table-wrap:last-child { margin-bottom: 0; }
+.doc-table-title { padding: 14px 18px; font-size: 13.5px; font-weight: 600; color: var(--dark);
+  background: #FAFAFA; border-bottom: 1px solid #E2E8F0; display: flex; align-items: center; gap: 8px; }
+.doc-table-title .t-icon { font-size: 15px; }
+.doc-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.doc-table thead th { text-align: left; padding: 11px 16px; font-size: 10.5px; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--gray); font-weight: 600; background: #F7FAFC; border-bottom: 1px solid #E2E8F0; }
+.doc-table tbody td { padding: 11px 16px; color: var(--dark-2); border-bottom: 1px solid #F1F5F9; vertical-align: top; line-height: 1.55; }
+.doc-table tbody tr:last-child td { border-bottom: 0; }
+.doc-table tbody tr:hover td { background: #FAFBFC; }
+.doc-table td .hl { color: var(--primary); font-weight: 600; }
+.doc-table td.num { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--primary); white-space: nowrap; }
+.tags-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-size: 13px; padding: 6px 14px; border-radius: 100px; background: var(--light); color: var(--dark-2); font-weight: 500; }
+.project-link { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: var(--primary);
+  font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; transition: gap 0.2s; }
+.project-link:hover { gap: 12px; }
+.intro-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; margin-bottom: 60px; align-items: center; }
+.about-intro { font-size: clamp(28px, 4vw, 42px); line-height: 1.35; font-weight: 500; color: var(--dark); letter-spacing: -0.02em; margin-bottom: 24px; }
+.about-intro .accent { color: var(--primary); font-weight: 600; }
+.about-photo { width: 100%; aspect-ratio: 3/4; border-radius: 20px;
+  background: linear-gradient(135deg, rgba(229,62,62,0.18), rgba(0,0,0,0.55)), url('avatar.jpg');
+  background-size: cover; background-position: center top; background-repeat: no-repeat;
+  position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(229,62,62,0.18); }
+.about-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.55) 100%); }
+.about-photo .ph-content { position: absolute; bottom: 22px; left: 22px; right: 22px; z-index: 2; color: white;
+  display: flex; flex-direction: column; gap: 4px; }
+.about-photo .ph-content .name { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
+.about-photo .ph-content .role { font-size: 13px; opacity: 0.9; letter-spacing: 0.1em; text-transform: uppercase; }
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 36px 0 56px; }
+.stat-card { padding: 24px; border: 1px solid #E2E8F0; border-radius: 12px; }
+.stat-value { font-size: 36px; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+.stat-label { font-size: 13px; color: var(--gray); font-weight: 500; line-height: 1.4; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 24px; }
+.skill-card { border: 1px solid #E2E8F0; border-radius: 10px; padding: 18px; transition: transform 0.2s, border-color 0.2s; }
+.skill-card:hover { transform: translateY(-2px); border-color: var(--primary); }
+.skill-card h4 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+.skill-card p { font-size: 12.5px; color: var(--gray); line-height: 1.5; }
+.timeline { margin-top: 20px; display: flex; flex-direction: column; border-left: 2px solid #EDF2F7; padding-left: 24px; }
+.tl-item { position: relative; padding-bottom: 24px; }
+.tl-item::before { content: ''; position: absolute; left: -31px; top: 6px; width: 10px; height: 10px;
+  background: var(--primary); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 1px rgba(229,62,62,0.25); }
+.tl-when { font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 4px; }
+.tl-title { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+.tl-co { color: var(--gray); font-weight: 500; font-size: 13.5px; }
+.tl-body p { font-size: 13px; color: var(--dark-2); line-height: 1.65; opacity: 0.82; }
+.edu-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0 32px; }
+.edu-card { border: 1px solid #E2E8F0; border-radius: 12px; padding: 20px 22px; background: linear-gradient(135deg, rgba(229,62,62,0.03), transparent); }
+.edu-degree { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+.edu-school { font-size: 12.5px; color: var(--gray); line-height: 1.5; }
+@media (max-width: 768px) {
+  .project-detail { padding: 52px 20px 80px; }
+  .image-placeholder-row { grid-template-columns: 1fr; }
+  .intro-grid { grid-template-columns: 1fr; gap: 28px; }
+  .stats-row { grid-template-columns: 1fr; }
+  .edu-row { grid-template-columns: 1fr; }
+  .url-bar { display: none; }
+}
+
+/* ============================================================
+   ✦ ENHANCEMENTS — boot, spotlight, widgets, menus, cursor
+============================================================ */
+
+/* cursor glow that follows the pointer */
+#cursor-glow {
+  position: fixed; top: 0; left: 0; width: 300px; height: 300px;
+  border-radius: 50%; pointer-events: none; z-index: 5; opacity: 0;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(229,62,62,0.16), rgba(229,62,62,0.04) 42%, transparent 70%);
+  filter: blur(10px); transition: opacity 0.5s; mix-blend-mode: screen;
+}
+#desktop.awake #cursor-glow { opacity: 1; }
+
+/* ---------- CUSTOM CURSOR (desktop only) ---------- */
+@media (hover: hover) and (pointer: fine) {
+  body.cursor-ready, body.cursor-ready * { cursor: none !important; }
+  body.cursor-ready input, body.cursor-ready textarea { cursor: text !important; }
+  #cursor-dot, #cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 100001;
+    transform: translate(-50%, -50%); border-radius: 50%; opacity: 0; }
+  #cursor-dot { width: 7px; height: 7px; background: var(--primary);
+    transition: opacity 0.3s, width 0.2s, height 0.2s; box-shadow: 0 0 8px rgba(229,62,62,0.7); }
+  #cursor-ring { width: 34px; height: 34px; border: 1.6px solid rgba(229,62,62,0.7);
+    transition: opacity 0.3s, width 0.22s cubic-bezier(0.34,1.56,0.64,1), height 0.22s cubic-bezier(0.34,1.56,0.64,1), background 0.22s, border-color 0.22s; }
+  body.cursor-ready #cursor-dot, body.cursor-ready #cursor-ring { opacity: 1; }
+  body.cursor-hover #cursor-ring { width: 52px; height: 52px; background: rgba(229,62,62,0.14); border-color: rgba(229,62,62,0.9); }
+  body.cursor-hover #cursor-dot { width: 0; height: 0; }
+  body.cursor-down #cursor-ring { width: 26px; height: 26px; }
+}
+
+/* ---------- BOOT / LOGIN ---------- */
+#boot {
+  position: fixed; inset: 0; z-index: 100000; overflow: hidden;
+  background: linear-gradient(135deg, #0B0B14 0%, #14152A 55%, #1E1730 100%);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+#boot.gone { opacity: 0; pointer-events: none; }
+.boot-stage { display: flex; flex-direction: column; align-items: center; gap: 30px;
+  transition: opacity 0.5s, transform 0.5s; }
+.boot-stage.hide { opacity: 0; transform: scale(0.96); position: absolute; pointer-events: none; }
+.boot-logo { font-size: 80px; color: #fff; line-height: 1; filter: drop-shadow(0 0 30px rgba(229,62,62,0.6)); }
+.boot-bar { width: 220px; height: 5px; border-radius: 100px; background: rgba(255,255,255,0.14); overflow: hidden; }
+.boot-bar span { display: block; height: 100%; width: 0; border-radius: 100px;
+  background: linear-gradient(90deg, var(--primary-light), var(--primary));
+  box-shadow: 0 0 12px rgba(229,62,62,0.7); }
+.boot-tip { font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+.login-wall { position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 15%, rgba(229,62,62,0.5), transparent 60%),
+    radial-gradient(ellipse 70% 70% at 10% 90%, rgba(197,48,48,0.3), transparent 60%),
+    linear-gradient(135deg, #0F0F1E 0%, #15172B 60%, #1F1830 100%);
+  filter: blur(4px) brightness(0.85); }
+.login-avatar { width: 128px; height: 128px; border-radius: 50%;
+  background-image: url('avatar.jpg'); background-size: cover; background-position: center;
+  border: 3px solid rgba(255,255,255,0.5); box-shadow: 0 18px 50px rgba(0,0,0,0.5), 0 0 0 8px rgba(255,255,255,0.06);
+  margin-bottom: 4px; }
+.login-name { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+.login-role { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+.login-enter { margin-top: 12px; display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 30px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.1); backdrop-filter: blur(20px);
+  color: #fff; font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1); }
+.login-enter:hover { background: var(--primary); border-color: var(--primary);
+  transform: translateY(-3px); box-shadow: 0 14px 34px rgba(229,62,62,0.5); }
+.login-enter .k { font-size: 11px; padding: 2px 8px; border-radius: 5px; background: rgba(255,255,255,0.18); }
+
+/* ---------- SPOTLIGHT ---------- */
+#spotlight { position: fixed; inset: 0; z-index: 90000; display: none;
+  align-items: flex-start; justify-content: center; padding-top: 16vh;
+  background: rgba(10,10,20,0.42); backdrop-filter: blur(6px); opacity: 0; transition: opacity 0.2s; }
+#spotlight.show { display: flex; opacity: 1; }
+.spot-box { width: min(92vw, 620px); background: rgba(28,28,40,0.85);
+  border: 1px solid rgba(255,255,255,0.14); border-radius: 18px; overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6); backdrop-filter: blur(40px);
+  transform: translateY(-14px) scale(0.98); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1); }
+#spotlight.show .spot-box { transform: translateY(0) scale(1); }
+.spot-input-row { display: flex; align-items: center; gap: 14px; padding: 18px 22px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.spot-input-row .ico { font-size: 20px; color: rgba(255,255,255,0.55); }
+.spot-input { flex: 1; background: transparent; border: none; outline: none; color: #fff;
+  font-size: 21px; font-weight: 500; font-family: inherit; }
+.spot-input::placeholder { color: rgba(255,255,255,0.35); }
+.spot-results { max-height: 46vh; overflow-y: auto; padding: 8px; scrollbar-width: thin; }
+.spot-item { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; cursor: pointer; }
+.spot-item.active { background: var(--primary); }
+.spot-item .si-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0; color: #fff; }
+.spot-item .si-title { font-size: 15px; font-weight: 600; color: #fff; }
+.spot-item .si-sub { font-size: 12px; color: rgba(255,255,255,0.55); }
+.spot-item.active .si-sub { color: rgba(255,255,255,0.85); }
+.spot-empty { padding: 30px; text-align: center; color: rgba(255,255,255,0.4); font-size: 14px; }
+.spot-hint { padding: 10px 18px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; gap: 18px;
+  font-size: 11px; color: rgba(255,255,255,0.4); }
+.spot-hint .k { padding: 1px 7px; border-radius: 5px; background: rgba(255,255,255,0.12); margin-right: 5px; }
+
+/* ---------- DESKTOP WIDGETS ---------- */
+.widgets-row { display: flex; gap: 16px; margin-top: 22px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.8s 0.45s forwards; }
+.widget { background: rgba(255,255,255,0.07); backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 16px 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.28); position: relative; overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s; }
+.widget:hover { transform: translateY(-4px); border-color: rgba(229,62,62,0.5); }
+.widget-clock { min-width: 150px; }
+.widget-clock .wtime { font-size: 34px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1;
+  font-variant-numeric: tabular-nums; }
+.widget-clock .wdate { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 6px; font-weight: 500; }
+.widget-status { display: flex; align-items: center; gap: 12px; min-width: 190px; }
+.widget-status .ws-dot { width: 12px; height: 12px; border-radius: 50%; background: #38D39F; flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(56,211,159,0.18); animation: pulse 2s infinite; }
+.widget-status .ws-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); font-weight: 600; margin-bottom: 3px; }
+.widget-status .ws-text { font-size: 13.5px; color: #fff; font-weight: 600; }
+.widget-stat { text-align: left; min-width: 120px; cursor: default; }
+.widget-stat .wv { font-size: 28px; font-weight: 800; color: var(--primary-light); line-height: 1; letter-spacing: -0.02em; }
+.widget-stat .wl { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 6px; font-weight: 500; line-height: 1.4; }
+
+/* ---------- MENUBAR search + theme buttons ---------- */
+.menubar .mb-btn { cursor: pointer; opacity: 0.85; display: inline-flex; align-items: center; gap: 5px; }
+.menubar .mb-btn:hover { opacity: 1; }
+
+/* ---------- CONTEXT MENU ---------- */
+#ctx-menu { position: fixed; z-index: 95000; min-width: 210px; padding: 6px;
+  background: rgba(30,30,42,0.9); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+  display: none; opacity: 0; transform: scale(0.96); transform-origin: top left; transition: opacity 0.12s, transform 0.12s; }
+#ctx-menu.show { display: block; opacity: 1; transform: scale(1); }
+.ctx-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px;
+  font-size: 13px; color: rgba(255,255,255,0.92); cursor: pointer; }
+.ctx-item:hover { background: var(--primary); color: #fff; }
+.ctx-item .ci-ico { width: 18px; text-align: center; opacity: 0.85; }
+.ctx-sep { height: 1px; background: rgba(255,255,255,0.1); margin: 5px 8px; }
+
+/* ---------- ABOUT THIS MAC ---------- */
+#about-mac { position: fixed; inset: 0; z-index: 96000; display: none; align-items: center; justify-content: center;
+  background: rgba(5,5,12,0.5); backdrop-filter: blur(6px); opacity: 0; transition: opacity 0.25s; }
+#about-mac.show { display: flex; opacity: 1; }
+.am-window { width: min(92vw, 460px); background: linear-gradient(160deg, rgba(38,38,52,0.96), rgba(24,24,36,0.96));
+  border: 1px solid rgba(255,255,255,0.14); border-radius: 18px; overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6); transform: translateY(12px) scale(0.97); transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+#about-mac.show .am-window { transform: translateY(0) scale(1); }
+.am-bar { display: flex; align-items: center; gap: 8px; padding: 11px 14px; background: rgba(255,255,255,0.04); }
+.am-light { width: 12px; height: 12px; border-radius: 50%; }
+.am-body { padding: 30px 34px 34px; text-align: center; }
+.am-avatar { width: 92px; height: 92px; border-radius: 50%; margin: 0 auto 16px; background-image: url('avatar.jpg');
+  background-size: cover; background-position: center; border: 3px solid rgba(229,62,62,0.6); box-shadow: 0 12px 30px rgba(229,62,62,0.4); }
+.am-name { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+.am-tag { font-size: 12.5px; color: rgba(255,255,255,0.55); margin-top: 4px; margin-bottom: 22px; }
+.am-specs { text-align: left; border-top: 1px solid rgba(255,255,255,0.1); }
+.am-spec { display: flex; justify-content: space-between; gap: 20px; padding: 11px 2px; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 13px; }
+.am-spec .k { color: rgba(255,255,255,0.5); font-weight: 500; }
+.am-spec .v { color: #fff; font-weight: 600; text-align: right; }
+.am-btns { display: flex; gap: 10px; justify-content: center; margin-top: 24px; }
+
+/* ---------- TOAST ---------- */
+#toast-wrap { position: fixed; top: 40px; right: 20px; z-index: 97000; display: flex; flex-direction: column; gap: 10px; }
+.toast { width: 320px; max-width: 88vw; background: rgba(30,30,42,0.9); backdrop-filter: blur(40px);
+  border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; padding: 14px 16px; display: flex; gap: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5); transform: translateX(120%); opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.5s; cursor: pointer; }
+.toast.show { transform: translateX(0); opacity: 1; }
+.toast .t-ico { width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 20px; background: linear-gradient(135deg, var(--primary-light), var(--primary)); }
+.toast .t-app { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); font-weight: 600; }
+.toast .t-title { font-size: 13.5px; color: #fff; font-weight: 600; margin-top: 2px; }
+.toast .t-body { font-size: 12.5px; color: rgba(255,255,255,0.7); margin-top: 3px; line-height: 1.4; }
+
+/* ---------- WINDOWED / DRAGGABLE BROWSER ---------- */
+#browser.windowed { inset: auto; top: 50%; left: 50%;
+  width: min(1180px, 92vw); height: min(760px, 86vh);
+  transform: translate(-50%, -50%); border-radius: 14px; overflow: hidden;
+  box-shadow: 0 50px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08); }
+#browser.windowed.active { transform: translate(-50%, -50%) scale(1); }
+#browser.windowed .browser-chrome { cursor: grab; }
+#browser.windowed .browser-chrome:active { cursor: grabbing; }
+#browser.dragging { transition: none !important; }
+
+/* genie minimize */
+@keyframes genie { to { transform: translate(-50%, 120vh) scale(0.05); opacity: 0; } }
+#browser.minimizing { animation: genie 0.5s cubic-bezier(0.5,0,0.75,0) forwards; }
+
+/* scroll reveal */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1080px) {
+  .widgets-row { margin-top: 16px; }
+  #browser.windowed { width: 96vw; height: 90vh; }
+}
+@media (max-width: 720px) {
+  .widget-clock .wtime { font-size: 28px; }
+  .widgets-row { gap: 10px; }
+  .widget { padding: 12px 15px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ BOOT / LOGIN ============ -->
+<div id="boot">
+  <div class="login-wall"></div>
+  <div class="boot-stage" id="bootStage1">
+    <div class="boot-logo"></div>
+    <div class="boot-bar"><span id="bootBar"></span></div>
+    <div class="boot-tip">Junting OS · 正在启动</div>
+  </div>
+  <div class="boot-stage hide" id="bootStage2">
+    <div class="login-avatar"></div>
+    <div class="login-name">李君婷 · Junting</div>
+    <div class="login-role">AI Product GTM · 海外运营</div>
+    <div class="login-enter" id="loginEnter">进入桌面 <span class="k">↵ Enter</span></div>
+  </div>
+</div>
+
+<!-- cursor glow + custom cursor -->
+<div id="cursor-glow"></div>
+<div id="cursor-ring"></div>
+<div id="cursor-dot"></div>
+
+<!-- ============ DESKTOP ============ -->
+<div id="desktop">
+  <div class="wall-decor d1"></div>
+  <div class="wall-decor d2"></div>
+  <div class="wall-decor d4"></div>
+  <div class="wallpaper-grid"></div>
+
+  <div class="menubar">
+    <div class="menubar-left">
+      <span class="apple mb-btn" id="appleMenu"></span>
+      <span class="app-name">Portfolio</span>
+      <span class="menu-item mb-btn" data-i18n="menuWorks" onclick="openProject('works')">作品</span>
+      <span class="menu-item mb-btn" data-i18n="menuAbout" onclick="openProject('about')">关于</span>
+      <span class="menu-item mb-btn" id="mbThemeText" data-i18n="menuTheme">主题</span>
+    </div>
+    <div class="menubar-right">
+      <span class="mb-btn" id="mbSpotlight" title="Spotlight 搜索 (⌘/Ctrl + K)">🔍</span>
+      <span class="mb-btn" id="mbTheme" title="切换主题">🎨</span>
+      <span class="lang-toggle" id="langToggle" role="button" tabindex="0" aria-label="切换语言">中 / EN</span>
+      <span class="icon">🔋</span>
+      <span class="icon">📶</span>
+      <span class="icon" id="clock">10:00</span>
+    </div>
+  </div>
+
+  <!-- Flex stage: folders left, hero right -->
+  <div class="stage">
+    <div class="folders-col">
+      <div class="folders-label" id="foldersLabel"><span class="num">7</span> PROJECTS</div>
+      <div class="folders-groups" id="foldersGrid"></div>
+    </div>
+
+    <div class="hero-col">
+      <div class="desktop-hero">
+        <div class="hero-card">
+          <div class="hero-avatar-row">
+            <div class="hero-avatar" aria-label="李君婷"></div>
+            <span class="hero-status"><span class="dot"></span><span data-i18n="heroStatus">现就职于 Patsnap · Open to GTM / 海外运营</span></span>
+          </div>
+
+          <h1 class="hero-name" data-i18n-html="heroName">你好，我是 <span class="accent">君婷.</span></h1>
+          <div class="hero-sub" data-i18n-html="heroSub">Juliette &nbsp;·&nbsp; Hangzhou / Suzhou &nbsp;·&nbsp; AI 产品 × GTM × 内容</div>
+
+          <div class="hero-role"><span data-i18n="heroRole">AI 产品内容运营 · 海外 GTM</span></div>
+
+          <p class="hero-desc" data-i18n="heroDesc">喜欢旅行、听播客和攀岩，也喜欢研究新工具、整理复杂信息，把想法一步步做成可用的内容和产品。</p>
+
+          <div class="featured-section" id="featuredProjects"></div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item"><div class="v">HKU</div><div class="l" data-i18n="metaHku">香港大学（QS 11）· 景观建筑硕士 '26</div></div>
+            <div class="hero-meta-item"><div class="v">Patsnap</div><div class="l" data-i18n="metaPatsnap">现内容 / GTM</div></div>
+            <div class="hero-meta-item"><div class="v" data-i18n="metaMarketing">产品营销</div><div class="l" data-i18n="metaMarketingSub">内容 · 增长 · 叙事</div></div>
+          </div>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" onclick="openProject('works')" role="button"><span data-i18n="viewProjects">查看项目</span> <span style="margin-left:2px;">→</span></a>
+            <a class="btn btn-outline" onclick="openProject('about')" role="button" data-i18n="aboutMe">关于我</a>
+            <a class="btn btn-ghost" href="mailto:jtingli@126.com" data-i18n="contact">联系我</a>
+          </div>
+
+          <div class="hero-resumes" aria-label="简历下载">
+            <span class="label" data-i18n="resume">简历</span>
+            <a class="resume-link" href="media/resume-li-junting-cn.docx" download="李君婷_中文简历_AI产品运营营销.docx" data-i18n="cnResume">中文简历 ↓</a>
+            <a class="resume-link" href="media/resume-li-junting-en.pdf" download="LI_JUNTING_Resume_MKT-PM.pdf" data-i18n="enResume">英文简历 ↓</a>
+          </div>
+
+          <div class="hero-socials">
+            <span class="label" data-i18n="findMe">找到我</span>
+            <a class="hero-social-link" href="mailto:jtingli@126.com" title="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+            </a>
+            <a class="hero-social-link" href="https://www.linkedin.com/in/juliette-l-4a5a0b331" target="_blank" rel="noopener" title="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 11-.01-4.12 2.06 2.06 0 01.01 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+            </a>
+            <a class="hero-social-link" href="https://github.com/138671680l-crypto?tab=stars" target="_blank" rel="noopener" title="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a class="hero-social-link" href="https://www.instagram.com/jwinnnie_en" target="_blank" rel="noopener" title="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a class="hero-social-link" href="tel:15267158688" title="电话">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="widgets-row">
+          <div class="widget widget-clock">
+            <div class="wtime" id="widgetTime">10:00</div>
+            <div class="wdate" id="widgetDate">周一 · 8月20日</div>
+          </div>
+          <div class="widget widget-status">
+            <div class="ws-dot"></div>
+            <div>
+              <div class="ws-label" data-i18n="now">现在</div>
+              <div class="ws-text" data-i18n="nowText">在 Patsnap 做内容 / GTM</div>
+            </div>
+          </div>
+          <div class="widget widget-stat">
+            <div class="wv">HKU</div>
+              <div class="wl" data-i18n-html="hkuWidget">香港大学（QS 11）<br>景观建筑硕士</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dock-container"><div class="dock" id="dockBar"></div></div>
+</div>
+
+<!-- ============ BROWSER ============ -->
+<div id="browser">
+  <div class="browser-chrome">
+    <div class="flex items-center traffic-lights">
+      <div class="flex items-center gap-2">
+        <div class="traffic-light" style="background:#FF5F57;" id="closeBtn" title="Close"></div>
+        <div class="traffic-light" style="background:#FEBC2E;" id="minBtn" title="Minimize"></div>
+        <div class="traffic-light" style="background:#28C840;" title="Full"></div>
+      </div>
+      <div class="browser-back-btn" id="browserBackBtn" title="返回桌面"><span data-i18n="backDesktop">← 返回桌面</span></div>
+      <div class="url-bar"><span class="lock-icon">🔒</span><span id="urlBarText">portfolio.studio/work</span></div>
+    </div>
+    <div class="tab-bar" id="tabBar"></div>
+  </div>
+  <div class="browser-content" id="content"></div>
+</div>
+
+<!-- ============ SPOTLIGHT ============ -->
+<div id="spotlight">
+  <div class="spot-box">
+    <div class="spot-input-row">
+      <span class="ico">🔍</span>
+      <input class="spot-input" id="spotInput" placeholder="搜索项目、页面…（试试 “PLG” 或 “折页”）" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="spot-results" id="spotResults"></div>
+    <div class="spot-hint">
+      <span><span class="k">↑↓</span>选择</span>
+      <span><span class="k">↵</span>打开</span>
+      <span><span class="k">esc</span>关闭</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONTEXT MENU ============ -->
+<div id="ctx-menu">
+  <div class="ctx-item" data-act="works"><span class="ci-ico">🗂️</span>打开作品集</div>
+  <div class="ctx-item" data-act="about"><span class="ci-ico">👤</span>关于我</div>
+  <div class="ctx-item" data-act="spotlight"><span class="ci-ico">🔍</span>Spotlight 搜索</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item" data-act="theme"><span class="ci-ico">🎨</span>更换壁纸主题</div>
+  <div class="ctx-item" data-act="aboutmac"><span class="ci-ico">💻</span>关于本机</div>
+</div>
+
+<!-- ============ ABOUT THIS MAC ============ -->
+<div id="about-mac">
+  <div class="am-window">
+    <div class="am-bar">
+      <div class="am-light" style="background:#FF5F57;" id="amClose"></div>
+      <div class="am-light" style="background:#FEBC2E;"></div>
+      <div class="am-light" style="background:#28C840;"></div>
+    </div>
+    <div class="am-body">
+      <div class="am-avatar"></div>
+      <div class="am-name">李君婷 · Juliette</div>
+      <div class="am-tag">AI 产品内容运营 · 海外 GTM · Hangzhou / Suzhou</div>
+      <div class="am-specs">
+        <div class="am-spec"><span class="k">现在</span><span class="v">智慧芽 Patsnap · 内容 / GTM</span></div>
+        <div class="am-spec"><span class="k">方向</span><span class="v">AI 产品 × GTM × 内容</span></div>
+        <div class="am-spec"><span class="k">常用工具</span><span class="v">Claude Code · Cursor · Coze</span></div>
+        <div class="am-spec"><span class="k" data-i18n="masterLabel">硕士</span><span class="v" data-i18n="amMaster">香港大学（QS 11）· 景观建筑 '26</span></div>
+        <div class="am-spec"><span class="k" data-i18n="bachelorLabel">本科</span><span class="v" data-i18n="amBachelor">四川农业大学（211）· 风景园林</span></div>
+        <div class="am-spec"><span class="k">语言</span><span class="v">IELTS 7.0 · CET-6 587</span></div>
+      </div>
+      <div class="am-btns">
+        <a class="btn btn-primary" onclick="openProject('about'); closeAboutMac();" role="button">查看完整简历</a>
+        <a class="btn btn-outline" href="mailto:jtingli@126.com">联系我</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div id="toast-wrap"></div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div id="lightbox">
+  <span class="lb-close">×</span>
+  <span class="lb-nav lb-prev">‹</span>
+  <img id="lbImg" src="" alt="">
+  <span class="lb-nav lb-next">›</span>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<script>
+const projects = [
+  {
+    id: 'mcp-suite', title: 'MCP Suite 客户介绍', thumb: 'media/thumb-mcp-suite.png', icon: '🧩', folderColor: '#E53E3E', category: 'gtm',
+    cover: 'linear-gradient(135deg, #FC8181 0%, #E53E3E 100%)',
+    year: '2026 · Now', role: '海外 GTM · 产品营销', client: '智慧芽 Patsnap', duration: 'MCP Open Platform',
+    liveUrl: 'project-mcp-suite.html', liveLabel: '打开客户介绍页',
+    summary: '面向海外 B 端客户的 Patsnap MCP Suite 介绍页 —— 把 5 个 MCP Server 讲成客户听得懂的价值。',
+    description: '为智慧芽 MCP Open Platform 撰写并搭建的海外 B 端客户介绍页，覆盖 5 个专业 MCP Server（Web Search / Search / Analytics / Analysis / Workspace）。核心是把「职责互斥、source 契约、Boolean query handle」这类工程语言，翻译成研发、竞争情报、IP 战略等岗位听得懂的高频业务任务与价值主张：用「接入前 vs 接入后」对比讲清痛点，用固态电池调研的场景演示串起完整工作流，最后落到快速开始与支持平台。整页信息架构、文案与视觉均由我主导，可直接作为销售侧客户材料。',
+    impact: '覆盖 5 个 MCP Server · 3 类高频业务场景 · 完整「痛点对比 + 场景演示 + 快速开始」叙事；作为客户侧 GTM 介绍材料交付。',
+    tags: ['GTM', 'MCP', '客户材料', 'Positioning', 'B 端'],
+    extra: []
+  },
+  {
+    id: 'plg-emails', title: 'PLG 生命周期邮件', thumb: 'media/thumb-plg-emails.png', icon: '✉️', folderColor: '#1B7A5A', category: 'gtm',
+    cover: 'linear-gradient(135deg, #2E9E77 0%, #0B3D2E 100%)',
+    year: '2026 · Now', role: '增长运营 · 内容营销', client: '智慧芽 Patsnap', duration: 'PLG Lifecycle',
+    liveUrl: 'project-plg-emails.html', liveLabel: '打开邮件序列',
+    summary: 'MCP Open Platform 的 PLG 生命周期邮件序列 —— 6 封行为触发邮件，覆盖注册到激活全旅程。',
+    description: '为 Patsnap MCP Open Platform 设计并撰写的 PLG 模式邮件序列，共 6 封基于用户行为触发的生命周期邮件，覆盖从注册、首次调用到持续激活的关键节点。整体采用深绿主题、波浪头图与圆角「呼吸」CTA，兼容 Apple Mail / Gmail / Outlook 多客户端并支持深色模式与响应式；每封邮件对应一个明确的用户场景与转化目标，可直接投放。文案、结构与 HTML 邮件模板均由我独立完成。',
+    impact: '6 封行为触发邮件 · 多客户端兼容（Apple Mail / Gmail / Outlook）· 深色模式与移动端适配 · 可直接用于 PLG 冷启动投放。',
+    tags: ['PLG', 'EDM', '增长运营', 'Lifecycle', 'HTML Email'],
+    extra: []
+  },
+  {
+    id: 'gtm-content', title: 'GTM 内容资产 · 公众号文章', thumb:'media/screenshot-20260820-010144.png', folderColor: '#07C160', category: 'gtm',
+    cover: 'linear-gradient(135deg, #22C55E 0%, #065F46 100%)',
+    year: '2025 – 2026', role: '内容营销 · 产品教育', client: '智慧芽 Patsnap', duration: '持续输出',
+    summary: '智慧芽公众号与帮助中心的内容稿件：把 Agent 工作流与热点专利追踪写成产品教育叙事。',
+    description: '围绕智慧芽芽仔 Agent 与专利数据库产品，撰写并发布面向 B 端用户与研发 IPR 的内容稿件。包括 Agent 工作流案例文（检索→筛选→标引→解读→底稿）以及热点追踪文（荣耀 Robot Phone 会转镜头背后的专利拆解），用于产品教育、GTM 获客与帮助中心案例沉淀。',
+    impact: '2 篇代表稿件 · 覆盖 Agent 工作流案例与热点专利追踪 · 支撑产品教育与 GTM 内容获客。',
+    tags: ['GTM', '内容营销', '公众号', '产品教育', '专利分析'],
+    articles: [
+      {
+        title: '芽仔 Agent：把检索变成可交付的专利分析底稿',
+        date: '2026',
+        source: '智慧芽公众号',
+        summary: '用固态电池企业的真实场景，展示 Agent 如何把检索、筛选、技术标引、专利解读和底稿生成串成一条工作流。',
+        contentHTML: `<p><strong>你的团队还在为导表、筛选和整理底稿反复加班吗？</strong>  </p>
+<p>检索从来不是终点。真正耗时的，是把成百上千条结果转化为可复核、能上会的业务判断。  </p>
+<p>芽仔 Agent 将 <strong>检索、批量筛选、技术标引、专利解读、风险初筛和底稿生成</strong> 串成一条工作流，让专利数据更快进入研发和业务判断。</p>
+<h2><span style="color: #229157">01｜检索完成了，筛选、分析和报告才刚刚开始</span></h2>
+<p>周日晚 <strong>10 点 47 分</strong>，某固态电池企业的 IPR Leo 收到研发群里的一条消息：</p>
+<p><span style="color: #229157"><strong>研发临时任务</strong></span><br />
+明天上午立项会，新增了一条硫化物电解质的技术路线，也要一起评估。这个方向的专利热度、主要玩家和大致风险，能不能今晚再补一份？</p>
+<p>按以前的做法，Leo 会叹口气，又要打开数据库开始新一轮苦战：</p>
+<ul>
+<li><strong>反复调整</strong>检索式；</li>
+<li>导出几百上千条结果到 <strong>Excel</strong>；</li>
+<li><strong>逐条</strong>判断相关性，手工打技术标签；</li>
+<li>挑出重点专利，一篇篇读权利要求；</li>
+<li>最后拼出一份能汇报的底稿。</li>
+</ul>
+<p>一套流程走下来，往往已经过了凌晨两点。</p>
+<p>但这次，Leo 看了一眼芽仔 Agent 的对话框，决定先让它跑一版试试。</p>
+<p>他把当前专利结果、研发方案和交付目标一起放进去，输入了一句：</p>
+<p>帮我分析硫化物固态电解质近三年的专利趋势和主要技术路线，梳理主要玩家，再挑出重点专利，整理成能在立项会上讨论的材料。</p>
+<p><img alt="问题框.png" src="https://6e69-niubi-d5guzho6gad218aca-1300408620.tcb.qcloud.la/post_cover/4a9432da6a792624071dd49b2829e1f3/article_image/RuTKfe6pmsqkkIypLptL7.png" /></p>
+<p>▲ 用自然语言描述目标，任务由此进入芽仔工作流</p>
+<h2><span style="color: #229157">02｜从查得到到判得了，四步工作流拆解</span></h2>
+<h3><span style="color: #229157">STEP 01｜明确范围，批量筛选</span></h3>
+<p>芽仔先对齐 <strong>技术方向、目标市场、关键技术特征和交付形式</strong>，帮助 Leo 明确本次任务的分析边界。</p>
+<p>范围定好后，自动扩展检索表达，批量判断相关性。背景提及的、技术路线不符的、明显过期的优先排掉；与技术方案高度相关、近期公开、来自主要申请人的推到前面。</p>
+<p><img alt="专利筛选.png" src="https://6e69-niubi-d5guzho6gad218aca-1300408620.tcb.qcloud.la/post_cover/4a9432da6a792624071dd49b2829e1f3/article_image/tRt2_FZfFPLcKVVCrXQ5K.png" /></p>
+<p>▲ 批量判断相关性，同时保留筛选依据供后续复核</p>
+<p>每篇专利的筛选依据保留在结果中，方便 Leo 回查和复核。</p>
+<p>条件发生变化时，可以直接在对话中补充要求，让筛选范围沿着当前任务继续调整。</p>
+<p><strong>搜索结果被收紧到值得重点复核的范围，下一步直接从结果开始判断。</strong></p>
+<h3><span style="color: #229157">STEP 02｜自动分类标引，看清玩家和布局</span></h3>
+<p>筛选结果出来后，芽仔按技术路线、申请人和技术主题自动分类标引：</p>
+<ul>
+<li><span style="color: #229157"><strong>谁在布局</strong></span>：主要申请人排名和近年活跃度；</li>
+<li><span style="color: #229157"><strong>哪个方向最密集</strong></span>：各技术分支的专利数量分布和趋势；</li>
+<li><span style="color: #229157"><strong>哪些专利值得重点盯</strong></span>：与目标技术高度相关、在目标市场处于有效状态、来自重点申请人或权利要求涉及关键技术特征的专利。</li>
+</ul>
+<p>分类结果自动汇总为可视化视图，无需额外建表。</p>
+<p>Leo 过去花一两个小时在 Excel 里逐条分类的工作，芽仔几分钟便可完成。</p>
+<p><img alt="硫化物固态电解质专利空白机会矩阵.png" src="https://6e69-niubi-d5guzho6gad218aca-1300408620.tcb.qcloud.la/post_cover/4a9432da6a792624071dd49b2829e1f3/article_image/WMHJIFVp2_8j_E3-ZCMBI.png" /></p>
+<p>▲ 芽仔自动生成机会矩阵，帮助识别密集区与潜在布局窗口</p>
+<h3><span style="color: #229157">STEP 03｜重点专利解读，拆权要、做对比</span></h3>
+<p>分类标引完成后，芽仔锁定重点专利，继续完成两项工作。</p>
+<p><strong>01｜逐篇解读</strong><br />
+围绕权利要求、核心创新点、保护范围、实施例支撑四个维度，把专利文本转成研发能直接看懂的技术摘要，同时保留原文位置供复核。</p>
+<p><img alt="专利解读.png" src="https://6e69-niubi-d5guzho6gad218aca-1300408620.tcb.qcloud.la/post_cover/4a9432da6a792624071dd49b2829e1f3/article_image/tH5lNJ12FLGqaSLagDIQ4.png" /></p>
+<p>▲ 从重点权利要求到原文依据，关键内容可定位、可复核</p>
+<p><strong>02｜横向对比</strong><br />
+针对同类方案，相同点、差异点、原文依据和待确认信息被整理成结构化对比。</p>
+<p>Leo 不用再自己逐篇通读专利全文，芽仔已经把重点专利拆成了可复核、可讨论的技术判断。</p>
+<p><img alt="出光兴产两篇硫化物专利对比.png" src="https://6e69-niubi-d5guzho6gad218aca-1300408620.tcb.qcloud.la/post_cover/4a9432da6a792624071dd49b2829e1f3/article_image/7xYb6Fdode8Gy8bCyF2fl.png" /></p>
+<p>▲ 重点专利的权要拆解与特征比对，相同点、差异点和原文依据一目了然</p>
+<h3><span style="color: #229157">STEP 04｜交付底稿，可复核、可修改、可交付</span></h3>
+<p>最后，芽仔将前面的分析过程汇总成一份底稿，内容包括：</p>
+<ul>
+<li>检索范围和筛选条件；</li>
+<li>重点专利清单和技术标签；</li>
+<li>核心摘要和权利要求解读；</li>
+<li>目标方案与重点专利的特征对比；</li>
+<li>来源、原文位置和待确认事项。</li>
+</ul>
+<p><strong>▼ 交付重点</strong><br />
+生成来源可追溯、判断有依据的底稿，可以继续批注、补充和修改。Leo 完成重点复核后，会议材料已经基本成形。</p>
+<p><img alt="REPORT.png" src="https://6e69-niubi-d5guzho6gad218aca-1300408620.tcb.qcloud.la/post_cover/4a9432da6a792624071dd49b2829e1f3/article_image/tcuImayBtQmdOHdMICCi9.png" /></p>
+<p>▲ 底稿保留筛选依据、专利解读和待确认事项，经复核后可用于汇报</p>
+<h2><span style="color: #229157">03｜从整理材料，到支持研发决策</span></h2>
+<p>第二天立项会上，讨论直接绕过了信息收集环节，进入三件事：</p>
+<ul>
+<li><strong>哪些专利需要重点核查；</strong></li>
+<li><strong>现有方案可能卡在哪里；</strong></li>
+<li><strong>下一步研发优先补什么。</strong></li>
+</ul>
+<p>过去需要大半个通宵才能准备的底稿，现在会前 20 分钟复核即可。<br />
+Leo 不再是信息整理者，而是结果的决策者。</p>
+<p><strong>▼ 人机分工</strong><br />
+最终判断仍然由人负责。<strong>芽仔做的是把批量筛选和重复整理留在会前，让专业判断更早进入会议。</strong></p>
+<h2><span style="color: #229157">04｜嵌入现有工作流，检索之后直接进入 AI 分析</span></h2>
+<p>Leo 的故事，只是芽仔能力的一个切面。</p>
+<p>如果你第一次使用智慧芽，可以从一句自然语言开始提问。</p>
+<p>如果你已经在用智慧芽，检索完成后，可以从以下页面随时唤起芽仔，让已有内容直接进入 AI 工作流：</p>
+<ul>
+<li><span style="color: #229157"><strong>检索结果页</strong></span>：批量筛选、分类、总结，让上百条结果先完成一轮 AI 处理；</li>
+<li><span style="color: #229157"><strong>专利详情页</strong></span>：解读权利要求、附图和实施例，把专利语言转成研发能看懂的技术摘要；</li>
+<li><span style="color: #229157"><strong>图表分析页</strong></span>：解释趋势、提炼结论、补充洞察，让数据自己说话。</li>
+</ul>
+<p><img src="https://6e69-niubi-d5guzho6gad218aca-1300408620.tcb.qcloud.la/post_cover/4a9432da6a792624071dd49b2829e1f3/article_image/ebsPB0MClZTMeNu-rZPCa.png" alt="芽仔入口" style="width: 100%; height: auto; display: block; margin: 20px auto 8px;" /></p>
+<p>▲ 检索结果页、专利详情页和图表分析页，均可直接唤起芽仔</p>
+<h2><span style="color: #229157">05｜查到只是起点，判得了才算进入业务现场</span></h2>
+<p>检索完成之后，专利数据的价值才刚刚开始。</p>
+<p>以前导表、筛选、打标签、读全文、拼底稿；现在芽仔来做这些，你来复核和判断。</p>
+<p><strong>现在就把你正在处理的技术问题、专利结果或重点文献交给芽仔。 </strong><br />
+<strong>让检索继续走向筛选、分析和交付</strong></p>
+<p>[<strong>立即体验芽仔 Agent</strong>]（专利数据库芽仔体验入口待补）<br />
+[<strong>查看完整回答报告</strong>]</p>
+<p><img alt="智慧芽logo.jpg" src="https://6e69-niubi-d5guzho6gad218aca-1300408620.tcb.qcloud.la/post_cover/4a9432da6a792624071dd49b2829e1f3/article_image/_4qdtH0YnXFw3uUad_O8j.jpg" /></p>
+<p><img alt="智慧芽.png" src="https://6e69-niubi-d5guzho6gad218aca-1300408620.tcb.qcloud.la/post_cover/4a9432da6a792624071dd49b2829e1f3/article_image/58d89D3WK5rFllXANDpmu.png" /></p>`
+      },
+      {
+        title: '【芽仔热点追踪】荣耀 Robot Phone 发布：会转的镜头背后，是一条更长的技术链',
+        date: '2026.08.18',
+        source: '智慧芽 专利数据库帮助中心 / 案例课堂',
+        summary: '基于公开专利拆解荣耀 Robot Phone 四自由度云台、主动视觉追踪与终端 Agent 等技术链。',
+        contentHTML: `<p>荣耀 Robot Phone 的发布会最吸睛的，是那颗能「跟着你转」的镜头。但如果我们把这条技术链拆开来看，<strong>会转只是结果，端侧 AI + 机械结构 + 主动视觉</strong> 的整合才是支撑它成立的核心。</p>
+<h2><span style="color: #229157">01｜四自由度云台：让手机镜头第一次「动起来」</span></h2>
+<p>传统手机的光学防抖最多解决的是手抖带来的画面偏移，而 Robot Phone 的云台结构让镜头具备了更大幅度的俯仰与平移能力。这意味着镜头可以在不移动机身的情况下，主动追踪画面中的目标。</p>
+<p>从专利视角看，荣耀在这一方向的布局集中在 <strong>云台结构、驱动电机、减震与封装</strong> 三个层面：机械结构负责「转得稳」，驱动算法负责「转得准」，而封装方案要在有限机身空间里塞下额外的运动部件。</p>
+<h2><span style="color: #229157">02｜主动视觉追踪：从「拍到」到「跟到」</span></h2>
+<p>云台解决了物理运动的问题，但镜头该跟谁、怎么跟，需要端侧视觉模型做实时判断。荣耀在主动视觉领域的专利覆盖了 <strong>目标检测、运动预测、多目标切换与遮挡恢复</strong> 等关键环节。</p>
+<p>这类能力在视频通话、Vlog 拍摄、远程监护等场景里会明显改变体验：人物出框后镜头能自动跟上，画面始终保持在主体上，而不是让用户手动调整构图。</p>
+<h2><span style="color: #229157">03｜终端 Agent：手机的下一个交互入口</span></h2>
+<p>Robot Phone 的另一层意义，是把云台 + 视觉的能力开放给终端 Agent。当手机能「看懂」眼前场景并主动调整视角时，Agent 就不再只是语音助手，而是具备了物理层面的交互能力。</p>
+<p>这条链路也对应了荣耀在终端 AI 上的专利布局方向：<strong>多模态输入、场景感知、任务调度与硬件协同</strong>。未来这类能力很可能会从「拍照辅助」扩展到会议、教育、安防等更重的场景。</p>
+<h2><span style="color: #229157">04｜热点追踪的价值：看见产品背后的技术链</span></h2>
+<p>对于研发与 IPR 来说，一款新品的发布不只是营销事件。把公开专利和产品特性对应起来，可以快速定位：</p>
+<ul>
+<li>核心技术的<strong>主要玩家与布局密度</strong>；</li>
+<li>荣耀在这条链上<strong>选择自研还是外购</strong>；</li>
+<li>还有哪些<strong>空白技术点</strong>可能成为下一波竞争焦点。</li>
+</ul>
+<p><strong>芽仔热点追踪会把这类分析流程沉淀下来：</strong> 从产品发布会出发，自动抓取相关专利、识别技术链节点、输出可讨论的洞察，让每一次热点都成为产品教育与竞争分析的起点。</p>`,
+        pages: []
+      }
+    ]
+  },
+  {
+    id: 'waic-brochure', title: 'WAIC 展会折页 · 芽仔 Agent', thumb: 'media/brochure-0710-p01.png', folderColor: '#22C55E', category: 'gtm',
+    cover: 'linear-gradient(135deg, #22C55E 0%, #065F46 100%)',
+    year: '2026 · WAIC', role: '产品营销 · 线下获客', client: '智慧芽 Patsnap', duration: '四联风琴折 · 420×210',
+    summary: 'WAIC 线下展会折页：把专利数据库芽仔 Agent 讲成研发与技术决策的五大核心场景。',
+    description: '面向 WAIC 线下展会的专利数据库芽仔 Agent 宣传折页，采用四联风琴折（420×210mm、双面）版式，正面主打「查得到 → 判得了」的核心叙事与 Agent 工作流，背面用「找 / 读 / 评 / 析 / 谋」五大核心场景（技术信息检索、技术方案解读、创新性评估、竞争技术情报、技术布局规划）串起研发与技术决策全流程，并落到「专业知识 × AI 深度融合、全流程 AI 分析、大规模数据实践验证、人机协同提升决策质量」四大差异化优势。每个场景配 AI 能力清单与扫码获取案例入口，整册版式、文案与信息架构均由我主导，可直接印刷交付。',
+    impact: '双面四联风琴折可直接印刷 · 覆盖 5 大核心场景 + 4 大差异化优势 · 场景化 AI 能力清单 + 扫码案例入口，作为 WAIC 线下展会核心获客物料。',
+    tags: ['GTM', '线下物料', '展会', 'WAIC', '折页设计'],
+    extra: [
+      { src: 'media/brochure-0710-p01.png', caption: '折页正面：芽仔 Agent 核心叙事与工作流（印刷版）' },
+      { src: 'media/brochure-0710-p02.png', caption: '折页背面：覆盖研发与技术决策的五大核心场景 + 四大差异化优势' },
+      { src: 'media/brochure-agent-p01.png', caption: '四联风琴折可编辑版 · 正面' },
+      { src: 'media/brochure-agent-p02.png', caption: '四联风琴折可编辑版 · 背面' }
+    ]
+  },
+  {
+    id: 'signalops', title: 'Marketing Copilot Agent', thumb: 'media/thumb-marketing-copilot.png', icon: '🤖', folderColor: '#000000', category: 'ai',
+    cover: 'linear-gradient(135deg, #2D3748 0%, #000000 100%)',
+    year: '2026.04 – 05', role: '产品营销反馈 AI Agent', client: '个人项目 · 已上线', duration: '独立搭建',
+    liveUrl: 'https://smart-robot-marketing-copilot.vercel.app/', liveLabel: '打开在线 Demo',
+    links: [
+      { label: '在线 Demo（Vercel）', url: 'https://smart-robot-marketing-copilot.vercel.app/' }
+    ],
+    summary: '基于 Cursor + Codex 独立搭建并上线的产品营销反馈 Agent，把碎片反馈转成可执行运营动作。',
+    description: '基于 Cursor 与 Codex 独立设计并搭建的轻量 Web 应用（已部署上线），帮助海外运营人员把碎片化用户反馈自动转化为可执行的内容动作、FAQ 优化与知识库更新建议。设计了结构化输入模块（产品信息、目标市场、用户画像、核心卖点、反馈来源与分析目标），并输出 Feedback Insight Dashboard，包含内容机会、FAQ 建议、知识库更新等运营可直接使用的模块；过程中沉淀了可复用的 Prompt 模板，也加深了对 GTM 材料自动化生成逻辑的理解。',
+    impact: '端到端原型已上线可交互 · 输出结构化 Feedback Insight Dashboard · 沉淀可复用 Prompt 模板与运营工作流。',
+    tags: ['AI Agent', 'Cursor', 'Codex', 'Prototype', 'GTM'],
+    extra: []
+  },
+  {
+    id: 'receipt-todo', title: 'ReceiptTodo - 小票待办清单', thumb: 'media/thumb-receipt-todo.png', icon: '📅', folderColor: '#000000', category: 'ai',
+    cover: 'linear-gradient(135deg, #2D3748 0%, #000000 100%)',
+    year: '2026.04 – 05', role: '小票式待办 + 番茄钟 + 热力图 + 好友共享', client: '个人项目 · 已上线', duration: '独立搭建',
+    liveUrl: 'https://juntin-gli.vercel.app/', liveLabel: '打开在线 Demo',
+    links: [
+      { label: '在线 Demo（Vercel）', url: 'https://juntin-gli.vercel.app/' }
+    ],
+    summary: '小票式待办 × 番茄钟专注 × 热力图复盘 × 好友共享日程——把任务管理变成一场看得见进度的自我游戏。',
+    description: '基于 Cursor 独立设计并搭建的轻量日程管理应用，核心是一个有仪式感的 Todo：每划掉一项任务就像小票结账时的确认，番茄钟帮你保持专注，日程热力图让坚持看得见，还能把日程分享给朋友一起添加和打卡，把个人待办变成轻量协作。',
+    impact: '已上线可交互 · 小票式清单 + 番茄钟 + 日程热力图 + 好友共享日程四大核心模块 · 独立完成设计、开发与部署。',
+    tags: ['小票待办', '番茄钟', '热力图', '好友共享', '日历视图', 'Cursor'],
+    tables: [
+      {
+        title: '四大核心模块',
+        icon: '🧩',
+        head: ['模块', '能力说明', '状态'],
+        rows: [
+          ['小票式清单', '完成任务逐行打勾，像小票结账一样有仪式感', '已上线'],
+          ['番茄钟', '25/5 专注计时，可与当前任务一键绑定', '已上线'],
+          ['日程热力图', 'GitHub 风格热力图，记录每天的完成节奏', '已上线'],
+          ['好友共享', '生成邀请链接，朋友可加入并一起添加日程', '已上线']
+        ]
+      }
+    ],
+    extra: []
+  },
+  {
+    id: 'coze-marketing', title: 'Marketing Copilot · Coze', thumb: 'media/coze-marketing-preview.png', icon: '🤖', folderColor: '#5B21B6', category: 'ai',
+    cover: 'linear-gradient(135deg, #7C3AED 0%, #1A202C 100%)',
+    year: '2026.05', role: '营销写作助手 · Coze Agent', client: '个人项目 · 已上线', duration: 'Coze 搭建',
+    liveUrl: 'https://www.coze.cn/s/IT6LIaC2KPQ/', liveLabel: '打开 Coze Agent',
+    links: [
+      { label: 'Coze Agent 在线体验', url: 'https://www.coze.cn/s/IT6LIaC2KPQ/' }
+    ],
+    summary: '基于 Coze 搭建的营销写作助手，帮你理清写作卡片、输出文章与追踪热点。',
+    description: '基于 Coze 搭建的营销助手 Agent，面向内容运营场景：输入产品信息或选题方向，即可生成结构化写作卡片（标题方向、内容大纲、卖点提炼），并支持长文输出与热点追踪，帮助运营人员快速完成从选题到成稿的内容生产流程。',
+    impact: '已上线可使用 · 覆盖写作卡片生成、长文输出、热点追踪等营销内容场景 · 基于 Coze 低代码搭建，可快速迭代。',
+    tags: ['Coze', 'AI Agent', '营销写作', '内容生产', '低代码'],
+    tables: [
+      {
+        title: '内容生产工作流',
+        icon: '⚙️',
+        head: ['步骤', '输入', '输出'],
+        rows: [
+          ['选题分析', '产品信息 / 热点方向', '3–5 个标题方向候选'],
+          ['写作卡片', '确认的选题', '结构化大纲 + 核心卖点提炼'],
+          ['正文输出', '大纲确认', '可直接发布的成稿文章'],
+          ['热点追踪', '领域关键词', '热点事件汇总 + 切入角度建议']
+        ]
+      }
+    ],
+    extra: [
+      { src: 'media/coze-marketing-preview.png', caption: 'Coze Agent 对话界面：出大纲 → 确认 → 写正文 → 修改的写作流程' }
+    ]
+  },
+  {
+    id: 'loona-fathersday', title: "Father's Day × NBA 营销", thumb: 'media/fathersday-banner.jpg', folderColor: '#9B2C2C', category: 'brand',
+    cover: 'linear-gradient(135deg, #C53030 0%, #1A202C 100%)',
+    year: '2026.03 – 05', role: '活动策略 · 增长营销', client: '可以科技 · LOONA', duration: '8 周',
+    summary: 'LOONA 父亲节 × NBA 决赛节点营销：分层转盘抽奖 + 篮球配件新品上线 + 社媒 + KOC 全渠道联动。',
+    description: '负责 LOONA 父亲节 & 篮球配件上线 Campaign 的整体策划与落地，围绕 NBA 决赛节点打造 "CELEBRATE FATHER\'S DAY COURT-SIDE!" 主题。核心玩法是分层转盘抽奖：所有参与用户保底 10% OFF，周期限量名额可中 20% OFF，每日限量名额可中限量配件 100% OFF，并为 KOC 配置专属 Free Petbot 中奖链接驱动开箱传播。同时上线篮球主题 Bundle、首页 banner、转盘弹窗、中奖弹窗与活动规则链路；配合 Instagram 等社媒进行预热、期间发帖及 KOC 内容种草，形成从站内游戏化转化到站外内容扩散的闭环。',
+    impact: '16 天活动期内整体转化率 +15% · Google 渠道销售额 +18% · 加购转化率 +5%–10%；完成篮球配件新品与 Bundle 上线，并跑通游戏化抽奖 + 社媒 + KOC 的整合营销链路。',
+    tags: ['Campaign', 'Gamification', 'KOC', 'Instagram', 'Shopify'],
+    tables: [
+      {
+        title: '分层转盘抽奖机制',
+        icon: '🎰',
+        head: ['层级', '触发方式', '奖品'],
+        rows: [
+          ['三等奖（保底）', '所有未中后续奖项的参与用户', '10% OFF 全站优惠券'],
+          ['二等奖', '周期限量名额触发', '20% OFF 优惠券'],
+          ['一等奖', '每日限量名额触发', '限量篮球配件 100% OFF'],
+          ['KOC 专属奖', 'KOC 专属中奖链接', 'Free Petbot + 开箱内容传播']
+        ]
+      },
+      {
+        title: '传播节奏与渠道排期',
+        icon: '📣',
+        head: ['阶段', '时间', '渠道', '核心动作'],
+        rows: [
+          ['预热', '上线前 1 周', 'Instagram / EDM', '悬念素材预热 + 篮球配件新品预告'],
+          ['上线', 'Day 1', 'Shopify / 首页', 'Banner + 转盘弹窗 + 活动规则上线'],
+          ['引爆', '活动期间', 'Instagram / KOC', 'KOC 开箱 + 中奖用户晒单内容扩散'],
+          ['收官', '活动最后阶段', 'EDM / Instagram', '倒计时提醒 + 追加 20% OFF 中奖名额']
+        ]
+      },
+      {
+        title: 'Campaign Asset 规划',
+        icon: '📋',
+        head: ['触点 / 页面', '内容说明', '状态'],
+        rows: [
+          ['首页 Banner', '父亲节 × 篮球主题主视觉 + CTA', '已上线'],
+          ['Landing 第二屏', '配件卖点展示 + 抽奖入口引导', '已上线'],
+          ['转盘弹窗', '四层抽奖机制 + 活动规则说明', '已上线'],
+          ['中奖弹窗', '特等奖 / 二等奖 / 三等奖状态反馈', '已上线'],
+          ['社媒素材包', 'Instagram 预热 / 期间 / KOC 内容素材', '已上线']
+        ]
+      }
+    ],
+    extra: [
+      { src: 'media/fathersday-banner.jpg', caption: '父亲节 × 篮球主题落地页主视觉：Buzzer Beater Kit' },
+      { src: 'media/fathersday-flow.svg', caption: 'Campaign 整体流程：预热 → 上线 → 引爆 → 收官' },
+      { src: 'media/blackfriday-wheel.png', caption: '同类型 Black Friday 转盘抽奖视觉设计' }
+    ]
+  },
+  {
+    id: 'land-brand', title: 'Land+Civilization 品牌传播', thumb: 'media/land-01-poster.jpg', icon: '🎨', folderColor: '#2D3748', category: 'brand',
+    cover: 'linear-gradient(135deg, #4A5568 0%, #1A202C 100%)',
+    year: '2025.05 – 10', role: '海外品牌传播 · 社媒内容', client: 'Land+Civilization Compositions', duration: '6 个月',
+    videos: [
+      { src: 'media/land-01.mp4', poster: 'media/land-01-poster.jpg', title: 'Civic Layers' },
+      { src: 'media/land-02.mp4', poster: 'media/land-02-poster.jpg', title: '逐瀑 Chasing Waterfalls' },
+      { src: 'media/land-03.mp4', poster: 'media/land-03-poster.jpg', title: 'Red Bridge' },
+      { src: 'media/land-04.mp4', poster: 'media/land-04-poster.jpg', title: "Revived" },
+      { src: 'media/land-05.mp4', poster: 'media/land-05-poster.jpg', title: 'Selected Works Reel', wide: true }
+    ],
+    statement: '以品牌传播视角，把景观与城市设计项目转译为适配海外社媒的视觉内容。熟练使用 Kling、Sora 等生成式 AI 工具批量产出方案动画与场景可视化，结合本地化标签（hashtag）策略与平台调性，为 Instagram、YouTube 打造符合国外传播习惯的短视频；配合 Adobe 系列完成剪辑与后期，实现从方案到动态传播内容的高效数字化表达，显著提升内容产出效率与品牌视觉一致性。',
+    statementTools: ['Kling', 'Sora', 'Adobe Pr / Ae', 'Instagram', 'YouTube', 'Hashtag 策略'],
+    links: [
+      { label: '公司 Instagram（@landandcc）', url: 'https://www.instagram.com/landandcc/' },
+      { label: 'LinkedIn 项目', url: 'https://www.linkedin.com/in/juliette-l-4a5a0b331/details/projects/' },
+      { label: 'Google Drive 作品集', url: 'https://drive.google.com/drive/folders/1lYQyM4GEKXT1e8kCYa5x76_xRMEUxLyI?usp=sharing' }
+    ],
+    summary: '独立运营事务所海外社媒矩阵，结合 AI 工具规模化产出视觉内容与品牌叙事。',
+    description: '围绕事务所项目制定内容策略，独立运营 Instagram、YouTube 及官网；结合 Sora、Kling 等 AI 工具规模化生产视觉概念与宣传视频，月均产出 4–6 条内容，Instagram 互动率提升约 30%。参与 Fabric Community 策展与线下落地，负责活动策划、合作方对接与统筹，累计触达 100+ 线下访客并获取一手用户洞察；参与《URBAN HACKING》双语内容策划，将田野调研转化为品牌案例叙事，完成 5 章节以上内容包装，沉淀为可复用的专业内容资产。',
+    impact: 'Instagram 互动率 +30% · 月均 4–6 条内容 · 触达 100+ 线下访客 · 沉淀 5+ 章节品牌内容资产。',
+    tags: ['品牌', '社媒', 'AI 内容', 'YouTube', '策展'],
+    extra: []
+  },
+  {
+    id: 'poster-design', title: '商业海报 · 平面设计', thumb: 'media/poster-concert-p01.png', folderColor: '#C53030', category: 'brand',
+    cover: 'linear-gradient(135deg, #EC4899 0%, #7C2D12 100%)',
+    year: '2024 – 2026', role: '平面设计 · 视觉物料', client: '个人 / 商业练习', duration: '持续输出',
+    summary: '一组商业海报与展会 / 活动主视觉：音乐节、艺术展、烘焙品牌等多种风格的平面设计。',
+    description: '面向活动、展览与商业品牌的平面海报设计合集，涵盖音乐节演出海报、现代艺术展主视觉、摄影展海报与烘焙品牌宣传海报等多种题材。练习并落地不同的版式语言与配色体系——从复古暖色、极简留白到照片拼贴与胶片质感，覆盖字体排版、网格布局、色彩搭配与主视觉延展，可用于活动预热、展会现场物料与品牌宣传。',
+    impact: '4 张成品海报 · 覆盖音乐节 / 艺术展 / 摄影展 / 商业品牌多种风格 · 从版式、配色到主视觉独立完成，可直接印刷投放。',
+    tags: ['平面设计', '海报', '展会物料', '主视觉', 'Branding'],
+    gallery: true,
+    extra: [
+      { src: 'media/poster-concert-p01.png', caption: '音乐节演出海报 · 复古暖色 × 大字号排版' },
+      { src: 'media/poster-artexpo-p01.png', caption: '现代艺术展海报 · 极简留白 × 红奶油配色' },
+      { src: 'media/poster-photoexpo-p01.png', caption: '摄影 / 艺术展海报 · 黑灰照片拼贴风' },
+      { src: 'media/poster-bakery-p01.png', caption: '烘焙品牌宣传海报 · 暖调现代商业风' },
+      { src: 'media/poster-verdant-p01.png', caption: 'VERDANT 植物品牌网页视觉 · 自然生活方式 × 电商版式' },
+      { src: 'media/poster-orbit-p01.png', caption: 'ORBIT AI Podcast Studio · 赛博霓虹 × 产品发布视觉' }
+    ]
+  }
+];
+
+const aboutInfo = {
+  id: 'about', title: 'About Me', icon: '👤', folderColor: '#E53E3E',
+  cover: 'linear-gradient(135deg, #E53E3E 0%, #2D3748 100%)',
+  year: '2019 – Now', role: 'GTM · 海外运营', client: 'Available for hire', duration: 'Open to work',
+  summary: '旅行、播客和攀岩爱好者；关注 AI 产品、GTM 与内容运营。', isAbout: true, tags: []
+};
+
+const worksInfo = {
+  id: 'works', title: '作品集 Works', icon: '🗂️', folderColor: '#E53E3E',
+  cover: 'linear-gradient(135deg, #E53E3E 0%, #9B2C2C 100%)',
+  year: '2025 – 2026', role: '按类别汇总', client: 'GTM · 品牌营销', duration: `${projects.length} 个项目`,
+  summary: '所有作品，按 GTM / 增长与品牌营销分类汇总。', isWorks: true, tags: []
+};
+
+// 桌面文件夹：汇总 + 各项目 + 关于
+const allItems = [worksInfo, ...projects, aboutInfo];
+
+// 作品分类定义（汇总页按此分组）
+const categories = [
+  { id: 'gtm', name: 'GTM · 增长运营', desc: 'AI 产品的市场进入、客户材料与 PLG 增长' },
+  { id: 'ai', name: 'AI 产品 · Agent 搭建', desc: '独立设计并搭建可运行的 AI 运营工具' },
+  { id: 'brand', name: '品牌 · 内容营销', desc: '社媒内容、活动策划与品牌叙事' }
+];
+
+const uiTranslations = {
+  zh: {
+    menuWorks: '作品', menuAbout: '关于', menuTheme: '主题', heroStatus: '现就职于 Patsnap · Open to GTM / 海外运营',
+    heroName: '你好，我是 <span class="accent">君婷.</span>', heroSub: 'Juliette &nbsp;·&nbsp; Hangzhou / Suzhou &nbsp;·&nbsp; AI 产品 × GTM × 内容',
+    heroRole: 'AI 产品内容运营 · 海外 GTM', heroDesc: '喜欢旅行、听播客和攀岩，也喜欢研究新工具、整理复杂信息，把想法一步步做成可用的内容和产品。',
+    metaHku: "香港大学（QS 11）· 景观建筑硕士 '26", metaPatsnap: '现内容 / GTM', metaMarketing: '产品营销', metaMarketingSub: '内容 · 增长 · 叙事',
+    viewProjects: '查看项目', aboutMe: '关于我', contact: '联系我', resume: '简历', cnResume: '中文简历 ↓', enResume: '英文简历 ↓',
+    findMe: '找到我', now: '现在', nowText: '在 Patsnap 做内容 / GTM', hkuWidget: '香港大学（QS 11）<br>景观建筑硕士', backDesktop: '← 返回桌面',
+    masterLabel: '硕士', bachelorLabel: '本科', amMaster: "香港大学（QS 11）· 景观建筑 '26", amBachelor: '四川农业大学（211）· 风景园林'
+  },
+  en: {
+    menuWorks: 'Work', menuAbout: 'About', menuTheme: 'Theme', heroStatus: 'At Patsnap · Open to GTM / Product Marketing roles',
+    heroName: 'Hi, I’m <span class="accent">Junting.</span>', heroSub: 'Juliette &nbsp;·&nbsp; Hangzhou / Suzhou &nbsp;·&nbsp; AI Products × GTM × Content',
+    heroRole: 'AI Product Operations · Global GTM', heroDesc: 'I enjoy traveling, podcasts, and climbing. I also like exploring new tools, organizing complex information, and turning ideas into useful content and products.',
+    metaHku: "HKU (QS #11) · MLA '26", metaPatsnap: 'Content / GTM', metaMarketing: 'Product Marketing', metaMarketingSub: 'Content · Growth · Narrative',
+    viewProjects: 'View Projects', aboutMe: 'About Me', contact: 'Contact', resume: 'Resume', cnResume: 'Chinese Resume ↓', enResume: 'English CV ↓',
+    findMe: 'Find me', now: 'Now', nowText: 'Content / GTM at Patsnap', hkuWidget: 'The University of Hong Kong (QS #11)<br>MLA Candidate', backDesktop: '← Back to desktop',
+    masterLabel: 'Master', bachelorLabel: 'Bachelor', amMaster: "HKU (QS #11) · Landscape Architecture '26", amBachelor: 'Sichuan Agricultural University (Project 211) · Landscape Architecture'
+  }
+};
+
+const categoryTranslations = {
+  gtm: { name: 'GTM · Growth', desc: 'Market entry, customer-facing assets, and PLG for AI products' },
+  ai: { name: 'AI Products · Agents', desc: 'Working AI operations tools designed and built independently' },
+  brand: { name: 'Brand · Content Marketing', desc: 'Social content, campaigns, and brand narratives' }
+};
+
+const projectTranslations = {
+  'mcp-suite': {
+    title: 'Patsnap MCP Suite · Customer GTM Page', role: 'Global GTM · Product Marketing', client: 'Patsnap', duration: 'MCP Open Platform',
+    summary: 'A customer-facing GTM page that translates five specialized MCP servers into workflows and value that enterprise users can understand.',
+    description: 'I structured and built a customer-facing page for Patsnap MCP Open Platform, covering five specialized MCP servers. The work translated engineering concepts such as responsibility boundaries, source contracts, and Boolean query handles into concrete tasks for R&D, competitive intelligence, and IP strategy teams.',
+    impact: 'Delivered a reusable customer-facing asset covering five MCP servers, three workflow families, pain-point comparison, an end-to-end scenario, and a quick-start path.',
+    tags: ['GTM', 'MCP', 'Customer Enablement', 'Positioning', 'B2B'], liveLabel: 'Open customer-facing page'
+  },
+  'plg-emails': {
+    title: 'PLG Lifecycle Email Series', role: 'Growth Operations · Content Marketing', client: 'Patsnap', duration: 'PLG Lifecycle',
+    summary: 'Six behavior-triggered lifecycle emails designed around the journey from registration to product activation.',
+    description: 'I mapped key activation moments for Patsnap MCP Open Platform and wrote six behavior-triggered lifecycle emails. Each email connects one user state with one next action and one conversion goal, supported by responsive HTML templates for major email clients.',
+    impact: 'Delivered six launch-ready emails with responsive layouts, dark-mode support, and compatibility considerations for Apple Mail, Gmail, and Outlook.',
+    tags: ['PLG', 'Lifecycle Email', 'Growth Operations', 'Content', 'HTML Email'], liveLabel: 'Open email series'
+  },
+  'signalops': {
+    title: 'Marketing Copilot Agent', role: 'AI Product Operations · Prototype', client: 'Independent Project · Live', duration: 'Designed and built independently',
+    summary: 'A live AI agent prototype that turns scattered customer feedback into content opportunities, FAQ actions, and knowledge-base updates.',
+    description: 'Using Cursor and Codex, I designed and built a lightweight web app for global operations teams. Structured inputs capture product context, market, audience, value propositions, feedback sources, and analysis goals; the output is a Feedback Insight Dashboard with actions for content, FAQs, and knowledge bases.',
+    impact: 'Launched an interactive end-to-end prototype and documented reusable prompts and an operations workflow.',
+    tags: ['AI Agent', 'Product Operations', 'Cursor', 'Codex', 'Prototype'], liveLabel: 'Open live demo'
+  },
+  'waic-brochure': {
+    title: 'WAIC · Yazi Agent Product Marketing Brochure', role: 'Product Marketing · Event Acquisition', client: 'Patsnap', duration: 'Four-panel accordion brochure',
+    summary: 'A WAIC product-marketing brochure that explains an AI patent product through five R&D and technology-decision scenarios.',
+    description: 'For WAIC, I reframed Yazi Agent from a feature list into a product narrative for exhibition visitors. The brochure organizes the product around five jobs—find, read, evaluate, analyze, and plan—then connects each job to AI capabilities, differentiators, and QR-based next steps.',
+    impact: 'Delivered a print-ready, double-sided brochure covering five core scenarios, four differentiators, capability lists, and case-study entry points.',
+    tags: ['Product Marketing', 'Event GTM', 'WAIC', 'Customer Narrative', 'Sales Collateral']
+  }
+};
+
+const featuredCaseStudies = {
+  'mcp-suite': {
+    zh: {
+      problem: '五个专业 MCP Server 的职责和工程概念较复杂，客户难以快速判断它们与自身工作的关系。',
+      insight: '客户首先关心的不是架构，而是能否完成研发、竞争情报和 IP 战略中的具体任务。',
+      action: '重组信息架构，用“接入前后”对比和固态电池调研场景串联五个 Server，并补齐快速开始路径。',
+      outcome: '交付一套可直接用于客户沟通的介绍页，覆盖五个 Server、三类高频场景和完整工作流。',
+      evidence: '客户介绍页 · 五个 Server 说明 · 场景演示 · 快速开始'
+    },
+    en: {
+      problem: 'Five specialized MCP servers came with complex boundaries and engineering concepts, making their relevance difficult for customers to assess quickly.',
+      insight: 'Customers first need to see the jobs they can complete across R&D, competitive intelligence, and IP strategy—not the underlying architecture.',
+      action: 'I rebuilt the information architecture around before-and-after comparisons, a solid-state battery workflow, and a clear quick-start path.',
+      outcome: 'Delivered a customer-facing page covering five servers, three workflow families, and one connected end-to-end scenario.',
+      evidence: 'Customer-facing page · Five server explanations · Workflow demo · Quick start'
+    }
+  },
+  'plg-emails': {
+    zh: {
+      problem: '注册后的用户处于不同使用阶段，需要在合适的行为节点收到明确而相关的下一步引导。',
+      insight: '生命周期邮件应围绕用户状态和激活动作设计，而不是只按固定时间群发。',
+      action: '梳理注册到持续激活的关键节点，设计并撰写六封行为触发邮件及响应式 HTML 模板。',
+      outcome: '交付六封可用于冷启动投放的邮件，覆盖主流邮件客户端、深色模式与移动端。',
+      evidence: '六封邮件序列 · 行为触发逻辑 · Apple Mail / Gmail / Outlook 适配'
+    },
+    en: {
+      problem: 'Users enter different stages after registration and need a relevant next step at the right behavioral moment.',
+      insight: 'Lifecycle messaging should follow user states and activation actions rather than rely only on a fixed calendar.',
+      action: 'I mapped the journey from registration to repeated use, then wrote six triggered emails and responsive HTML templates.',
+      outcome: 'Delivered six launch-ready emails with mobile, dark-mode, and major-client compatibility considerations.',
+      evidence: 'Six-email series · Trigger logic · Apple Mail / Gmail / Outlook considerations'
+    }
+  },
+  'signalops': {
+    zh: {
+      problem: '海外运营收到的用户反馈分散在不同渠道，难以稳定转化为内容、FAQ 和知识库动作。',
+      insight: '先结构化产品、市场、用户和反馈来源，再让 AI 输出可执行模块，比直接生成一段总结更有用。',
+      action: '使用 Cursor 与 Codex 独立设计并搭建输入流程、Prompt 和 Feedback Insight Dashboard。',
+      outcome: '上线一个可交互的端到端原型，并沉淀可复用 Prompt 模板与运营工作流。',
+      evidence: '在线 Demo · 结构化输入 · Feedback Insight Dashboard'
+    },
+    en: {
+      problem: 'Customer feedback for global operations teams is scattered across channels and rarely turns into consistent content, FAQ, or knowledge-base actions.',
+      insight: 'Structuring product, market, audience, and source context before generation produces more useful actions than a generic summary.',
+      action: 'I independently designed and built the input flow, prompts, and Feedback Insight Dashboard with Cursor and Codex.',
+      outcome: 'Launched an interactive end-to-end prototype and documented reusable prompts and an operations workflow.',
+      evidence: 'Live demo · Structured inputs · Feedback Insight Dashboard'
+    }
+  },
+  'waic-brochure': {
+    zh: {
+      problem: '展会访客停留时间短，需要快速理解芽仔 Agent 能解决哪些研发与技术决策问题。',
+      insight: '按“找、读、评、析、谋”五类任务组织内容，比罗列产品功能更贴近现场决策路径。',
+      action: '主导信息架构、场景文案、能力清单、差异化表达、二维码入口与四联折页版式。',
+      outcome: '交付可直接印刷的双面折页，覆盖五大场景、四项差异化优势和案例入口。',
+      evidence: '折页正反面 · 可编辑版 · 五大场景 · 四项差异化优势'
+    },
+    en: {
+      problem: 'WAIC visitors have limited attention and need to understand quickly which R&D and technology-decision problems Yazi Agent can address.',
+      insight: 'Organizing the story around five jobs—find, read, evaluate, analyze, and plan—fits the visitor decision path better than a feature list.',
+      action: 'I led the information architecture, scenario copy, capability lists, differentiators, QR entry points, and four-panel layout.',
+      outcome: 'Delivered a print-ready double-sided brochure covering five scenarios, four differentiators, and case-study entry points.',
+      evidence: 'Front and back layouts · Editable version · Five scenarios · Four differentiators'
+    }
+  }
+};
+
+const featuredIds = ['mcp-suite', 'plg-emails', 'signalops', 'waic-brochure'];
+
+function getInitialLanguage() {
+  try { return localStorage.getItem('portfolioLanguage') === 'en' ? 'en' : 'zh'; }
+  catch (_) { return 'zh'; }
+}
+
+let currentLanguage = getInitialLanguage();
+
+function localizedProject(item) {
+  if (currentLanguage !== 'en') return item;
+  if (projectTranslations[item.id]) return { ...item, ...projectTranslations[item.id], languageOnly: false };
+  if (item.id === 'works') return { ...item, title: 'Portfolio Works', role: 'Grouped by discipline', summary: 'All work across GTM, AI products, and content marketing.' };
+  if (item.id === 'about') return { ...item, title: 'About Me', role: 'GTM · Product Operations', summary: 'Background, experience, skills, and contact.' };
+  return { ...item, languageOnly: true };
+}
+
+function localizedCategory(category) {
+  return currentLanguage === 'en' && categoryTranslations[category.id] ? { ...category, ...categoryTranslations[category.id] } : category;
+}
+
+const dockItems = [
+  { id: 'finder', label: 'About', icon: 'finder', url: null, isFinder: true },
+  { id: 'email', label: 'Email', icon: 'mail', url: 'mailto:jtingli@126.com' },
+  { id: 'linkedin', label: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/in/juliette-l-4a5a0b331' },
+  { id: 'github', label: 'GitHub', icon: 'github', url: 'https://github.com/138671680l-crypto?tab=stars' },
+  { id: 'wechat', label: '微信', icon: 'wechat', url: 'weixin://' },
+  { id: 'xhs', label: '小红书', icon: 'xhs', url: 'https://www.xiaohongshu.com/' }
+];
+
+function folderSVG() {
+  return `<svg viewBox="0 0 80 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:90px;height:64px;display:block;">
+    <defs><linearGradient id="fs" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(255,255,255,0.78)"/></linearGradient>
+    <linearGradient id="ft" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,1)"/><stop offset="100%" stop-color="rgba(255,255,255,0.85)"/></linearGradient></defs>
+    <path d="M0 14C0 10.686 2.686 8 6 8H30L38 16H72C75.314 16 78 18.686 78 22V52C78 55.314 75.314 58 72 58H6C2.686 58 0 55.314 0 52V14Z" fill="#E53E3E"/>
+    <path d="M0 14C0 10.686 2.686 8 6 8H30L38 16H72C75.314 16 78 18.686 78 22V52C78 55.314 75.314 58 72 58H6C2.686 58 0 55.314 0 52V14Z" fill="url(#fs)" style="mix-blend-mode:overlay;"/>
+    <path d="M0 14C0 10.686 2.686 8 6 8H30C31.5 8 33 9 33.5 10.5L36 16H0V14Z" fill="url(#ft)"/>
+    <rect x="0" y="14" width="78" height="2" fill="rgba(0,0,0,0.08)"/></svg>`;
+}
+
+const socialIcons = {
+  finder: `<svg viewBox="0 0 24 24" fill="white"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" fill="white"/><path d="M5 5h4v4H5zM15 5h4v4h-4zM5 15h4v4H5zM15 15h4v4h-4z" fill="#E53E3E"/></svg>`,
+  mail: `<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>`,
+  linkedin: `<svg viewBox="0 0 24 24" fill="white"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 11-.01-4.12 2.06 2.06 0 01.01 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>`,
+  github: `<svg viewBox="0 0 24 24" fill="white"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>`,
+  wechat: `<svg viewBox="0 0 24 24" fill="white"><path d="M9.5 2C5.36 2 2 4.91 2 8.5c0 2.07 1.13 3.91 2.91 5.16L4 16l2.79-1.46c.87.21 1.79.32 2.71.32.21 0 .42-.01.63-.02-.13-.46-.21-.94-.21-1.43 0-3.34 3.13-6.04 7-6.04.13 0 .26.01.39.02C16.69 3.85 13.46 2 9.5 2z"/><path d="M22 14.5c0-2.93-2.84-5.3-6.34-5.3-3.5 0-6.34 2.37-6.34 5.3 0 2.93 2.84 5.3 6.34 5.3.79 0 1.55-.12 2.25-.34L20 21l-.78-1.95C20.93 18.06 22 16.36 22 14.5z"/></svg>`,
+  xhs: `<svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="#FF2442"/><text x="12" y="16.6" text-anchor="middle" font-size="11.6" font-weight="900" font-family="'PingFang SC','Noto Sans SC',sans-serif" fill="white">小红</text></svg>`
+};
+
+let openTabs = [], activeTab = null, lastClickedFolder = null;
+
+function applyStaticTranslations() {
+  const dict = uiTranslations[currentLanguage];
+  document.documentElement.lang = currentLanguage === 'en' ? 'en' : 'zh-CN';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const value = dict[el.dataset.i18n];
+    if (value != null) el.textContent = value;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const value = dict[el.dataset.i18nHtml];
+    if (value != null) el.innerHTML = value;
+  });
+  const toggle = document.getElementById('langToggle');
+  if (toggle) {
+    toggle.textContent = currentLanguage === 'zh' ? '中 / EN' : 'EN / 中';
+    toggle.setAttribute('aria-label', currentLanguage === 'zh' ? 'Switch to English' : '切换到中文');
+  }
+}
+
+function renderFeaturedProjects() {
+  const mount = document.getElementById('featuredProjects');
+  if (!mount) return;
+  const isEn = currentLanguage === 'en';
+  const shortRoles = isEn
+    ? { 'mcp-suite':'Global GTM', 'plg-emails':'Growth', signalops:'AI Product Ops', 'waic-brochure':'Product Marketing' }
+    : { 'mcp-suite':'海外 GTM', 'plg-emails':'增长运营', signalops:'AI 产品运营', 'waic-brochure':'产品营销' };
+  const cards = featuredIds.map(id => {
+    const original = projects.find(p => p.id === id);
+    const item = localizedProject(original);
+    return `<article class="featured-card" data-featured-open="${id}" tabindex="0">
+      <div class="featured-role">${shortRoles[id]}</div>
+      <div class="featured-name">${item.title}</div>
+      <div class="featured-open">→</div>
+    </article>`;
+  }).join('');
+  mount.innerHTML = `<div class="featured-head">
+      <div class="featured-kicker">Featured Projects</div>
+      <div class="featured-title">${isEn ? 'Open a case study' : '点击查看案例'}</div>
+    </div><div class="featured-grid">${cards}</div>`;
+  mount.querySelectorAll('[data-featured-open]').forEach(card => {
+    const open = () => openProject(card.dataset.featuredOpen);
+    card.addEventListener('click', open);
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+  });
+}
+
+function setLanguage(language, persist = true) {
+  currentLanguage = language === 'en' ? 'en' : 'zh';
+  if (persist) {
+    try { localStorage.setItem('portfolioLanguage', currentLanguage); } catch (_) {}
+  }
+  applyStaticTranslations();
+  renderDesktop();
+  renderTabs();
+  if (activeTab) renderProjectContent(activeTab);
+  updateClock();
+}
+
+function renderDesktop() {
+  document.querySelectorAll('body > .preview-popup').forEach(el => el.remove());
+  const label = document.getElementById('foldersLabel');
+  if (label) label.innerHTML = `<span class="num">${projects.length}</span> PROJECTS`;
+  const grid = document.getElementById('foldersGrid');
+  const folderTile = (original) => {
+    const item = localizedProject(original);
+    const previewSrc = item.thumb || item.videos?.[0]?.poster || item.articles?.[0]?.pages?.[0] || item.extra?.find(e => e.src)?.src || '';
+    const previewVisual = previewSrc
+      ? `<img src="${previewSrc}" alt="${item.title}" loading="lazy">`
+      : `<div class="preview-thumb-icon">${item.icon || '◧'}</div>`;
+    return `
+    <div class="folder-tile" data-id="${item.id}" tabindex="0">
+      <div class="folder-svg-wrap">${folderSVG()}</div>
+      <div class="folder-name">${item.title}${item.languageOnly ? '<span class="folder-lang">CN</span>' : ''}</div>
+      <div class="preview-popup">
+        <div class="preview-thumb" style="background:${item.cover};">${previewVisual}</div>
+        <div class="preview-body">
+          <div class="preview-meta">${item.year}${item.role ? ' · ' + item.role : ''}</div>
+          <div class="preview-title">${item.title}</div>
+          <div class="preview-desc">${item.summary || 'About me & contact'}</div>
+          ${item.languageOnly ? '<span class="language-badge">Chinese case study</span>' : ''}
+        </div>
+      </div>
+    </div>`;
+  };
+
+  const groupBlock = (label, tilesHTML) => `
+    <div class="folder-group">
+      <div class="folder-group-label">${label}</div>
+      <div class="desktop-grid">${tilesHTML}</div>
+    </div>`;
+
+  // 小分组（≤2 个）并排放一行，避免竖着堆得太长
+  const smallGroups = [];
+  const bigGroups = [];
+  smallGroups.push(groupBlock(currentLanguage === 'en' ? 'Overview' : '汇总', folderTile(worksInfo)));
+  smallGroups.push(groupBlock(currentLanguage === 'en' ? 'Profile' : '个人', folderTile(aboutInfo)));
+  categories.forEach(cat => {
+    const items = projects.filter(p => p.category === cat.id);
+    if (!items.length) return;
+    const displayCategory = localizedCategory(cat);
+    const block = groupBlock(displayCategory.name, items.map(folderTile).join(''));
+    if (items.length <= 2) smallGroups.push(block);
+    else bigGroups.push(block);
+  });
+
+  // 每两个小分组拼成一行
+  let smallRows = '';
+  for (let i = 0; i < smallGroups.length; i += 2) {
+    smallRows += `<div class="folder-row">${smallGroups[i]}${smallGroups[i + 1] || ''}</div>`;
+  }
+
+  grid.innerHTML = smallRows + bigGroups.join('');
+
+  grid.querySelectorAll('.folder-tile').forEach(tile => {
+    const popup = tile.querySelector('.preview-popup');
+    if (popup) document.body.appendChild(popup);   // 移到 body，脱离被 transform 的 tile，避免 fixed 定位错乱
+    tile.addEventListener('mouseenter', () => {
+      if (!popup) return;
+      const rect = tile.getBoundingClientRect();
+      const pw = popup.offsetWidth || 240;
+      const ph = popup.offsetHeight || 200;
+      // 贴在「文件夹自身的右上角」：默认在文件夹上方、右对齐；上方放不下才翻到下方
+      let left = rect.right - pw + 24;
+      if (left < 12) left = 12;
+      if (left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
+      let top = rect.top - ph - 10;
+      if (top < 12) top = rect.bottom + 10;
+      popup.style.top = top + 'px';
+      popup.style.left = left + 'px';
+      popup.classList.add('show');
+    });
+    tile.addEventListener('mouseleave', () => { if (popup) popup.classList.remove('show'); });
+    tile.addEventListener('click', () => {
+      grid.querySelectorAll('.folder-tile').forEach(t => t.classList.remove('selected'));
+      tile.classList.add('selected');
+      openProject(tile.dataset.id);
+    });
+    tile.addEventListener('dblclick', () => openProject(tile.dataset.id));
+    tile.addEventListener('touchstart', (e) => {
+      const now = Date.now();
+      if (lastClickedFolder === tile && now - (tile.dataset.lastTap || 0) < 350) { e.preventDefault(); openProject(tile.dataset.id); lastClickedFolder = null; }
+      else { lastClickedFolder = tile; tile.dataset.lastTap = now; }
+    }, { passive: true });
+  });
+
+  const dockEl = document.getElementById('dockBar');
+  dockEl.innerHTML = dockItems.map((item, i) => `
+    ${i === 1 ? '<div class="dock-divider"></div>' : ''}
+    <div class="dock-item" data-id="${item.id}" data-url="${item.url || ''}" data-finder="${item.isFinder || false}">
+      ${socialIcons[item.icon]}<div class="tooltip">${item.label}</div>
+    </div>`).join('');
+  dockEl.querySelectorAll('.dock-item').forEach(item => {
+    item.addEventListener('click', () => {
+      if (item.dataset.finder === 'true') { openProject('about'); return; }
+      const url = item.dataset.url;
+      if (url && url !== 'null') window.open(url, '_blank');
+    });
+  });
+  renderFeaturedProjects();
+}
+
+function renderTabs() {
+  const tabBar = document.getElementById('tabBar');
+  if (openTabs.length === 0) { tabBar.innerHTML = ''; showEmpty(); return; }
+  tabBar.innerHTML = openTabs.map(id => {
+    const source = allItems.find(x => x.id === id); if (!source) return '';
+    const it = localizedProject(source);
+    return `<div class="tab ${id === activeTab ? 'active' : ''}" data-id="${id}">
+      <span class="tab-icon">${it.icon}</span><span class="tab-title">${it.title}</span>
+      <span class="tab-close" data-close="${id}">×</span></div>`;
+  }).join('') + `<div class="tab-add" id="tabAdd">+</div>`;
+  tabBar.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      if (e.target.dataset.close) { closeTab(e.target.dataset.close); return; }
+      switchTab(tab.dataset.id);
+    });
+  });
+  const addBtn = document.getElementById('tabAdd');
+  if (addBtn) addBtn.addEventListener('click', () => {
+    const remaining = allItems.find(x => !openTabs.includes(x.id));
+    if (remaining) openProject(remaining.id);
+  });
+}
+
+function showEmpty() {
+  const isEn = currentLanguage === 'en';
+  document.getElementById('content').innerHTML = `<div class="empty-state">
+    <div class="empty-state-icon">📂</div><h2>${isEn ? 'No Tabs Open' : '暂无打开的标签页'}</h2>
+    <p>${isEn ? 'Open a project from the desktop folders or choose an app from the Dock.' : '从桌面文件夹打开项目，或从 Dock 中选择应用。'}</p></div>`;
+  document.getElementById('urlBarText').textContent = 'portfolio.studio/work';
+}
+
+function openProject(id) {
+  if (!openTabs.includes(id)) openTabs.push(id);
+  activeTab = id;
+  document.getElementById('browser').classList.add('active');
+  renderTabs(); renderProjectContent(id);
+  document.getElementById('urlBarText').textContent = `portfolio.studio/work/${id}`;
+  requestAnimationFrame(() => { const bc = document.querySelector('.browser-content'); if (bc) bc.scrollTo({ top: 0 }); });
+}
+function switchTab(id) {
+  if (!openTabs.includes(id)) return;
+  activeTab = id; renderTabs(); renderProjectContent(id);
+  document.getElementById('urlBarText').textContent = `portfolio.studio/work/${id}`;
+  requestAnimationFrame(() => { const bc = document.querySelector('.browser-content'); if (bc) bc.scrollTo({ top: 0, behavior: 'smooth' }); });
+}
+function closeTab(id) {
+  const idx = openTabs.indexOf(id); if (idx < 0) return;
+  openTabs.splice(idx, 1);
+  if (activeTab === id) activeTab = openTabs.length > 0 ? openTabs[Math.min(idx, openTabs.length - 1)] : null;
+  if (openTabs.length === 0) closeBrowser();
+  else { renderTabs(); if (activeTab) { renderProjectContent(activeTab); document.getElementById('urlBarText').textContent = `portfolio.studio/work/${activeTab}`; } }
+}
+function closeBrowser() {
+  document.getElementById('browser').classList.remove('active');
+  openTabs = []; activeTab = null; renderTabs();
+  document.querySelectorAll('.folder-tile').forEach(t => t.classList.remove('selected'));
+}
+
+function renderProjectContent(id) {
+  const source = allItems.find(x => x.id === id); if (!source) return;
+  const it = localizedProject(source);
+  const isEn = currentLanguage === 'en';
+  const content = document.getElementById('content');
+  if (it.isWorks) { content.innerHTML = renderWorks(); bindWorkCards(); observeReveals(); return; }
+  if (it.isAbout) { content.innerHTML = renderAbout(); observeReveals(); return; }
+  let extraHTML = '';
+  if (it.extra && it.extra.length) {
+    const hasRealImages = it.extra.some(e => e.src);
+    if (it.gallery && hasRealImages) {
+      extraHTML = `<div class="project-section"><div class="section-title">${isEn ? 'Selected Work' : '作品展示'}</div>
+        <div class="masonry">${it.extra.map(e => renderImage(e)).join('')}</div></div>`;
+    } else {
+      extraHTML = hasRealImages
+        ? `<div class="project-section"><div class="section-title">${isEn ? 'Selected Work' : '作品展示'}</div>${it.extra.map(e => renderImage(e)).join('')}</div>`
+        : (it.extra.length === 1
+          ? `<div class="project-section"><div class="section-title">${isEn ? 'Selected Work' : '作品展示'}</div>${it.extra.map(e => renderImage(e)).join('')}</div>`
+          : `<div class="project-section"><div class="section-title">${isEn ? 'Selected Work' : '作品展示'}</div><div class="image-placeholder-row">${it.extra.map(e => renderImage(e, 'small')).join('')}</div></div>`);
+    }
+  }
+  const tablesHTML = (it.tables && it.tables.length)
+    ? `<div class="project-section"><div class="section-title">Data & Planning</div>${renderTables(it.tables)}</div>`
+    : '';
+  const articlesHTML = (it.articles && it.articles.length)
+    ? `<div class="project-section wx-articles-section"><div class="section-title">Published Articles · 公众号文章</div>${renderArticles(it.articles)}</div>`
+    : '';
+  const liveThumb = it.liveUrl ? `
+    <a href="${it.liveUrl}" target="_blank" rel="noopener" class="work-card" style="display:block;margin-bottom:44px;">
+      <div class="work-thumb" style="aspect-ratio:16/9;">
+        <iframe src="${it.liveUrl}" loading="lazy" title="${it.title} 预览"></iframe>
+        <div class="thumb-open">↗</div>
+      </div>
+      <div class="work-body"><div class="work-role">${isEn ? 'Live Preview · Opens in a new tab' : '实时预览 · 点击在新标签打开'}</div>
+      <div class="work-title">${it.liveLabel || (isEn ? 'Open full page' : '打开完整页面')} ↗</div></div>
+    </a>` : '';
+  const igLink = (it.links || []).find(l => /instagram/i.test(l.url));
+  const videoHTML = (it.videos && it.videos.length) ? `
+    <div class="project-section"><div class="section-title">Selected Videos</div>
+      <div class="video-grid">
+        ${it.videos.map((v, i) => `
+          <div class="video-card ${v.wide ? 'wide' : ''}" data-video-index="${i}">
+            <img src="${v.poster || ''}" class="poster" alt="${v.title || 'Video'}" loading="lazy">
+            <div class="play-overlay"><div class="play-btn"></div></div>
+            <video src="${v.src || v}" ${v.wide ? '' : 'style="aspect-ratio:9/16;"'} preload="metadata" playsinline controls></video>
+          </div>`).join('')}
+      </div>
+      ${igLink ? `<p class="project-paragraph" style="margin-top:18px;font-size:14px;color:var(--gray);">更多短视频作品见公司主页 <a href="${igLink.url}" target="_blank" rel="noopener" class="project-link" style="font-size:14px;">@landandcc on Instagram ↗</a></p>` : ''}
+    </div>` : '';
+  const statementHTML = it.statement ? `
+    <div class="project-section"><div class="section-title">How I Work</div>
+      <div class="statement-card">
+        <div class="st-eyebrow">AI × 品牌传播</div>
+        <p>${it.statement}</p>
+        ${it.statementTools ? `<div class="st-tools">${it.statementTools.map(t => `<span>${t}</span>`).join('')}</div>` : ''}
+      </div>
+    </div>` : '';
+  const study = featuredCaseStudies[id] ? featuredCaseStudies[id][currentLanguage] : null;
+  const caseLabels = isEn
+    ? [['Problem','problem'],['Insight','insight'],['Action','action'],['Outcome','outcome'],['Evidence','evidence']]
+    : [['问题','problem'],['判断','insight'],['行动','action'],['结果','outcome'],['证据','evidence']];
+  const caseHTML = study ? `<div class="project-section"><div class="section-title">${isEn ? 'Case Study Framework' : '案例拆解'}</div>
+    <div class="case-framework">${caseLabels.map(([label,key]) => `<div class="case-step"><div class="case-step-label">${label}</div><div class="case-step-copy">${study[key]}</div></div>`).join('')}</div></div>` : '';
+  const languageNotice = it.languageOnly ? `<div class="project-section"><span class="language-badge">Chinese case study</span>
+    <p class="project-paragraph" style="margin-top:10px;">This supporting project is currently available in Chinese. The four Featured Projects provide complete English case studies.</p></div>` : '';
+  content.innerHTML = `<div class="project-detail">
+    <div class="project-hero">
+      <div class="project-eyebrow">Case Study · ${it.year}</div>
+      <div class="project-tag-row">${it.tags.map(t => `<span class="project-pill">${t}</span>`).join('')}</div>
+      <h1 class="project-title">${it.title}</h1>
+      <p class="project-subtitle">${it.summary}</p>
+      ${it.languageOnly ? '<span class="language-badge">Chinese case study</span>' : ''}
+    </div>
+    ${caseHTML}
+    ${liveThumb}
+    <div class="project-meta-grid">
+      <div class="meta-item"><div class="meta-label">Year</div><div class="meta-value">${it.year}</div></div>
+      <div class="meta-item"><div class="meta-label">Role</div><div class="meta-value">${it.role}</div></div>
+      <div class="meta-item"><div class="meta-label">Client</div><div class="meta-value">${it.client}</div></div>
+      <div class="meta-item"><div class="meta-label">Duration</div><div class="meta-value">${it.duration}</div></div>
+    </div>
+    ${languageNotice}
+    <div class="project-section"><div class="section-title">${isEn ? 'Overview' : '项目概览'}</div>
+      <p class="project-paragraph">${it.description}</p>
+      <p class="project-paragraph"><strong>${it.impact}</strong></p></div>
+    ${tablesHTML}
+    ${articlesHTML}
+    ${statementHTML}
+    ${videoHTML}
+    ${extraHTML}
+    <div class="project-section"><div class="section-title">${isEn ? 'Tools & Skills' : '工具与能力'}</div>
+      <div class="tags-list">${it.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div></div>
+    <div class="project-section"><div class="section-title">${isEn ? 'Links & Evidence' : '链接与证据'}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:14px 28px;">
+      ${it.liveUrl ? `<a href="${it.liveUrl}" target="_blank" rel="noopener" class="project-link">${it.liveLabel || (isEn ? 'Open full page' : '打开完整页面')} ↗</a>` : ''}
+      ${(it.links || []).map(l => `<a href="${l.url}" target="_blank" rel="noopener" class="project-link">${l.label} ↗</a>`).join('')}
+      ${(!it.liveUrl && !(it.links && it.links.length) && !it.extra?.some(e => e.src)) ? `<span class="project-paragraph">${isEn ? 'No external link available; evidence is shown above.' : '暂无外部链接，证据已在页面中展示。'}</span>` : ''}
+      </div></div>
+  </div>`;
+  bindVideoCards();
+  bindArticleToggles();
+  bindGallery();
+  observeReveals();
+}
+
+function bindVideoCards() {
+  document.querySelectorAll('.video-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const wasPlaying = card.classList.contains('playing');
+      document.querySelectorAll('.video-card.playing').forEach(c => {
+        c.classList.remove('playing');
+        const v = c.querySelector('video'); if (v) { v.pause(); v.currentTime = 0; }
+      });
+      if (!wasPlaying) {
+        card.classList.add('playing');
+        const video = card.querySelector('video');
+        if (video) { video.play().catch(() => {}); }
+      }
+    });
+  });
+}
+
+function renderArticles(articles) {
+  return articles.map((a, idx) => {
+    const hasPages = a.pages && a.pages.length;
+    const htmlBody = a.contentHTML
+      ? `<div class="wx-article-body">${a.contentHTML}</div>`
+      : '';
+    const pageBody = hasPages ? `
+      <div class="wx-article-body wx-article-pages" data-article="${idx}">
+        ${a.pages.slice(0, 3).map(p => `<img src="${p}" class="wx-article-page" alt="${a.title}" loading="lazy">`).join('')}
+        ${a.pages.length > 3 ? `<div class="wx-article-collapsed">${a.pages.slice(3).map(p => `<img src="${p}" class="wx-article-page" alt="${a.title}" loading="lazy">`).join('')}</div>
+          <div class="wx-article-toggle" data-toggle="${idx}">展开全文 (${a.pages.length - 3} 页)</div>` : ''}
+      </div>` : '';
+    return `<div class="wx-article">
+      <div class="wx-article-header">
+        <div class="wx-article-title">${a.title}</div>
+        <div class="wx-article-meta"><span>${a.source}</span><span>${a.date}</span></div>
+        <div class="wx-article-summary">${a.summary}</div>
+      </div>
+      ${htmlBody}${pageBody}
+    </div>`;
+  }).join('');
+}
+
+function bindArticleToggles() {
+  document.querySelectorAll('.wx-article-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const collapsed = btn.previousElementSibling;
+      if (!collapsed) return;
+      const isHidden = collapsed.classList.contains('wx-article-collapsed');
+      if (isHidden) {
+        collapsed.classList.remove('wx-article-collapsed');
+        btn.textContent = '收起';
+      } else {
+        collapsed.classList.add('wx-article-collapsed');
+        const total = collapsed.querySelectorAll('img').length + 3;
+        btn.textContent = `展开全文 (${total - 3} 页)`;
+      }
+    });
+  });
+}
+
+function renderImage(e, size = '') {
+  if (e.src) {
+    return `<figure class="doc-image">
+      <img src="${e.src}" alt="${e.caption || '项目图片'}" loading="lazy">
+      ${e.caption ? `<figcaption>${e.caption}</figcaption>` : ''}
+    </figure>`;
+  }
+  return `<div class="image-placeholder ${size}" style="background:${e.gradient};">
+    <div class="ph-content"><div class="ph-icon">${e.icon || '◧'}</div><div class="ph-label">${e.label}</div></div></div>`;
+}
+
+function renderTables(tables) {
+  return tables.map(t => `
+    <div class="doc-table-wrap">
+      <div class="doc-table-title">${t.icon ? `<span class="t-icon">${t.icon}</span>` : '<span class="t-icon">▤</span>'}${t.title}</div>
+      <table class="doc-table">
+        ${t.head ? `<thead><tr>${t.head.map(h => `<th>${h}</th>`).join('')}</tr></thead>` : ''}
+        <tbody>${t.rows.map(r => `<tr>${r.map((c, i) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>
+      </table>
+    </div>`).join('');
+}
+
+function workCardHTML(original) {
+  const p = localizedProject(original);
+  let thumb;
+  if (p.thumb) {
+    thumb = `<div class="thumb-fallback" style="background:#000;"><img src="${p.thumb}" alt="" style="width:100%;height:100%;object-fit:cover;"></div>`;
+  } else if (p.liveUrl) {
+    thumb = `<iframe src="${p.liveUrl}" loading="lazy" title="${p.title} 预览"></iframe>`;
+  } else if (p.videos && p.videos.length && p.videos[0].poster) {
+    const first = p.videos[0];
+    thumb = `<div class="thumb-fallback" style="background:#000;"><img src="${first.poster}" alt="" style="width:100%;height:100%;object-fit:cover;"><div class="thumb-play"></div></div>`;
+  } else if (p.articles && p.articles.length && p.articles[0].pages && p.articles[0].pages.length) {
+    thumb = `<div class="thumb-fallback" style="background:#fff;"><img src="${p.articles[0].pages[0]}" alt="" style="width:100%;height:100%;object-fit:cover;object-position:top center;"></div>`;
+  } else {
+    thumb = `<div class="thumb-fallback" style="background:${p.cover};">${p.icon}</div>`;
+  }
+  return `<div class="work-card" data-open="${p.id}">
+    <div class="work-thumb">${thumb}<div class="thumb-open">↗</div></div>
+    <div class="work-body">
+      <div class="work-role">${p.role}</div>
+      <div class="work-title">${p.title}</div>
+      <div class="work-desc">${p.summary}</div>
+      <div class="work-tags">${p.tags.slice(0,4).map(t => `<span class="work-tag">${t}</span>`).join('')}</div>
+      ${p.languageOnly ? '<span class="language-badge">Chinese case study</span>' : ''}
+    </div>
+  </div>`;
+}
+
+function renderWorks() {
+  const isEn = currentLanguage === 'en';
+  const groups = categories.map(cat => {
+    const items = projects.filter(p => p.category === cat.id);
+    if (!items.length) return '';
+    const displayCategory = localizedCategory(cat);
+    return `<div class="works-cat">
+      <div class="works-cat-head"><h3>${displayCategory.name}</h3><span class="count">${items.length} ${isEn ? 'projects' : '个项目'} · ${displayCategory.desc}</span></div>
+      <div class="works-grid">${items.map(workCardHTML).join('')}</div>
+    </div>`;
+  }).join('');
+  return `<div class="works-wrap">
+    <div class="works-head">
+      <div class="works-eyebrow">Selected Work · 2025 – 2026</div>
+      <h1 class="works-title">${isEn ? 'Portfolio' : '作品集'} <span class="accent">Works</span></h1>
+      <p class="works-intro">${isEn ? 'Work across global GTM, growth operations, AI product operations, and content marketing. Four Featured Projects are fully bilingual; supporting projects are labeled when available only in Chinese.' : '按方向汇总的代表作品：AI 产品的 GTM 与增长运营，以及品牌 / 内容营销。点击任意卡片查看详情，或直接打开真实页面。'}</p>
+    </div>
+    ${groups}
+  </div>`;
+}
+
+function bindWorkCards() {
+  document.querySelectorAll('.work-card[data-open]').forEach(card => {
+    card.addEventListener('click', () => openProject(card.dataset.open));
+  });
+}
+
+function renderAbout() {
+  if (currentLanguage === 'en') return `<div class="project-detail">
+    <div class="project-hero">
+      <div class="project-eyebrow">About</div>
+      <h1 class="project-title">Hi, I’m <span class="accent">Junting Li</span> / Juliette.</h1>
+    </div>
+    <div class="intro-grid">
+      <div>
+        <p class="about-intro">I am an MLA candidate at <span class="accent">The University of Hong Kong (QS #11)</span> with experience across AI product operations, global GTM, and content marketing. I currently work on customer-facing content and GTM for B2B products at Patsnap.</p>
+        <p class="project-paragraph">I enjoy traveling, podcasts, and climbing. At work, I like exploring new tools, organizing complex information, and turning ideas into useful content and products.</p>
+        <p class="project-paragraph">Tools I often use: Claude Code · Cursor · Coze · MCP · Midjourney · SQL · Figma.</p>
+        <p class="project-paragraph" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:18px;">
+          <a class="project-link" href="https://www.linkedin.com/in/juliette-l-4a5a0b331" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="project-link" href="https://github.com/138671680l-crypto?tab=stars" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="project-link" href="https://www.instagram.com/jwinnnie_en" target="_blank" rel="noopener">Instagram ↗</a>
+        </p>
+      </div>
+      <div class="about-photo"><div class="ph-content"><div class="name">Junting Li · Juliette</div><div class="role">Product Operations / GTM · Hangzhou / Suzhou</div></div></div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-value">HKU</div><div class="stat-label">The University of Hong Kong · QS #11<br>Master of Landscape Architecture</div></div>
+      <div class="stat-card"><div class="stat-value">211</div><div class="stat-label">Sichuan Agricultural University<br>Top 10% · Average score: 90/100</div></div>
+      <div class="stat-card"><div class="stat-value">IELTS 7.0</div><div class="stat-label">Speaking 7.0 · CET-6 587<br>Mandarin Level 2-A</div></div>
+    </div>
+    <div class="project-section"><div class="section-title">Experience</div>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-when">2026.05 – Present</div><div class="tl-body">
+          <div class="tl-title">Global GTM · AI Product Operations <span class="tl-co">· Patsnap</span></div>
+          <p>Customer-facing MCP GTM assets; PLG lifecycle email series; competitive monitoring; an internal content-production agent and reusable PRD; product-education articles; and WAIC product-marketing collateral.</p></div></div>
+        <div class="tl-item"><div class="tl-when">2026.02 – 2026.05</div><div class="tl-body">
+          <div class="tl-title">Global Product Operations <span class="tl-co">· KEYi Tech · LOONA</span></div>
+          <p>Monitored product behavior, VOC, and community feedback; produced 30+ FAQs; supported an in-product AI agent that reduced manual cases from about 100 to 40 per day with a 70% first-resolution rate; and reviewed Shopify funnels.</p></div></div>
+        <div class="tl-item"><div class="tl-when">2025.05 – 2025.10</div><div class="tl-body">
+          <div class="tl-title">Global Brand Communications <span class="tl-co">· Land+Civilization Compositions</span></div>
+          <p>Managed Instagram, YouTube, and website content; used Sora and Kling to produce 4–6 monthly pieces; increased Instagram engagement by about 30%; and supported bilingual editorial and community-exhibition work.</p></div></div>
+      </div>
+    </div>
+    <div class="project-section"><div class="section-title">Education · Skills</div>
+      <div class="edu-row">
+        <div class="edu-card"><div class="edu-degree">Master · Landscape Architecture</div><div class="edu-school">The University of Hong Kong (QS #11) · 2024.09 – 2026.12 · GPA 3.7/4.3</div></div>
+        <div class="edu-card"><div class="edu-degree">Bachelor · Landscape Architecture</div><div class="edu-school">Sichuan Agricultural University (Project 211) · 2019.09 – 2024.07 · 90/100 · Top 10%</div></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card"><h4>AI Tools & Agents</h4><p>Claude Code · Cursor · Codex · MCP · Midjourney; agent workflows, PRDs, and knowledge bases.</p></div>
+        <div class="skill-card"><h4>GTM · Global Content</h4><p>PLG lifecycle email, sales enablement, competitive monitoring, social content, and funnel reviews.</p></div>
+        <div class="skill-card"><h4>Data Analysis</h4><p>Excel · SQL · Tableau · Python; Shopify operations, conversion funnels, and audience analysis.</p></div>
+        <div class="skill-card"><h4>Content Production</h4><p>PPT · Figma · Photoshop · InDesign · Canva; product narratives, campaign content, and visual execution.</p></div>
+        <div class="skill-card"><h4>Languages</h4><p>IELTS 7.0 · CET-6 587 · CET-4 617 · Mandarin Level 2-A.</p></div>
+      </div>
+    </div>
+    <div class="project-section"><div class="section-title">Get in Touch</div>
+      <p class="project-paragraph">Email · <a href="mailto:jtingli@126.com" class="project-link">jtingli@126.com</a> &nbsp;·&nbsp; Phone · <a href="tel:15267158688" class="project-link">+86 152 6715 8688</a></p>
+      <div class="about-resumes">
+        <a class="project-link" href="media/resume-li-junting-en.pdf" download="LI_JUNTING_Resume_MKT-PM.pdf">English CV ↓</a>
+        <a class="project-link" href="media/resume-li-junting-cn.docx" download="李君婷_中文简历_AI产品运营营销.docx">Chinese Resume ↓</a>
+      </div>
+      <p class="project-paragraph" style="margin-bottom:0;">Hangzhou / Suzhou · Remote-friendly · Open to conversations about product operations, GTM, product marketing, and global content.</p>
+    </div>
+  </div>`;
+  return `<div class="project-detail">
+    <div class="project-hero">
+      <div class="project-eyebrow">About</div>
+      <h1 class="project-title">你好，我是 <span class="accent">李君婷</span> / Juliette.</h1>
+    </div>
+    <div class="intro-grid">
+      <div>
+        <p class="about-intro">香港大学（QS 11）景观建筑硕士，设计与 AI 产品运营背景。目前在 <span class="accent">智慧芽 Patsnap</span> 做海外 B 端产品的内容与 GTM，也在做 PLG 模式的 EDM 与竞品监测。</p>
+        <p class="project-paragraph">跨学科的背景让我比较习惯「把复杂的东西讲清楚」—— 把技术语言翻译成用户能懂的表达，把零散的反馈整理成可复用的东西。还在学习用 AI 工具让内容生产的流程更顺一些。</p>
+        <p class="project-paragraph">常用工具：Claude Code · Cursor · Coze · MCP · Midjourney · SQL · Figma。</p>
+        <p class="project-paragraph" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:18px;">
+          <a class="project-link" href="https://www.linkedin.com/in/juliette-l-4a5a0b331" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="project-link" href="https://github.com/138671680l-crypto?tab=stars" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="project-link" href="https://www.instagram.com/jwinnnie_en" target="_blank" rel="noopener">Instagram ↗</a>
+        </p>
+      </div>
+      <div class="about-photo"><div class="ph-content"><div class="name">李君婷 · Juliette</div><div class="role">内容 / GTM · Hangzhou / Suzhou</div></div></div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-value">HKU</div><div class="stat-label">香港大学（QS 11）· 景观建筑硕士<br>2024 – 2026</div></div>
+      <div class="stat-card"><div class="stat-value">211</div><div class="stat-label">四川农业大学 · 本科<br>专业前 10% · 均分 90</div></div>
+      <div class="stat-card"><div class="stat-value">IELTS 7.0</div><div class="stat-label">口语 7.0 · CET-6 587<br>普通话二级甲等</div></div>
+    </div>
+    <div class="project-section"><div class="section-title">工作经历</div>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-when">2026.05 – Now</div><div class="tl-body">
+          <div class="tl-title">海外 GTM · AI 产品运营 <span class="tl-co">· 智慧芽 Patsnap</span></div>
+          <p>MCP 产品 GTM 材料撰写与市场进入；PLG 模式 EDM 冷启动邮件序列；竞品监测周报；基于 Claude Code 搭建内部内容生产 Agent 并输出可复用 PRD；公众号技术文章单篇阅读 1500+；WAIC 展会宣传册策划与文案。</p></div></div>
+        <div class="tl-item"><div class="tl-when">2026.02 – 2026.05</div><div class="tl-body">
+          <div class="tl-title">海外产品运营 <span class="tl-co">· 可以科技 · LOONA 机器人</span></div>
+          <p>APP 使用行为 / VOC / 社区反馈日常监测，输出 30+ FAQ；参与产品内 AI Agent 搭建与上线，人工处理量由 100 单/日降至 40 单/日，首次解决度 70%；Shopify 经营数据复盘与转化漏斗分析。</p></div></div>
+        <div class="tl-item"><div class="tl-when">2025.05 – 2025.10</div><div class="tl-body">
+          <div class="tl-title">海外品牌传播 <span class="tl-co">· Land+Civilization Compositions</span></div>
+          <p>独立运营 Instagram / YouTube / 官网，结合 Sora / Kling 等 AI 工具规模化生产内容，月均 4–6 条，互动率 +30%；参与《URBAN HACKING》双语内容策划与 Fabric Community 策展落地。</p></div></div>
+      </div>
+    </div>
+    <div class="project-section"><div class="section-title">教育 · 技能</div>
+      <div class="edu-row">
+        <div class="edu-card"><div class="edu-degree">Master · Landscape Architecture</div><div class="edu-school">香港大学 HKU（QS 11）· 2024.09 – 2026.12 · GPA 3.7/4.3</div></div>
+        <div class="edu-card"><div class="edu-degree">Bachelor · Landscape Architecture</div><div class="edu-school">四川农业大学（211）· 2019.09 – 2024.07 · 均分 90/100 · 专业前 10%</div></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card"><h4>AI 工具与 Agent</h4><p>Claude Code · Cursor · Codex · MCP · Midjourney；Agent 工作流搭建、PRD 撰写、知识库沉淀。</p></div>
+        <div class="skill-card"><h4>GTM · 海外内容</h4><p>PLG 模式 EDM、Sales Enablement、竞品监测、Social Media 内容运营、复盘与漏斗分析。</p></div>
+        <div class="skill-card"><h4>数据分析</h4><p>Excel · SQL · Tableau · Python；Shopify 经营复盘、GMV / 转化漏斗 / 用户画像分析。</p></div>
+        <div class="skill-card"><h4>设计与内容制作</h4><p>PPT · Figma · Photoshop · InDesign · Canva；视觉概念、品牌叙事与社媒创意。</p></div>
+        <div class="skill-card"><h4>语言与认证</h4><p>IELTS 7.0 · CET-6 587 · CET-4 617 · 普通话二级甲等 · 计算机二级。</p></div>
+      </div>
+    </div>
+    <div class="project-section"><div class="section-title">Get in Touch</div>
+      <p class="project-paragraph">邮箱 · <a href="mailto:jtingli@126.com" class="project-link">jtingli@126.com</a> &nbsp;·&nbsp; 电话 · <a href="tel:15267158688" class="project-link">152 6715 8688</a></p>
+      <div class="about-resumes">
+        <a class="project-link" href="media/resume-li-junting-cn.docx" download="李君婷_中文简历_AI产品运营营销.docx">中文简历 ↓</a>
+        <a class="project-link" href="media/resume-li-junting-en.pdf" download="LI_JUNTING_Resume_MKT-PM.pdf">English CV ↓</a>
+      </div>
+      <p class="project-paragraph" style="margin-bottom:0;">坐标 · 杭州 / 苏州 · Remote 友好 · 现就职于智慧芽 Patsnap，欢迎内容 / GTM / 海外运营的交流与合作。</p>
+    </div>
+  </div>`;
+}
+
+function updateClock() {
+  const now = new Date();
+  const weekdaysZh = ['周日','周一','周二','周三','周四','周五','周六'];
+  const weekdaysEn = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const h = String(now.getHours()).padStart(2,'0'), m = String(now.getMinutes()).padStart(2,'0');
+  document.getElementById('clock').textContent = `${currentLanguage === 'en' ? weekdaysEn[now.getDay()] : weekdaysZh[now.getDay()]} ${h}:${m}`;
+  const wt = document.getElementById('widgetTime'); if (wt) wt.textContent = `${h}:${m}`;
+  const wd = document.getElementById('widgetDate');
+  if (wd) wd.textContent = currentLanguage === 'en'
+    ? `${weekdaysEn[now.getDay()]} · ${now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`
+    : `${weekdaysZh[now.getDay()]} · ${now.getMonth()+1}月${now.getDate()}日`;
+}
+setInterval(updateClock, 1000); updateClock();
+
+/* ============================================================
+   ✦ ENHANCEMENT LOGIC
+============================================================ */
+
+/* ---------- BOOT / LOGIN ---------- */
+function runBoot() {
+  const boot = document.getElementById('boot');
+  const bar = document.getElementById('bootBar');
+  const s1 = document.getElementById('bootStage1');
+  const s2 = document.getElementById('bootStage2');
+  if (!boot) return;
+  // if already visited this session, skip straight in
+  if (sessionStorage.getItem('booted')) { boot.classList.add('gone'); wakeDesktop(); setTimeout(()=>boot.remove(), 100); return; }
+  let p = 0;
+  const tick = setInterval(() => {
+    p += Math.random() * 22 + 8; if (p > 100) p = 100;
+    bar.style.width = p + '%';
+    if (p >= 100) {
+      clearInterval(tick);
+      setTimeout(() => { s1.classList.add('hide'); s2.classList.remove('hide'); }, 350);
+    }
+  }, 180);
+  bar.style.transition = 'width 0.25s ease';
+  const enter = () => {
+    boot.classList.add('gone');
+    sessionStorage.setItem('booted', '1');
+    wakeDesktop();
+    setTimeout(() => boot.remove(), 800);
+    setTimeout(showWelcomeToast, 1100);
+    document.removeEventListener('keydown', keyEnter);
+  };
+  document.getElementById('loginEnter').addEventListener('click', enter);
+  const keyEnter = (e) => { if (e.key === 'Enter' && !s2.classList.contains('hide')) enter(); };
+  document.addEventListener('keydown', keyEnter);
+}
+function wakeDesktop() { document.getElementById('desktop').classList.add('awake'); initScrollObserver && initScrollObserver(); }
+
+/* ---------- CURSOR GLOW + PARALLAX ---------- */
+(function cursorFX() {
+  const glow = document.getElementById('cursor-glow');
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  const decors = document.querySelectorAll('.wall-decor');
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2, gx = mx, gy = my, rx = mx, ry = my;
+  window.addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    if (dot) dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+    if (fine && !document.body.classList.contains('cursor-ready')) document.body.classList.add('cursor-ready');
+    const dx = (e.clientX / window.innerWidth - 0.5);
+    const dy = (e.clientY / window.innerHeight - 0.5);
+    decors.forEach((d, i) => {
+      const depth = (i + 1) * 14;
+      d.style.transform = `translate(${dx * depth}px, ${dy * depth}px)`;
+    });
+    // hover state over interactive elements
+    const t = e.target.closest('a, button, .folder-tile, .dock-item, .work-card, .traffic-light, .mb-btn, .menu-item, .spot-item, .ctx-item, .widget, .doc-image, .video-card, .tab, .btn, .hero-social-link, [role="button"], [onclick]');
+    document.body.classList.toggle('cursor-hover', !!t);
+  });
+  window.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
+  window.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
+  document.addEventListener('mouseleave', () => document.body.classList.remove('cursor-ready'));
+  function loop() {
+    gx += (mx - gx) * 0.16; gy += (my - gy) * 0.16;
+    rx += (mx - rx) * 0.28; ry += (my - ry) * 0.28;
+    if (glow) glow.style.transform = `translate(${gx}px, ${gy}px) translate(-50%, -50%)`;
+    if (ring) ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ---------- THEME / WALLPAPER SWITCHER ---------- */
+const themes = [
+  { name: 'Patsnap 红', primary: '#E53E3E', pl: '#FC8181', pd: '#9B2C2C',
+    bg: `radial-gradient(ellipse 80% 60% at 85% 15%, rgba(229,62,62,0.45), transparent 60%),radial-gradient(ellipse 70% 70% at 10% 90%, rgba(197,48,48,0.25), transparent 60%),radial-gradient(ellipse 50% 60% at 50% 50%, rgba(45,55,72,0.4), transparent 70%),linear-gradient(135deg, #0F0F1E 0%, #15172B 60%, #1F1830 100%)` },
+  { name: '电光紫', primary: '#8B5CF6', pl: '#C4B5FD', pd: '#5B21B6',
+    bg: `radial-gradient(ellipse 80% 60% at 80% 10%, rgba(139,92,246,0.5), transparent 60%),radial-gradient(ellipse 70% 70% at 15% 95%, rgba(59,130,246,0.35), transparent 60%),linear-gradient(135deg, #0B0B18 0%, #171233 55%, #0F1E33 100%)` },
+  { name: '深海青', primary: '#06B6D4', pl: '#67E8F9', pd: '#0E7490',
+    bg: `radial-gradient(ellipse 80% 60% at 85% 15%, rgba(6,182,212,0.45), transparent 60%),radial-gradient(ellipse 70% 70% at 10% 90%, rgba(16,185,129,0.28), transparent 60%),linear-gradient(135deg, #061014 0%, #0A1E24 55%, #04121F 100%)` },
+  { name: '暖阳橙', primary: '#F97316', pl: '#FDBA74', pd: '#C2410C',
+    bg: `radial-gradient(ellipse 80% 60% at 82% 12%, rgba(249,115,22,0.48), transparent 60%),radial-gradient(ellipse 70% 70% at 12% 92%, rgba(236,72,153,0.28), transparent 60%),linear-gradient(135deg, #140B06 0%, #241206 55%, #1F0F17 100%)` }
+];
+let themeIdx = 0;
+function applyTheme(i) {
+  themeIdx = (i + themes.length) % themes.length;
+  const t = themes[themeIdx];
+  const r = document.documentElement.style;
+  r.setProperty('--primary', t.primary);
+  r.setProperty('--primary-light', t.pl);
+  r.setProperty('--primary-dark', t.pd);
+  document.getElementById('desktop').style.background = t.bg;
+  const d1 = document.querySelector('.wall-decor.d1'), d2 = document.querySelector('.wall-decor.d2');
+  if (d1) d1.style.background = `radial-gradient(circle, ${hexA(t.primary,0.55)}, ${hexA(t.primary,0.1)} 50%, transparent 70%)`;
+  if (d2) d2.style.background = `radial-gradient(circle, ${hexA(t.primary,0.32)}, transparent 70%)`;
+}
+function hexA(hex, a) {
+  const n = parseInt(hex.slice(1), 16);
+  return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`;
+}
+function cycleTheme() { applyTheme(themeIdx + 1); toast('🎨', '主题', `已切换到「${themes[themeIdx].name}」`, ''); }
+document.getElementById('mbTheme').addEventListener('click', cycleTheme);
+document.getElementById('mbThemeText').addEventListener('click', cycleTheme);
+
+/* ---------- SPOTLIGHT ---------- */
+const spot = document.getElementById('spotlight');
+const spotInput = document.getElementById('spotInput');
+const spotResults = document.getElementById('spotResults');
+let spotActive = 0, spotMatches = [];
+function openSpotlight() {
+  spot.classList.add('show'); spotInput.value = ''; renderSpot('');
+  setTimeout(() => spotInput.focus(), 60);
+}
+function closeSpotlight() { spot.classList.remove('show'); }
+function spotIndex() {
+  return allItems.map(it => ({
+    id: it.id, title: it.title, icon: it.icon, cover: it.cover,
+    sub: (it.role || '') + (it.year ? ' · ' + it.year : ''),
+    hay: (it.title + ' ' + (it.summary||'') + ' ' + (it.tags||[]).join(' ') + ' ' + (it.role||'')).toLowerCase()
+  }));
+}
+function renderSpot(q) {
+  const idx = spotIndex();
+  q = q.trim().toLowerCase();
+  spotMatches = q ? idx.filter(x => x.hay.includes(q)) : idx;
+  spotActive = 0;
+  if (!spotMatches.length) { spotResults.innerHTML = `<div class="spot-empty">没有找到「${q}」相关的项目</div>`; return; }
+  spotResults.innerHTML = spotMatches.map((m, i) => `
+    <div class="spot-item ${i===0?'active':''}" data-id="${m.id}" data-i="${i}">
+      <div class="si-icon" style="background:${m.cover};">${m.icon}</div>
+      <div><div class="si-title">${m.title}</div><div class="si-sub">${m.sub}</div></div>
+    </div>`).join('');
+  spotResults.querySelectorAll('.spot-item').forEach(el => {
+    el.addEventListener('click', () => { closeSpotlight(); openProject(el.dataset.id); });
+    el.addEventListener('mousemove', () => setSpotActive(+el.dataset.i));
+  });
+}
+function setSpotActive(i) {
+  spotActive = (i + spotMatches.length) % spotMatches.length;
+  spotResults.querySelectorAll('.spot-item').forEach((el, k) => el.classList.toggle('active', k === spotActive));
+  const active = spotResults.querySelector('.spot-item.active');
+  if (active) active.scrollIntoView({ block: 'nearest' });
+}
+spotInput.addEventListener('input', (e) => renderSpot(e.target.value));
+document.getElementById('mbSpotlight').addEventListener('click', openSpotlight);
+spot.addEventListener('click', (e) => { if (e.target === spot) closeSpotlight(); });
+
+/* ---------- CONTEXT MENU ---------- */
+const ctx = document.getElementById('ctx-menu');
+document.getElementById('desktop').addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  ctx.classList.add('show');
+  let x = e.clientX, y = e.clientY;
+  const r = ctx.getBoundingClientRect();
+  if (x + r.width > window.innerWidth - 8) x = window.innerWidth - r.width - 8;
+  if (y + r.height > window.innerHeight - 8) y = window.innerHeight - r.height - 8;
+  ctx.style.left = x + 'px'; ctx.style.top = y + 'px';
+});
+function hideCtx() { ctx.classList.remove('show'); }
+document.addEventListener('click', hideCtx);
+document.addEventListener('scroll', hideCtx, true);
+ctx.querySelectorAll('.ctx-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const act = item.dataset.act; hideCtx();
+    if (act === 'works') openProject('works');
+    else if (act === 'about') openProject('about');
+    else if (act === 'spotlight') openSpotlight();
+    else if (act === 'theme') cycleTheme();
+    else if (act === 'aboutmac') openAboutMac();
+  });
+});
+
+/* ---------- ABOUT THIS MAC ---------- */
+const aboutMac = document.getElementById('about-mac');
+function openAboutMac() { aboutMac.classList.add('show'); }
+function closeAboutMac() { aboutMac.classList.remove('show'); }
+document.getElementById('appleMenu').addEventListener('click', openAboutMac);
+document.getElementById('amClose').addEventListener('click', closeAboutMac);
+aboutMac.addEventListener('click', (e) => { if (e.target === aboutMac) closeAboutMac(); });
+
+/* ---------- TOAST ---------- */
+function toast(icon, app, title, body) {
+  const wrap = document.getElementById('toast-wrap');
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.innerHTML = `<div class="t-ico">${icon}</div><div><div class="t-app">${app}</div>
+    <div class="t-title">${title}</div>${body ? `<div class="t-body">${body}</div>` : ''}</div>`;
+  wrap.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('show'));
+  const remove = () => { el.classList.remove('show'); setTimeout(() => el.remove(), 500); };
+  el.addEventListener('click', remove);
+  setTimeout(remove, 5200);
+}
+function showWelcomeToast() {
+  toast('🗂️', '作品集', '欢迎来到 君婷 OS', '新增了 WAIC 展会折页 · 试试 ⌘/Ctrl + K 搜索项目');
+}
+
+/* ---------- LIGHTBOX GALLERY ---------- */
+let lbList = [], lbIdx = 0;
+const lightbox = document.getElementById('lightbox');
+function openLightbox(list, i) {
+  lbList = list; lbIdx = i; showLb();
+  lightbox.classList.add('show');
+}
+function showLb() {
+  const item = lbList[lbIdx]; if (!item) return;
+  document.getElementById('lbImg').src = item.src;
+  document.getElementById('lbCap').textContent = item.cap || '';
+}
+function closeLightbox() { lightbox.classList.remove('show'); }
+function lbStep(d) { lbIdx = (lbIdx + d + lbList.length) % lbList.length; showLb(); }
+lightbox.addEventListener('click', (e) => {
+  if (e.target.classList.contains('lb-close') || e.target === lightbox) closeLightbox();
+  else if (e.target.classList.contains('lb-prev')) { e.stopPropagation(); lbStep(-1); }
+  else if (e.target.classList.contains('lb-next')) { e.stopPropagation(); lbStep(1); }
+});
+function bindGallery() {
+  document.querySelectorAll('#content .masonry').forEach(gallery => {
+    const figs = [...gallery.querySelectorAll('.doc-image')];
+    const list = figs.map(f => ({ src: f.querySelector('img').src, cap: (f.querySelector('figcaption')||{}).textContent || '' }));
+    figs.forEach((f, i) => f.addEventListener('click', () => openLightbox(list, i)));
+  });
+}
+
+/* ---------- DRAGGABLE + WINDOWED BROWSER ---------- */
+(function draggable() {
+  const browser = document.getElementById('browser');
+  browser.classList.add('windowed');
+  const chrome = browser.querySelector('.browser-chrome');
+  let dragging = false, sx, sy, ox, oy;
+  chrome.addEventListener('mousedown', (e) => {
+    if (e.target.closest('.traffic-light') || e.target.closest('.browser-back-btn') ||
+        e.target.closest('.tab') || e.target.closest('.tab-add') || e.target.closest('.url-bar')) return;
+    dragging = true; browser.classList.add('dragging');
+    const r = browser.getBoundingClientRect();
+    // switch to explicit left/top positioning
+    browser.style.transform = 'none';
+    browser.style.left = r.left + 'px'; browser.style.top = r.top + 'px';
+    sx = e.clientX; sy = e.clientY; ox = r.left; oy = r.top;
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    let nx = ox + (e.clientX - sx), ny = oy + (e.clientY - sy);
+    ny = Math.max(28, ny);
+    browser.style.left = nx + 'px'; browser.style.top = ny + 'px';
+  });
+  window.addEventListener('mouseup', () => { dragging = false; browser.classList.remove('dragging'); });
+})();
+
+/* maximize toggle — full screen ⇄ windowed（两种都有），像 mac 一样 */
+let savedWinPos = null;
+function toggleMaximize() {
+  const browser = document.getElementById('browser');
+  const isWindowed = browser.classList.contains('windowed');
+  if (isWindowed) {
+    // 记住当前窗口位置，放大到整屏
+    savedWinPos = { left: browser.style.left, top: browser.style.top, transform: browser.style.transform };
+    browser.classList.remove('windowed');
+    browser.style.left = ''; browser.style.top = ''; browser.style.transform = '';
+  } else {
+    // 还原成窗口，尽量回到上次拖动的位置
+    browser.classList.add('windowed');
+    if (savedWinPos && savedWinPos.left) {
+      browser.style.left = savedWinPos.left; browser.style.top = savedWinPos.top; browser.style.transform = 'none';
+    } else {
+      browser.style.left = ''; browser.style.top = ''; browser.style.transform = '';
+    }
+  }
+}
+(function maximize() {
+  const browser = document.getElementById('browser');
+  const green = browser.querySelector('.traffic-light[title="Full"]');
+  if (green) { green.style.cursor = 'pointer'; green.title = '放大 / 还原窗口'; green.addEventListener('click', toggleMaximize); }
+  // 双击标题栏也能放大 / 还原（mac 经典操作）
+  const chrome = browser.querySelector('.browser-chrome');
+  if (chrome) chrome.addEventListener('dblclick', (e) => {
+    if (e.target.closest('.traffic-light') || e.target.closest('.tab') || e.target.closest('.tab-add') ||
+        e.target.closest('.browser-back-btn') || e.target.closest('.url-bar')) return;
+    toggleMaximize();
+  });
+})();
+
+/* ---------- DOCK MAGNIFICATION ---------- */
+(function dockMagnify() {
+  const dock = document.getElementById('dockBar');
+  if (!dock) return;
+  dock.addEventListener('mousemove', (e) => {
+    const items = dock.querySelectorAll('.dock-item');
+    items.forEach(it => {
+      const r = it.getBoundingClientRect();
+      const c = r.left + r.width / 2;
+      const dist = Math.abs(e.clientX - c);
+      const scale = Math.max(1, 1.5 - dist / 190);
+      it.style.transform = `translateY(${-(scale-1)*22}px) scale(${scale})`;
+    });
+  });
+  dock.addEventListener('mouseleave', () => {
+    dock.querySelectorAll('.dock-item').forEach(it => it.style.transform = '');
+  });
+})();
+
+/* ---------- SCROLL REVEAL ---------- */
+let scrollObserver;
+function initScrollObserver() {
+  if (scrollObserver) return;
+  scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); scrollObserver.unobserve(en.target); } });
+  }, { root: document.getElementById('content'), threshold: 0.08 });
+}
+function observeReveals() {
+  if (!scrollObserver) initScrollObserver();
+  document.querySelectorAll('#content .project-section, #content .works-cat, #content .doc-image, #content .wx-article')
+    .forEach(el => { if (!el.classList.contains('reveal')) { el.classList.add('reveal'); scrollObserver.observe(el); } });
+}
+
+/* ---------- GLOBAL KEYBOARD ---------- */
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) { e.preventDefault(); spot.classList.contains('show') ? closeSpotlight() : openSpotlight(); return; }
+  if (spot.classList.contains('show')) {
+    if (e.key === 'Escape') { closeSpotlight(); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); setSpotActive(spotActive + 1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); setSpotActive(spotActive - 1); }
+    else if (e.key === 'Enter') { e.preventDefault(); const m = spotMatches[spotActive]; if (m) { closeSpotlight(); openProject(m.id); } }
+    return;
+  }
+  if (lightbox.classList.contains('show')) {
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') lbStep(-1);
+    else if (e.key === 'ArrowRight') lbStep(1);
+    return;
+  }
+  if (e.key === 'Escape') { if (aboutMac.classList.contains('show')) closeAboutMac(); }
+});
+
+document.getElementById('closeBtn').addEventListener('click', closeBrowser);
+document.getElementById('minBtn').addEventListener('click', () => {
+  const browser = document.getElementById('browser');
+  browser.classList.add('minimizing');
+  setTimeout(() => { browser.classList.remove('minimizing'); closeBrowser(); }, 500);
+});
+document.getElementById('browserBackBtn').addEventListener('click', closeBrowser);
+document.getElementById('desktop').addEventListener('click', (e) => {
+  if (!e.target.closest('.folder-tile') && !e.target.closest('.dock')) {
+    document.querySelectorAll('.folder-tile').forEach(t => t.classList.remove('selected'));
+  }
+});
+document.addEventListener('keydown', (e) => {
+  // spotlight / about-mac 打开时，让它们各自的处理器优先
+  if (spot.classList.contains('show') || aboutMac.classList.contains('show')) return;
+  if ((e.metaKey || e.ctrlKey) && e.key === 'w' && activeTab) { e.preventDefault(); closeTab(activeTab); }
+  if ((e.metaKey || e.ctrlKey) && e.key === 't') { e.preventDefault(); const r = allItems.find(x => !openTabs.includes(x.id)); if (r) openProject(r.id); }
+  if ((e.metaKey || e.ctrlKey) && /^[1-9]$/.test(e.key)) { e.preventDefault(); const i = parseInt(e.key)-1; if (openTabs[i]) switchTab(openTabs[i]); }
+  if (e.key === 'Escape' && activeTab) closeBrowser();
+});
+
+const languageToggle = document.getElementById('langToggle');
+if (languageToggle) {
+  const toggleLanguage = () => setLanguage(currentLanguage === 'zh' ? 'en' : 'zh');
+  languageToggle.addEventListener('click', toggleLanguage);
+  languageToggle.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleLanguage(); } });
+}
+setLanguage(currentLanguage, false);
+runBoot();
+</script>
+</body>
+</html>
