@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A202C"/>
+      <stop offset="100%" stop-color="#9B2C2C"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="420" fill="url(#bg)"/>
+  <text x="600" y="56" text-anchor="middle" fill="#F7FAFC" font-size="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="700" letter-spacing="-0.02em">Father's Day × NBA Campaign Flow</text>
+  <text x="600" y="86" text-anchor="middle" fill="#CBD5E0" font-size="14" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">站内游戏化转化 + 站外社媒扩散的整合营销链路</text>
+
+  <!-- Phase cards -->
+  <g transform="translate(70, 130)" filter="url(#shadow)">
+    <rect width="240" height="200" rx="18" fill="#FFF"/>
+    <rect x="0" y="0" width="240" height="6" rx="3" fill="#C53030"/>
+    <text x="120" y="52" text-anchor="middle" font-size="34">🔥</text>
+    <text x="120" y="88" text-anchor="middle" fill="#1A202C" font-size="18" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">预热</text>
+    <text x="120" y="118" text-anchor="middle" fill="#718096" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">上线前 1 周</text>
+    <text x="120" y="150" text-anchor="middle" fill="#4A5568" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Instagram / EDM</text>
+    <text x="120" y="174" text-anchor="middle" fill="#4A5568" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">悬念素材 + 新品预告</text>
+  </g>
+
+  <g transform="translate(340, 130)" filter="url(#shadow)">
+    <rect width="240" height="200" rx="18" fill="#FFF"/>
+    <rect x="0" y="0" width="240" height="6" rx="3" fill="#C53030"/>
+    <text x="120" y="52" text-anchor="middle" font-size="34">🚀</text>
+    <text x="120" y="88" text-anchor="middle" fill="#1A202C" font-size="18" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">上线</text>
+    <text x="120" y="118" text-anchor="middle" fill="#718096" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Day 1</text>
+    <text x="120" y="150" text-anchor="middle" fill="#4A5568" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Shopify 首页</text>
+    <text x="120" y="174" text-anchor="middle" fill="#4A5568" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Banner + 转盘弹窗 + 规则</text>
+  </g>
+
+  <g transform="translate(610, 130)" filter="url(#shadow)">
+    <rect width="240" height="200" rx="18" fill="#FFF"/>
+    <rect x="0" y="0" width="240" height="6" rx="3" fill="#C53030"/>
+    <text x="120" y="52" text-anchor="middle" font-size="34">📣</text>
+    <text x="120" y="88" text-anchor="middle" fill="#1A202C" font-size="18" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">引爆</text>
+    <text x="120" y="118" text-anchor="middle" fill="#718096" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">活动期间</text>
+    <text x="120" y="150" text-anchor="middle" fill="#4A5568" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">Instagram / KOC</text>
+    <text x="120" y="174" text-anchor="middle" fill="#4A5568" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">达人开箱 + 用户晒单扩散</text>
+  </g>
+
+  <g transform="translate(880, 130)" filter="url(#shadow)">
+    <rect width="240" height="200" rx="18" fill="#FFF"/>
+    <rect x="0" y="0" width="240" height="6" rx="3" fill="#C53030"/>
+    <text x="120" y="52" text-anchor="middle" font-size="34">🏁</text>
+    <text x="120" y="88" text-anchor="middle" fill="#1A202C" font-size="18" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">收官</text>
+    <text x="120" y="118" text-anchor="middle" fill="#718096" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">活动最后阶段</text>
+    <text x="120" y="150" text-anchor="middle" fill="#4A5568" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">EDM / Instagram</text>
+    <text x="120" y="174" text-anchor="middle" fill="#4A5568" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">倒计时提醒 + 追加名额</text>
+  </g>
+
+  <!-- Arrows -->
+  <g fill="none" stroke="#F7FAFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+    <path d="M310 230 L340 230" marker-end="url(#arrow)"/>
+    <path d="M580 230 L610 230" marker-end="url(#arrow)"/>
+    <path d="M850 230 L880 230" marker-end="url(#arrow)"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F7FAFC"/>
+    </marker>
+  </defs>
+
+  <!-- Bottom tags -->
+  <g transform="translate(0, 360)">
+    <rect x="70" y="0" width="160" height="32" rx="16" fill="rgba(255,255,255,0.12)"/>
+    <text x="150" y="21" text-anchor="middle" fill="#F7FAFC" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="500">分层转盘抽奖</text>
+    <rect x="250" y="0" width="160" height="32" rx="16" fill="rgba(255,255,255,0.12)"/>
+    <text x="330" y="21" text-anchor="middle" fill="#F7FAFC" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="500">篮球配件 Bundle</text>
+    <rect x="430" y="0" width="140" height="32" rx="16" fill="rgba(255,255,255,0.12)"/>
+    <text x="500" y="21" text-anchor="middle" fill="#F7FAFC" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="500">Instagram</text>
+    <rect x="590" y="0" width="100" height="32" rx="16" fill="rgba(255,255,255,0.12)"/>
+    <text x="640" y="21" text-anchor="middle" fill="#F7FAFC" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="500">KOC</text>
+    <rect x="710" y="0" width="120" height="32" rx="16" fill="rgba(255,255,255,0.12)"/>
+    <text x="770" y="21" text-anchor="middle" fill="#F7FAFC" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="500">Shopify</text>
+    <rect x="850" y="0" width="120" height="32" rx="16" fill="rgba(255,255,255,0.12)"/>
+    <text x="910" y="21" text-anchor="middle" fill="#F7FAFC" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="500">EDM</text>
+    <rect x="990" y="0" width="130" height="32" rx="16" fill="rgba(255,255,255,0.12)"/>
+    <text x="1055" y="21" text-anchor="middle" fill="#F7FAFC" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="500"> gamification</text>
+  </g>
+</svg>
