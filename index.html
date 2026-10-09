@@ -493,6 +493,88 @@ html, body {
 .section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--gray); font-weight: 700; margin-bottom: 18px; }
 .project-paragraph { font-size: 16.5px; line-height: 1.75; color: var(--dark-2); margin-bottom: 18px; }
 .project-paragraph strong { color: var(--dark); font-weight: 600; }
+
+/* HIROSCRIBE WORKFLOW DEMO */
+.hiro-demo { --hiro-green: #176B45; --hiro-blue: #244F79; position: relative; overflow: hidden;
+  border: 1px solid #DCE6E1; border-radius: 22px; padding: 18px; color: #17231D;
+  background: radial-gradient(circle at 92% 8%, rgba(71,157,117,0.18), transparent 32%),
+    linear-gradient(145deg, #F6FAF8 0%, #EEF4F1 56%, #EDF2F7 100%);
+  box-shadow: 0 24px 60px rgba(23,107,69,0.12); }
+.hiro-demo::before { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.26;
+  background-image: linear-gradient(rgba(23,107,69,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(23,107,69,0.08) 1px, transparent 1px);
+  background-size: 28px 28px; mask-image: linear-gradient(120deg, #000, transparent 68%); }
+.hiro-demo-head { position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 8px 8px 18px; }
+.hiro-demo-kicker { display: flex; align-items: center; gap: 8px; color: var(--hiro-green); font-size: 10.5px;
+  font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 7px; }
+.hiro-demo-kicker::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #34C98C;
+  box-shadow: 0 0 0 5px rgba(52,201,140,0.13); }
+.hiro-demo-title { font-size: clamp(22px, 3vw, 30px); line-height: 1.15; font-weight: 800; letter-spacing: -0.035em; }
+.hiro-demo-hint { max-width: 260px; color: #65756D; font-size: 12px; line-height: 1.55; text-align: right; }
+.hiro-demo-grid { position: relative; display: grid; grid-template-columns: minmax(190px, 0.68fr) minmax(0, 1.7fr); gap: 14px; }
+.hiro-demo-steps { display: flex; flex-direction: column; gap: 7px; }
+.hiro-step { position: relative; display: grid; grid-template-columns: 30px 1fr; align-items: center; gap: 10px; width: 100%;
+  min-height: 53px; padding: 8px 10px; overflow: hidden; border: 1px solid transparent; border-radius: 13px;
+  color: #66766E; background: rgba(255,255,255,0.52); font: inherit; text-align: left; cursor: pointer;
+  transition: transform 0.24s ease, border-color 0.24s ease, color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease; }
+.hiro-step:hover { transform: translateX(3px); color: #183D2B; border-color: rgba(23,107,69,0.18); }
+.hiro-step.active { color: #123B28; border-color: rgba(23,107,69,0.28); background: rgba(255,255,255,0.94);
+  box-shadow: 0 9px 22px rgba(23,107,69,0.10); }
+.hiro-step-num { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; color: #728078;
+  background: #E8EFEB; font: 700 10px/1 ui-monospace, SFMono-Regular, Consolas, monospace; transition: color 0.24s, background 0.24s; }
+.hiro-step.active .hiro-step-num { color: white; background: linear-gradient(135deg, var(--hiro-green), var(--hiro-blue)); }
+.hiro-step-copy { position: relative; z-index: 1; font-size: 12.5px; font-weight: 700; line-height: 1.25; }
+.hiro-step-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; transform: scaleX(0);
+  transform-origin: left; background: linear-gradient(90deg, #34C98C, #3D79A6); }
+.hiro-step.active.is-running .hiro-step-progress { animation: hiroProgress 2.2s linear both; }
+@keyframes hiroProgress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.hiro-demo-screen { min-height: 370px; border: 1px solid rgba(36,79,121,0.16); border-radius: 17px; overflow: hidden;
+  background: rgba(255,255,255,0.94); box-shadow: 0 15px 38px rgba(28,58,43,0.10); }
+.hiro-screen-top { height: 42px; display: flex; align-items: center; gap: 7px; padding: 0 15px; color: #6F7C75;
+  border-bottom: 1px solid #E5ECE8; background: rgba(248,250,249,0.92); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.hiro-screen-dot { width: 8px; height: 8px; border-radius: 50%; background: #D8E1DC; }
+.hiro-screen-dot:first-child { background: #FF776E; } .hiro-screen-dot:nth-child(2) { background: #F4C04E; } .hiro-screen-dot:nth-child(3) { background: #47C978; }
+.hiro-screen-name { margin-left: 6px; }
+.hiro-screen-stage { margin-left: auto; color: var(--hiro-green); }
+.hiro-screen-body { display: grid; grid-template-columns: minmax(0, 1fr) 170px; gap: 14px; padding: 18px; }
+.hiro-screen-main { min-width: 0; }
+.hiro-screen-eyebrow { color: var(--hiro-green); font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; }
+.hiro-screen-title { font-size: clamp(20px, 3vw, 29px); line-height: 1.16; font-weight: 800; letter-spacing: -0.035em; margin-bottom: 11px; }
+.hiro-screen-desc { min-height: 43px; color: #65736C; font-size: 12.5px; line-height: 1.65; margin-bottom: 15px; }
+.hiro-screen-input { border: 1px solid #DDE8E2; border-radius: 12px; padding: 13px 14px; background: #F7FAF8; }
+.hiro-input-label { color: #8A9890; font-size: 9px; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 7px; }
+.hiro-input-copy { color: #24382E; font-size: 12px; line-height: 1.55; }
+.hiro-screen-output { margin-top: 12px; padding: 13px 14px; border-radius: 12px; color: white;
+  background: linear-gradient(135deg, var(--hiro-green), var(--hiro-blue)); box-shadow: 0 10px 22px rgba(23,107,69,0.18); }
+.hiro-output-label { color: rgba(255,255,255,0.68); font-size: 9px; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 7px; }
+.hiro-output-copy { font-size: 12.5px; line-height: 1.55; font-weight: 650; }
+.hiro-screen-aside { display: flex; flex-direction: column; gap: 9px; padding-left: 14px; border-left: 1px solid #E6ECE8; }
+.hiro-check { display: grid; grid-template-columns: 18px 1fr; gap: 8px; align-items: start; padding: 9px; border-radius: 10px;
+  color: #6F7D75; background: #F5F8F6; font-size: 10.5px; line-height: 1.35; transition: color 0.25s, background 0.25s, transform 0.25s; }
+.hiro-check::before { content: '○'; color: #A4B0AA; font-weight: 900; }
+.hiro-check.done { color: #174C32; background: #EAF6F0; transform: translateX(-2px); }
+.hiro-check.done::before { content: '✓'; color: #1A9C60; }
+.hiro-demo-footer { position: relative; display: flex; justify-content: space-between; gap: 16px; padding: 14px 8px 3px;
+  color: #6E7C75; font-size: 10.5px; line-height: 1.5; }
+.hiro-demo-status { color: var(--hiro-green); font-weight: 800; }
+@media (max-width: 680px) {
+  .hiro-demo { padding: 12px; border-radius: 17px; }
+  .hiro-demo-head { display: block; padding: 6px 5px 14px; }
+  .hiro-demo-hint { margin-top: 9px; max-width: none; text-align: left; }
+  .hiro-demo-grid { grid-template-columns: 1fr; }
+  .hiro-demo-steps { flex-direction: row; overflow-x: auto; padding: 0 2px 5px; scroll-snap-type: x proximity; scrollbar-width: none; }
+  .hiro-demo-steps::-webkit-scrollbar { display: none; }
+  .hiro-step { flex: 0 0 148px; scroll-snap-align: start; }
+  .hiro-step:hover { transform: none; }
+  .hiro-demo-screen { min-height: 430px; }
+  .hiro-screen-body { grid-template-columns: 1fr; padding: 16px; }
+  .hiro-screen-aside { display: grid; grid-template-columns: 1fr 1fr; padding: 12px 0 0; border-left: 0; border-top: 1px solid #E6ECE8; }
+  .hiro-demo-footer { display: block; }
+  .hiro-demo-status { display: block; margin-top: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hiro-step, .hiro-check { transition: none; }
+  .hiro-step.active.is-running .hiro-step-progress { animation: none; transform: scaleX(1); }
+}
 .image-placeholder { width: 100%; aspect-ratio: 16/9; border-radius: 12px; display: flex; align-items: center; justify-content: center;
   color: white; position: relative; overflow: hidden; margin-bottom: 20px; box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
 .image-placeholder.small { aspect-ratio: 4/3; }
@@ -1866,6 +1948,123 @@ function closeBrowser() {
   document.querySelectorAll('.folder-tile').forEach(t => t.classList.remove('selected'));
 }
 
+let hiroDemoTimer = null;
+function getHiroDemoSteps(isEn) {
+  return isEn ? [
+    { label: 'Frame the brief', eyebrow: '01 · Brief', title: 'Turn a request into a clear task card',
+      input: 'Topic: How AI agents are changing patent research · Audience: product and IP teams',
+      output: 'Objective, audience, article type, evidence boundary, and delivery format are confirmed.', checks: 1 },
+    { label: 'Choose a title', eyebrow: '02 · Direction', title: 'Compare angles before drafting',
+      input: 'Three directions: product value · industry trend · reader problem',
+      output: 'Recommended title + rationale, with alternative directions kept for review.', checks: 2 },
+    { label: 'Confirm outline', eyebrow: '03 · Structure', title: 'Lock the narrative and evidence slots',
+      input: 'Opening → workflow change → product mechanism → evidence → next action',
+      output: 'A reviewable outline maps each claim to its role in the narrative.', checks: 3 },
+    { label: 'Generate draft', eyebrow: '04 · Draft', title: 'Write section by section, not in one black box',
+      input: 'Use the confirmed title, outline, tone, and product boundaries.',
+      output: 'A structured first draft is ready for targeted edits instead of a full rewrite.', checks: 4 },
+    { label: 'Review facts', eyebrow: '05 · Evidence', title: 'Separate facts, claims, and inference',
+      input: 'Check dates, named entities, source support, and statements that need qualification.',
+      output: 'Risky claims are flagged; sources and wording boundaries are attached to the draft.', checks: 5 },
+    { label: 'Deliver final copy', eyebrow: '06 · Delivery', title: 'Prepare a publication-ready WeChat package',
+      input: 'Run image, formatting, CTA, and copy checks before export.',
+      output: 'Final copy ✓  WeChat preview ✓  Delivery checklist ✓  Copy-ready rich text ✓', checks: 6 }
+  ] : [
+    { label: '确认任务', eyebrow: '01 · 任务卡', title: '把模糊需求整理成清晰任务卡',
+      input: '选题：AI Agent 如何改变专利研究 · 读者：产品团队与 IP 从业者',
+      output: '确认目标、读者、文章类型、证据边界与最终交付格式。', checks: 1 },
+    { label: '选择标题', eyebrow: '02 · 方向判断', title: '先比较角度，再进入写作',
+      input: '三个方向：产品价值型 · 行业热点型 · 用户问题型',
+      output: '给出推荐标题与推荐理由，同时保留其他方向供人工判断。', checks: 2 },
+    { label: '确认大纲', eyebrow: '03 · 内容结构', title: '锁定叙事路径与证据位置',
+      input: '开场 → 工作流变化 → 产品机制 → 事实证据 → 下一步行动',
+      output: '每一部分承担什么叙事任务、需要什么证据，都可以逐项审核。', checks: 3 },
+    { label: '生成初稿', eyebrow: '04 · 分段写作', title: '按确认结构逐段生成，不做黑箱长文',
+      input: '严格沿用已确认的标题、大纲、语气和产品表达边界。',
+      output: '生成结构化初稿，后续可以局部修改，不必每次全文重写。', checks: 4 },
+    { label: '事实审核', eyebrow: '05 · 证据边界', title: '区分事实、产品主张与合理推断',
+      input: '核查时间、主体、来源支撑，以及需要弱化或补充限定的表述。',
+      output: '标记高风险句子，并把来源与表达边界附回对应段落。', checks: 5 },
+    { label: '交付终稿', eyebrow: '06 · 发布检查', title: '输出可直接发布的公众号交付包',
+      input: '发布前检查图片、格式、CTA、净稿与复制效果。',
+      output: '终稿 ✓  公众号预览 ✓  交付清单 ✓  可复制富文本 ✓', checks: 6 }
+  ];
+}
+
+function renderHiroDemo(isEn) {
+  const steps = getHiroDemoSteps(isEn);
+  const checkLabels = isEn
+    ? ['Brief locked', 'Angle selected', 'Outline approved', 'Draft complete', 'Facts reviewed', 'Ready to publish']
+    : ['任务卡已确认', '标题方向已选择', '大纲已确认', '初稿已完成', '事实已审核', '可以发布'];
+  return `<div class="project-section hiro-workflow-section"><div class="section-title">${isEn ? 'Interactive Workflow' : '交互式工作流演示'}</div>
+    <div class="hiro-demo" data-hiro-demo data-lang="${isEn ? 'en' : 'zh'}">
+      <div class="hiro-demo-head">
+        <div><div class="hiro-demo-kicker">HiroScribe · Workflow Demo</div><div class="hiro-demo-title">${isEn ? 'From brief to publication-ready copy' : '从任务确认到公众号终稿'}</div></div>
+        <div class="hiro-demo-hint">${isEn ? 'Auto-plays in 13 seconds · Click any step to inspect it' : '约 13 秒自动演示 · 点击任一步骤可手动查看'}</div>
+      </div>
+      <div class="hiro-demo-grid">
+        <div class="hiro-demo-steps" role="tablist" aria-label="${isEn ? 'HiroScribe workflow steps' : 'HiroScribe 工作流步骤'}">
+          ${steps.map((step, i) => `<button class="hiro-step${i === 0 ? ' active is-running' : ''}" type="button" role="tab" aria-selected="${i === 0}" data-hiro-step="${i}">
+            <span class="hiro-step-num">0${i + 1}</span><span class="hiro-step-copy">${step.label}</span><span class="hiro-step-progress"></span></button>`).join('')}
+        </div>
+        <div class="hiro-demo-screen" role="tabpanel">
+          <div class="hiro-screen-top"><span class="hiro-screen-dot"></span><span class="hiro-screen-dot"></span><span class="hiro-screen-dot"></span><span class="hiro-screen-name">HiroScribe / Content OS</span><span class="hiro-screen-stage" data-hiro-count>01 / 06</span></div>
+          <div class="hiro-screen-body">
+            <div class="hiro-screen-main">
+              <div class="hiro-screen-eyebrow" data-hiro-eyebrow>${steps[0].eyebrow}</div>
+              <div class="hiro-screen-title" data-hiro-title>${steps[0].title}</div>
+              <div class="hiro-screen-desc" data-hiro-desc>${isEn ? 'Each stage creates a reviewable artifact before the workflow moves forward.' : '每个阶段都会形成可审核的中间交付，再进入下一步。'}</div>
+              <div class="hiro-screen-input"><div class="hiro-input-label">${isEn ? 'Input / decision' : '输入 / 需要确认'}</div><div class="hiro-input-copy" data-hiro-input>${steps[0].input}</div></div>
+              <div class="hiro-screen-output"><div class="hiro-output-label">${isEn ? 'Stage output' : '本阶段交付'}</div><div class="hiro-output-copy" data-hiro-output>${steps[0].output}</div></div>
+            </div>
+            <div class="hiro-screen-aside" aria-label="${isEn ? 'Delivery checks' : '交付检查'}">
+              ${checkLabels.map((label, i) => `<div class="hiro-check${i === 0 ? ' done' : ''}" data-hiro-check="${i}">${label}</div>`).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hiro-demo-footer"><span>${isEn ? 'The user can pause, review, and revise at every stage.' : '每一步都保留人工确认、回看和局部修改。'}</span><span class="hiro-demo-status" data-hiro-status>${isEn ? 'Playing · Step 1' : '演示中 · 第 1 步'}</span></div>
+    </div>
+  </div>`;
+}
+
+function bindHiroDemo() {
+  if (hiroDemoTimer) { clearInterval(hiroDemoTimer); hiroDemoTimer = null; }
+  const demo = document.querySelector('[data-hiro-demo]'); if (!demo) return;
+  const isEn = demo.dataset.lang === 'en';
+  const steps = getHiroDemoSteps(isEn);
+  const buttons = [...demo.querySelectorAll('[data-hiro-step]')];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let active = 0; let paused = false;
+  const setStep = (index, userInitiated = false) => {
+    active = index;
+    buttons.forEach((button, i) => {
+      button.classList.remove('active', 'is-running');
+      button.setAttribute('aria-selected', String(i === active));
+    });
+    const selected = buttons[active]; selected.classList.add('active');
+    if (!reducedMotion && !paused) requestAnimationFrame(() => selected.classList.add('is-running'));
+    demo.querySelector('[data-hiro-count]').textContent = `0${active + 1} / 06`;
+    demo.querySelector('[data-hiro-eyebrow]').textContent = steps[active].eyebrow;
+    demo.querySelector('[data-hiro-title]').textContent = steps[active].title;
+    demo.querySelector('[data-hiro-input]').textContent = steps[active].input;
+    demo.querySelector('[data-hiro-output]').textContent = steps[active].output;
+    demo.querySelectorAll('[data-hiro-check]').forEach((check, i) => check.classList.toggle('done', i < steps[active].checks));
+    demo.querySelector('[data-hiro-status]').textContent = userInitiated
+      ? (isEn ? `Paused · Step ${active + 1}` : `已暂停 · 第 ${active + 1} 步`)
+      : (isEn ? `Playing · Step ${active + 1}` : `演示中 · 第 ${active + 1} 步`);
+    selected.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reducedMotion ? 'auto' : 'smooth' });
+  };
+  buttons.forEach((button, i) => button.addEventListener('click', () => { paused = true; setStep(i, true); }));
+  const pause = () => { paused = true; buttons[active].classList.remove('is-running'); };
+  const resume = () => { if (reducedMotion) return; paused = false; setStep(active); };
+  demo.addEventListener('mouseenter', pause);
+  demo.addEventListener('mouseleave', resume);
+  demo.addEventListener('focusin', pause);
+  demo.addEventListener('focusout', (event) => { if (!demo.contains(event.relatedTarget)) resume(); });
+  if (!reducedMotion) hiroDemoTimer = setInterval(() => { if (!paused && document.body.contains(demo)) setStep((active + 1) % steps.length); }, 2200);
+}
+
 function renderProjectContent(id) {
   const source = allItems.find(x => x.id === id); if (!source) return;
   const it = localizedProject(source);
@@ -1931,6 +2130,7 @@ function renderProjectContent(id) {
     <div class="case-framework">${caseLabels.map(([label,key]) => `<div class="case-step"><div class="case-step-label">${label}</div><div class="case-step-copy">${study[key]}</div></div>`).join('')}</div></div>` : '';
   const languageNotice = it.languageOnly ? `<div class="project-section"><span class="language-badge">Chinese case study</span>
     <p class="project-paragraph" style="margin-top:10px;">This supporting project is currently available in Chinese. The four Featured Projects provide complete English case studies.</p></div>` : '';
+  const workflowHTML = id === 'hiroscribe' ? renderHiroDemo(isEn) : '';
   content.innerHTML = `<div class="project-detail">
     <div class="project-hero">
       <div class="project-eyebrow">Case Study · ${it.year}</div>
@@ -1940,6 +2140,7 @@ function renderProjectContent(id) {
       ${it.languageOnly ? '<span class="language-badge">Chinese case study</span>' : ''}
     </div>
     ${caseHTML}
+    ${workflowHTML}
     ${liveThumb}
     <div class="project-meta-grid">
       <div class="meta-item"><div class="meta-label">Year</div><div class="meta-value">${it.year}</div></div>
@@ -1968,6 +2169,7 @@ function renderProjectContent(id) {
   bindVideoCards();
   bindArticleToggles();
   bindGallery();
+  bindHiroDemo();
   observeReveals();
 }
 
