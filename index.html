@@ -1169,18 +1169,44 @@ Leo 不再是信息整理者，而是结果的决策者。</p>
     ]
   },
   {
-    id: 'waic-brochure', title: 'WAIC 展会折页 · 芽仔 Agent', thumb: 'brochure-0710-p01.png', folderColor: '#22C55E', category: 'gtm',
-    cover: 'linear-gradient(135deg, #22C55E 0%, #065F46 100%)',
-    year: '2026 · WAIC', role: '产品营销 · 线下获客', client: '智慧芽 Patsnap', duration: '四联风琴折 · 420×210',
-    summary: 'WAIC 线下展会折页：把专利数据库芽仔 Agent 讲成研发与技术决策的五大核心场景。',
-    description: '面向 WAIC 线下展会的专利数据库芽仔 Agent 宣传折页，采用四联风琴折（420×210mm、双面）版式，正面主打「查得到 → 判得了」的核心叙事与 Agent 工作流，背面用「找 / 读 / 评 / 析 / 谋」五大核心场景（技术信息检索、技术方案解读、创新性评估、竞争技术情报、技术布局规划）串起研发与技术决策全流程，并落到「专业知识 × AI 深度融合、全流程 AI 分析、大规模数据实践验证、人机协同提升决策质量」四大差异化优势。每个场景配 AI 能力清单与扫码获取案例入口，整册版式、文案与信息架构均由我主导，可直接印刷交付。',
-    impact: '双面四联风琴折可直接印刷 · 覆盖 5 大核心场景 + 4 大差异化优势 · 场景化 AI 能力清单 + 扫码案例入口，作为 WAIC 线下展会核心获客物料。',
-    tags: ['GTM', '线下物料', '展会', 'WAIC', '折页设计'],
+    id: 'competitive-intelligence', title: '专利 AI 竞品持续监测', thumb: 'competitive-monitoring-cover.webp', icon: '📡', folderColor: '#0F766E', category: 'gtm',
+    cover: 'linear-gradient(135deg, #0F766E 0%, #0F3D2E 100%)',
+    year: '2026.07 – 10', role: '竞品情报 · 产品策略', client: '智慧芽 Patsnap', duration: '5 个连续监测周期',
+    summary: '把零散竞品动态沉淀成固定窗口、统一证据口径和可持续复盘的专利 AI 监测机制。',
+    description: '面向专利 AI 产品，持续追踪国内外数据库、AI 原生产品与相邻工作流。每个周期不只汇总发布信息，而是核对事件日期、来源类型与证据状态，再按 P0 / P1 / Watch 分级，判断信号进入了哪项专业任务、是否改变竞争规则，并在下一周期复盘原判断。公开作品集仅展示脱敏后的方法与报告结构，不公开完整内部建议。',
+    impact: '2026 年 7–10 月完成 5 个连续监测周期 · 建立信号分级、来源核验、工作流机会图与上期判断复盘 · 形成可供产品与 GTM 讨论的持续情报机制。',
+    tags: ['Competitive Intelligence', 'Product Strategy', 'Patent AI', 'Evidence', 'GTM'],
+    tables: [
+      {
+        title: '持续监测机制',
+        icon: '🧭',
+        head: ['环节', '判断问题', '交付'],
+        rows: [
+          ['信号采集与核验', '这是本期新增、长期能力，还是证据不足？', '日期、来源、证据状态'],
+          ['优先级与工作流映射', '它改变了哪项专业任务或产品机制？', 'P0 / P1 / Watch + 机会图'],
+          ['复盘与下一步', '上期判断是否仍成立，下一步验证什么？', '趋势判断与行动建议']
+        ]
+      }
+    ],
     extra: [
-      { src: 'brochure-0710-p01.png', caption: '折页正面：芽仔 Agent 核心叙事与工作流（印刷版）' },
-      { src: 'brochure-0710-p02.png', caption: '折页背面：覆盖研发与技术决策的五大核心场景 + 四大差异化优势' },
-      { src: 'brochure-agent-p01.png', caption: '四联风琴折可编辑版 · 正面' },
-      { src: 'brochure-agent-p02.png', caption: '四联风琴折可编辑版 · 背面' }
+      { src: 'competitive-monitoring-method.svg', caption: '固定窗口、统一证据口径与连续复盘构成完整监测闭环' },
+      { src: 'competitive-monitoring-cover.webp', caption: '代表性报告结构（内部建议区域已脱敏）' }
+    ]
+  },
+  {
+    id: 'waic-brochure', title: 'WAIC 展会折页 · 芽仔 Agent', thumb: 'waic-brochure-2026-front.webp', folderColor: '#1F6FCA', category: 'gtm',
+    cover: 'linear-gradient(135deg, #1F6FCA 0%, #05A875 100%)',
+    year: '2026 · WAIC', role: '产品营销 · 线下获客', client: '智慧芽 Patsnap', duration: '双面四联折 · 594×210 mm',
+    links: [
+      { label: '查看完整印刷版 PDF', url: 'waic-brochure-2026-print.pdf' }
+    ],
+    summary: 'WAIC 线下展会折页：从专利任务、工作方式变化到可推进的业务判断，讲清芽仔如何进入研发与 IP 工作流。',
+    description: '面向 WAIC 展会访客，将芽仔从功能清单重组为一条“任务输入—AI 分析—专业复核—报告交付”的业务链。正面先回答一项专利任务最终交付什么、传统方式为什么低效，以及分析结果如何继续推动业务判断；背面用查新检索、专利解读、FTO 筛查、竞争情报和专利布局五类任务，展示每类任务的输入、分析、判断与最终报告。整套信息架构、场景文案与双面印刷物料用于线下产品解释与获客。',
+    impact: '594×210 mm 双面四联折可直接印刷 · 5 类高频专利任务 · 统一“输入—分析—复核—交付”任务链 · 配套扫码试用与案例入口。',
+    tags: ['GTM', '产品营销', 'WAIC', '展会物料', 'Sales Enablement'],
+    extra: [
+      { src: 'waic-brochure-2026-front.webp', caption: '新版正面：交付物、工作方式变化与业务判断' },
+      { src: 'waic-brochure-2026-back.webp', caption: '新版背面：查新、解读、FTO、竞争情报与专利布局五类任务' }
     ]
   },
   {
@@ -1225,32 +1251,28 @@ Leo 不再是信息整理者，而是结果的决策者。</p>
     extra: []
   },
   {
-    id: 'coze-marketing', title: 'Marketing Copilot · Coze', thumb: 'coze-marketing-preview.png', icon: '🤖', folderColor: '#5B21B6', category: 'ai',
-    cover: 'linear-gradient(135deg, #7C3AED 0%, #1A202C 100%)',
-    year: '2026.05', role: '营销写作助手 · Coze Agent', client: '个人项目 · 已上线', duration: 'Coze 搭建',
-    liveUrl: 'https://www.coze.cn/s/IT6LIaC2KPQ/', liveLabel: '打开 Coze Agent',
-    links: [
-      { label: 'Coze Agent 在线体验', url: 'https://www.coze.cn/s/IT6LIaC2KPQ/' }
-    ],
-    summary: '基于 Coze 搭建的营销写作助手，帮你理清写作卡片、输出文章与追踪热点。',
-    description: '基于 Coze 搭建的营销助手 Agent，面向内容运营场景：输入产品信息或选题方向，即可生成结构化写作卡片（标题方向、内容大纲、卖点提炼），并支持长文输出与热点追踪，帮助运营人员快速完成从选题到成稿的内容生产流程。',
-    impact: '已上线可使用 · 覆盖写作卡片生成、长文输出、热点追踪等营销内容场景 · 基于 Coze 低代码搭建，可快速迭代。',
-    tags: ['Coze', 'AI Agent', '营销写作', '内容生产', '低代码'],
+    id: 'hiroscribe', title: 'HiroScribe 写作 Agent / 工作台', thumb: 'hiroscribe-workbench-overview.svg', icon: '✍️', folderColor: '#176B45', category: 'ai',
+    cover: 'linear-gradient(135deg, #176B45 0%, #244F79 100%)',
+    year: '2026.08 – 10', role: 'AI 产品运营 · 内容系统', client: '智慧芽 Patsnap · 内部工作流', duration: 'Coze 原型 → 专用 Agent → 本地工作台',
+    summary: '从 Coze 营销写作原型迭代为专用写作 Agent 与本地工作台，把任务确认、事实审核和公众号交付串成可复用流程。',
+    description: '最初用 Coze 验证选题、写作卡片、长文输出与热点追踪需求；随后把三类文章模板、事实与证据规则、CTA 边界和局部修改规则沉淀为专用写作 Agent；最终扩展为 React/Vite 本地工作台，通过任务卡、标题、大纲、初稿、事实审核和终稿分阶段推进，并加入本地项目与版本保存、公众号预览、图片与 CTA 交付检查。作品集展示的是可运行代码、示例输出与验收机制，不虚构用户规模或效率数据。',
+    impact: '完成 1 套专用写作 Agent + 1 个本地工作台 · 覆盖用户场景、产业产品热点、热点诉讼 3 类文章 · 具备任务卡、事实审核、版本保存与公众号交付检查。',
+    tags: ['AI Agent', 'Content Operations', 'React', 'Codex', 'Fact Checking', 'Workflow'],
     tables: [
       {
-        title: '内容生产工作流',
-        icon: '⚙️',
-        head: ['步骤', '输入', '输出'],
+        title: '产品演进',
+        icon: '↗',
+        head: ['阶段', '解决的问题', '沉淀'],
         rows: [
-          ['选题分析', '产品信息 / 热点方向', '3–5 个标题方向候选'],
-          ['写作卡片', '确认的选题', '结构化大纲 + 核心卖点提炼'],
-          ['正文输出', '大纲确认', '可直接发布的成稿文章'],
-          ['热点追踪', '领域关键词', '热点事件汇总 + 切入角度建议']
+          ['01 · Coze 原型', '验证选题、结构化写作卡片与长文需求', '低代码对话流程'],
+          ['02 · 专用 Agent', '固定文章类型、事实边界与交付规则', '模板、规则与验收清单'],
+          ['03 · 本地工作台', '让内容从任务确认稳定推进到发布净稿', 'React/Vite UI、本地版本与交付检查']
         ]
       }
     ],
     extra: [
-      { src: 'coze-marketing-preview.png', caption: 'Coze Agent 对话界面：出大纲 → 确认 → 写正文 → 修改的写作流程' }
+      { src: 'coze-marketing-preview.png', caption: '阶段 01：Coze 低代码原型，用于验证营销写作流程' },
+      { src: 'hiroscribe-workbench-overview.svg', caption: '阶段 03：HiroScribe 本地工作台功能结构示意（基于实际功能绘制）' }
     ]
   },
   {
@@ -1420,12 +1442,59 @@ const projectTranslations = {
     impact: 'Launched an interactive end-to-end prototype and documented reusable prompts and an operations workflow.',
     tags: ['AI Agent', 'Product Operations', 'Cursor', 'Codex', 'Prototype'], liveLabel: 'Open live demo'
   },
+  'competitive-intelligence': {
+    title: 'Patent AI Competitive Intelligence', role: 'Competitive Intelligence · Product Strategy', client: 'Patsnap', duration: 'Five monitoring cycles',
+    summary: 'A recurring monitoring system that turns scattered competitor updates into evidence-graded product and GTM judgments.',
+    description: 'Across five monitoring cycles from July to October 2026, I tracked patent databases, AI-native products, and adjacent workflows through a fixed evidence window. Each signal was checked for event date, source type, and evidence status, then graded as P0, P1, or Watch and mapped to the professional workflow it changed. The public portfolio shows only the sanitized method and report structure, not confidential recommendations.',
+    impact: 'Completed five consecutive monitoring cycles and established a repeatable system for signal grading, source verification, workflow mapping, judgment review, and next-step recommendations.',
+    tags: ['Competitive Intelligence', 'Product Strategy', 'Patent AI', 'Evidence', 'GTM'],
+    tables: [
+      {
+        title: 'Recurring monitoring system', icon: '🧭', head: ['Stage', 'Decision question', 'Output'],
+        rows: [
+          ['Collect and verify', 'Is this new, long-lived, or still weak evidence?', 'Date, source, and evidence status'],
+          ['Prioritize and map', 'Which professional task or mechanism changed?', 'P0 / P1 / Watch + workflow map'],
+          ['Review and decide', 'Does the previous judgment still hold?', 'Trend judgment and next experiment']
+        ]
+      }
+    ],
+    extra: [
+      { src: 'competitive-monitoring-method.svg', caption: 'A fixed window, consistent evidence rules, and recurring review form the monitoring loop' },
+      { src: 'competitive-monitoring-cover.webp', caption: 'Representative report structure with internal recommendations redacted' }
+    ]
+  },
   'waic-brochure': {
-    title: 'WAIC · Yazi Agent Product Marketing Brochure', role: 'Product Marketing · Event Acquisition', client: 'Patsnap', duration: 'Four-panel accordion brochure',
-    summary: 'A WAIC product-marketing brochure that explains an AI patent product through five R&D and technology-decision scenarios.',
-    description: 'For WAIC, I reframed Yazi Agent from a feature list into a product narrative for exhibition visitors. The brochure organizes the product around five jobs—find, read, evaluate, analyze, and plan—then connects each job to AI capabilities, differentiators, and QR-based next steps.',
-    impact: 'Delivered a print-ready, double-sided brochure covering five core scenarios, four differentiators, capability lists, and case-study entry points.',
-    tags: ['Product Marketing', 'Event GTM', 'WAIC', 'Customer Narrative', 'Sales Collateral']
+    title: 'WAIC · Yazi Agent Product Marketing Brochure', role: 'Product Marketing · Event Acquisition', client: 'Patsnap', duration: '594 × 210 mm double-sided brochure',
+    summary: 'A WAIC brochure that explains how Yazi turns patent tasks into reviewable analysis, reports, and business decisions.',
+    description: 'For WAIC, I structured the product story around a complete task chain: task input, AI analysis, professional review, and report delivery. The front explains the expected deliverables, the shift from fragmented tools to one task flow, and how analysis leads to business decisions. The back shows five recurring tasks—novelty search, patent interpretation, FTO screening, competitive intelligence, and portfolio planning—with inputs, analysis steps, judgments, and outputs.',
+    impact: 'Delivered a print-ready 594 × 210 mm double-sided brochure covering five patent tasks, one consistent delivery chain, and QR-based trial and case-study entry points.',
+    tags: ['Product Marketing', 'Event GTM', 'WAIC', 'Customer Narrative', 'Sales Enablement'],
+    links: [{ label: 'Open print-ready PDF', url: 'waic-brochure-2026-print.pdf' }],
+    extra: [
+      { src: 'waic-brochure-2026-front.webp', caption: 'Front: deliverables, workflow change, and business decisions' },
+      { src: 'waic-brochure-2026-back.webp', caption: 'Back: five patent tasks from search and interpretation to FTO and portfolio planning' }
+    ]
+  },
+  'hiroscribe': {
+    title: 'HiroScribe Content Agent / Workbench', role: 'AI Product Operations · Content Systems', client: 'Patsnap · Internal Workflow', duration: 'Coze prototype → dedicated agent → local workbench',
+    summary: 'An evolution from a Coze writing prototype into a dedicated agent and local workbench for task framing, fact review, and WeChat delivery.',
+    description: 'I first used Coze to validate demand for topic framing, writing cards, long-form output, and trend tracking. I then codified three article types, evidence boundaries, CTA rules, and local-edit constraints into a dedicated writing agent. The final React/Vite workbench moves projects through task card, title, outline, draft, fact review, and final copy, with local project history, WeChat preview, and delivery checks. The case uses runnable code, sample output, tests, and acceptance criteria as evidence rather than unverified adoption metrics.',
+    impact: 'Delivered one dedicated writing agent and one local workbench covering three article types, task framing, fact review, version history, WeChat preview, and delivery checks.',
+    tags: ['AI Agent', 'Content Operations', 'React', 'Codex', 'Fact Checking', 'Workflow'],
+    tables: [
+      {
+        title: 'Product evolution', icon: '↗', head: ['Stage', 'Problem addressed', 'Output'],
+        rows: [
+          ['01 · Coze prototype', 'Validate topic, writing-card, and long-form needs', 'Low-code conversational flow'],
+          ['02 · Dedicated agent', 'Standardize article types, evidence boundaries, and delivery rules', 'Templates, rules, and acceptance checks'],
+          ['03 · Local workbench', 'Move work reliably from brief to publication-ready copy', 'React/Vite UI, local versions, and delivery checks']
+        ]
+      }
+    ],
+    extra: [
+      { src: 'coze-marketing-preview.png', caption: 'Stage 01: Coze prototype used to validate the writing workflow' },
+      { src: 'hiroscribe-workbench-overview.svg', caption: 'Stage 03: workbench structure illustrated from implemented capabilities' }
+    ]
   }
 };
 
@@ -1478,25 +1547,57 @@ const featuredCaseStudies = {
       evidence: 'Live demo · Structured inputs · Feedback Insight Dashboard'
     }
   },
+  'competitive-intelligence': {
+    zh: {
+      problem: '竞品发布、文档更新和市场表达分散在不同来源，单次搜索难以判断哪些信号真正改变产品竞争规则。',
+      insight: '固定监测窗口、统一证据口径并持续复盘上期判断，才能区分新动态、长期趋势和证据不足事项。',
+      action: '建立来源核验、P0 / P1 / Watch 分级、工作流机会图、竞品机制拆解和下一周期复盘流程。',
+      outcome: '2026 年 7–10 月完成五个连续监测周期，形成可供产品与 GTM 讨论的持续情报机制。',
+      evidence: '5 个监测周期 · 信号分级 · 来源索引 · 工作流机会图 · 判断复盘'
+    },
+    en: {
+      problem: 'Competitor launches, documentation changes, and market claims were scattered across sources, making it difficult to tell which signals actually changed the competitive rules.',
+      insight: 'A fixed monitoring window, consistent evidence rules, and recurring review are needed to separate new events, long-term trends, and weak evidence.',
+      action: 'I built a workflow for source verification, P0 / P1 / Watch grading, mechanism analysis, workflow mapping, and next-cycle review.',
+      outcome: 'Completed five consecutive monitoring cycles from July to October 2026 and created a repeatable intelligence mechanism for product and GTM discussions.',
+      evidence: 'Five cycles · Signal grading · Source index · Workflow map · Judgment review'
+    }
+  },
   'waic-brochure': {
     zh: {
       problem: '展会访客停留时间短，需要快速理解芽仔 Agent 能解决哪些研发与技术决策问题。',
-      insight: '按“找、读、评、析、谋”五类任务组织内容，比罗列产品功能更贴近现场决策路径。',
-      action: '主导信息架构、场景文案、能力清单、差异化表达、二维码入口与四联折页版式。',
-      outcome: '交付可直接印刷的双面折页，覆盖五大场景、四项差异化优势和案例入口。',
-      evidence: '折页正反面 · 可编辑版 · 五大场景 · 四项差异化优势'
+      insight: '先讲清任务最终交付什么，再展示 AI 如何进入分析、复核与业务判断，比单独罗列功能更接近现场沟通。',
+      action: '以“输入—分析—复核—交付”为主线，组织正面价值叙事和背面五类高频专利任务，并补齐扫码入口。',
+      outcome: '交付 594×210 mm 双面四联折印刷物料，覆盖五类任务及其输入、判断和报告交付。',
+      evidence: '新版正反面 · 印刷版 PDF · 五类任务 · 统一任务链'
     },
     en: {
       problem: 'WAIC visitors have limited attention and need to understand quickly which R&D and technology-decision problems Yazi Agent can address.',
-      insight: 'Organizing the story around five jobs—find, read, evaluate, analyze, and plan—fits the visitor decision path better than a feature list.',
-      action: 'I led the information architecture, scenario copy, capability lists, differentiators, QR entry points, and four-panel layout.',
-      outcome: 'Delivered a print-ready double-sided brochure covering five scenarios, four differentiators, and case-study entry points.',
-      evidence: 'Front and back layouts · Editable version · Five scenarios · Four differentiators'
+      insight: 'Starting with the final deliverable, then showing how AI supports analysis, review, and decisions, fits the event conversation better than a feature list.',
+      action: 'I structured the brochure around input, analysis, review, and delivery, with a front-side value story and five recurring patent tasks on the back.',
+      outcome: 'Delivered a print-ready 594 × 210 mm double-sided brochure covering five tasks and their inputs, judgments, and reports.',
+      evidence: 'Updated front and back · Print-ready PDF · Five tasks · One delivery chain'
+    }
+  },
+  'hiroscribe': {
+    zh: {
+      problem: '通用写作 Agent 能生成内容，但难以稳定处理任务确认、事实边界、局部修改和公众号交付。',
+      insight: '真正可复用的内容系统需要把生成前的任务卡、生成中的阶段确认和发布前的交付检查做成同一流程。',
+      action: '从 Coze 原型出发，沉淀专用规则、三类文章模板和验收清单，再实现带本地版本、公众号预览与交付检查的工作台。',
+      outcome: '完成专用写作 Agent 与本地工作台，用代码、示例输出、测试和验收机制证明可交付性。',
+      evidence: 'Coze 原型 · 专用 Agent · React/Vite 工作台 · 示例输出 · 测试与验收清单'
+    },
+    en: {
+      problem: 'A generic writing agent could generate copy but could not reliably manage task confirmation, evidence boundaries, local edits, and WeChat delivery.',
+      insight: 'A reusable content system needs to connect the brief before generation, staged confirmation during writing, and delivery checks before publication.',
+      action: 'Starting from a Coze prototype, I codified rules, three article templates, and acceptance criteria, then built a local workbench with version history, WeChat preview, and delivery checks.',
+      outcome: 'Delivered a dedicated writing agent and local workbench supported by code, sample output, tests, and acceptance criteria.',
+      evidence: 'Coze prototype · Dedicated agent · React/Vite workbench · Sample output · Tests and acceptance checks'
     }
   }
 };
 
-const featuredIds = ['mcp-suite', 'plg-emails', 'signalops', 'waic-brochure'];
+const featuredIds = ['mcp-suite', 'waic-brochure', 'competitive-intelligence', 'hiroscribe'];
 
 function getInitialLanguage() {
   try { return localStorage.getItem('portfolioLanguage') === 'en' ? 'en' : 'zh'; }
@@ -1570,8 +1671,8 @@ function renderFeaturedProjects() {
   if (!mount) return;
   const isEn = currentLanguage === 'en';
   const shortRoles = isEn
-    ? { 'mcp-suite':'Global GTM', 'plg-emails':'Growth', signalops:'AI Product Ops', 'waic-brochure':'Product Marketing' }
-    : { 'mcp-suite':'海外 GTM', 'plg-emails':'增长运营', signalops:'AI 产品运营', 'waic-brochure':'产品营销' };
+    ? { 'mcp-suite':'Global GTM', 'waic-brochure':'Product Marketing', 'competitive-intelligence':'Market Intelligence', hiroscribe:'AI Content Ops' }
+    : { 'mcp-suite':'海外 GTM', 'waic-brochure':'产品营销', 'competitive-intelligence':'市场洞察', hiroscribe:'AI 内容运营' };
   const cards = featuredIds.map(id => {
     const original = projects.find(p => p.id === id);
     const item = localizedProject(original);
@@ -1714,7 +1815,7 @@ function renderTabs() {
     const source = allItems.find(x => x.id === id); if (!source) return '';
     const it = localizedProject(source);
     return `<div class="tab ${id === activeTab ? 'active' : ''}" data-id="${id}">
-      <span class="tab-icon">${it.icon}</span><span class="tab-title">${it.title}</span>
+      <span class="tab-icon">${it.icon || '●'}</span><span class="tab-title">${it.title}</span>
       <span class="tab-close" data-close="${id}">×</span></div>`;
   }).join('') + `<div class="tab-add" id="tabAdd">+</div>`;
   tabBar.querySelectorAll('.tab').forEach(tab => {
@@ -2331,7 +2432,7 @@ function toast(icon, app, title, body) {
   setTimeout(remove, 5200);
 }
 function showWelcomeToast() {
-  toast('🗂️', '作品集', '欢迎来到 君婷 OS', '新增了 WAIC 展会折页 · 试试 ⌘/Ctrl + K 搜索项目');
+  toast('🗂️', '作品集', '欢迎来到 君婷 OS', '已更新 WAIC 折页 · 新增持续竞品监测与 HiroScribe');
 }
 
 /* ---------- LIGHTBOX GALLERY ---------- */

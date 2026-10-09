@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">HiroScribe 写作工作台功能结构</title>
+  <desc id="desc">HiroScribe 从 Coze 原型演进为包含任务卡、写作流程、事实审核、本地版本与交付检查的本地工作台。</desc>
+  <defs>
+    <linearGradient id="hero" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#eef8f2"/><stop offset="1" stop-color="#dbe9ff"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="20" flood-opacity=".16"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="#e9eeeb"/>
+  <rect x="54" y="48" width="1492" height="804" rx="34" fill="#ffffff" filter="url(#shadow)"/>
+  <rect x="54" y="48" width="1492" height="74" rx="34" fill="#123b2c"/>
+  <rect x="54" y="88" width="1492" height="34" fill="#123b2c"/>
+  <circle cx="93" cy="84" r="8" fill="#ff6b6b"/><circle cx="119" cy="84" r="8" fill="#ffd166"/><circle cx="145" cy="84" r="8" fill="#52d273"/>
+  <text x="190" y="92" fill="#f4fff8" font-family="Arial, Microsoft YaHei, sans-serif" font-size="28" font-weight="800">HiroScribe</text>
+  <text x="352" y="91" fill="#a9cfbd" font-family="Arial, Microsoft YaHei, sans-serif" font-size="18">CONTENT WORKBENCH · LOCAL FIRST</text>
+  <rect x="1318" y="70" width="182" height="32" rx="16" fill="#47d890" opacity=".18"/><text x="1409" y="92" text-anchor="middle" fill="#78efb3" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16">READY FOR REVIEW</text>
+
+  <rect x="54" y="122" width="290" height="730" fill="#f5f8f6"/>
+  <text x="88" y="172" fill="#18382b" font-family="Arial, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">文章项目</text>
+  <rect x="78" y="198" width="242" height="92" rx="18" fill="#dff4e8" stroke="#63cc94"/>
+  <text x="102" y="230" fill="#14613d" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15" font-weight="700">产业 / 产品热点</text>
+  <text x="102" y="263" fill="#18382b" font-family="Arial, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">固态电池技术路线</text>
+  <rect x="78" y="310" width="242" height="78" rx="18" fill="#ffffff" stroke="#dbe5df"/>
+  <text x="102" y="343" fill="#66766e" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15">用户场景型</text><text x="102" y="370" fill="#2a3d34" font-family="Arial, Microsoft YaHei, sans-serif" font-size="18">芽仔工作流案例</text>
+  <rect x="78" y="408" width="242" height="78" rx="18" fill="#ffffff" stroke="#dbe5df"/>
+  <text x="102" y="441" fill="#66766e" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15">热点诉讼型</text><text x="102" y="468" fill="#2a3d34" font-family="Arial, Microsoft YaHei, sans-serif" font-size="18">案件事实与专利</text>
+  <rect x="78" y="760" width="242" height="52" rx="16" fill="#123b2c"/><text x="199" y="793" text-anchor="middle" fill="#ffffff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">＋ 新建文章</text>
+
+  <rect x="344" y="122" width="812" height="730" fill="#ffffff"/>
+  <text x="388" y="174" fill="#1d342a" font-family="Arial, Microsoft YaHei, sans-serif" font-size="30" font-weight="800">从任务卡到发布净稿</text>
+  <text x="388" y="208" fill="#718179" font-family="Arial, Microsoft YaHei, sans-serif" font-size="17">每一步可确认、可回退、可复核</text>
+  <g font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" font-weight="700">
+    <rect x="388" y="244" width="112" height="38" rx="19" fill="#176b45"/><text x="444" y="269" text-anchor="middle" fill="#fff">任务卡</text>
+    <rect x="512" y="244" width="92" height="38" rx="19" fill="#edf2ef"/><text x="558" y="269" text-anchor="middle" fill="#54655c">标题</text>
+    <rect x="616" y="244" width="92" height="38" rx="19" fill="#edf2ef"/><text x="662" y="269" text-anchor="middle" fill="#54655c">大纲</text>
+    <rect x="720" y="244" width="92" height="38" rx="19" fill="#edf2ef"/><text x="766" y="269" text-anchor="middle" fill="#54655c">初稿</text>
+    <rect x="824" y="244" width="112" height="38" rx="19" fill="#edf2ef"/><text x="880" y="269" text-anchor="middle" fill="#54655c">事实审核</text>
+    <rect x="948" y="244" width="92" height="38" rx="19" fill="#edf2ef"/><text x="994" y="269" text-anchor="middle" fill="#54655c">终稿</text>
+  </g>
+  <rect x="388" y="318" width="724" height="440" rx="24" fill="url(#hero)" stroke="#dbe8e0"/>
+  <text x="426" y="368" fill="#176b45" font-family="Arial, Microsoft YaHei, sans-serif" font-size="17" font-weight="700">01 · 写作任务卡</text>
+  <text x="426" y="417" fill="#17372a" font-family="Arial, Microsoft YaHei, sans-serif" font-size="27" font-weight="800">先确认问题，再启动生成</text>
+  <g font-family="Arial, Microsoft YaHei, sans-serif">
+    <text x="426" y="475" fill="#6b7c73" font-size="15">文章类型</text><rect x="426" y="490" width="296" height="52" rx="14" fill="#fff"/><text x="446" y="523" fill="#263c32" font-size="18">产业 / 产品热点型</text>
+    <text x="752" y="475" fill="#6b7c73" font-size="15">目标读者</text><rect x="752" y="490" width="320" height="52" rx="14" fill="#fff"/><text x="772" y="523" fill="#263c32" font-size="18">研发、IPR 与产品团队</text>
+    <text x="426" y="582" fill="#6b7c73" font-size="15">核心切口</text><rect x="426" y="597" width="646" height="76" rx="14" fill="#fff"/><text x="446" y="631" fill="#263c32" font-size="18">从行业问题进入，用证据支持判断，</text><text x="446" y="657" fill="#263c32" font-size="18">最终落到读者的下一步行动。</text>
+  </g>
+  <rect x="886" y="701" width="186" height="42" rx="21" fill="#176b45"/><text x="979" y="728" text-anchor="middle" fill="#fff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="17" font-weight="700">确认并继续 →</text>
+
+  <rect x="1156" y="122" width="390" height="730" fill="#f7f9f8"/>
+  <text x="1194" y="174" fill="#1d342a" font-family="Arial, Microsoft YaHei, sans-serif" font-size="22" font-weight="800">Hiro 助手</text>
+  <rect x="1192" y="214" width="316" height="120" rx="22" fill="#ffffff" stroke="#dbe5df"/>
+  <text x="1218" y="250" fill="#476158" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16">我会先补齐缺失条件，</text><text x="1218" y="278" fill="#476158" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16">确认任务卡后再开始写作。</text>
+  <text x="1218" y="310" fill="#1e7049" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15" font-weight="700">来源与事实边界会单独记录。</text>
+  <text x="1194" y="390" fill="#1d342a" font-family="Arial, Microsoft YaHei, sans-serif" font-size="19" font-weight="800">交付检查</text>
+  <g font-family="Arial, Microsoft YaHei, sans-serif" font-size="16">
+    <rect x="1192" y="416" width="316" height="58" rx="16" fill="#e3f6eb"/><text x="1218" y="451" fill="#176b45">✓ 事实审核记录</text>
+    <rect x="1192" y="488" width="316" height="58" rx="16" fill="#fff" stroke="#dbe5df"/><text x="1218" y="523" fill="#596a61">○ 证据图与数据图</text>
+    <rect x="1192" y="560" width="316" height="58" rx="16" fill="#fff" stroke="#dbe5df"/><text x="1218" y="595" fill="#596a61">○ CTA 与链接确认</text>
+    <rect x="1192" y="632" width="316" height="58" rx="16" fill="#fff" stroke="#dbe5df"/><text x="1218" y="667" fill="#596a61">○ 发布净稿预览</text>
+  </g>
+  <rect x="1192" y="758" width="316" height="52" rx="18" fill="#123b2c"/><text x="1350" y="791" text-anchor="middle" fill="#fff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">复制公众号格式</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">专利 AI 竞品持续监测方法</title>
+  <desc id="desc">从公开信号到产品行动建议的六步持续监测流程，覆盖 2026 年 7 月至 10 月五个监测周期。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#071a14"/>
+      <stop offset="1" stop-color="#103c2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop stop-color="#5ee3a2"/>
+      <stop offset="1" stop-color="#58a6ff"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-opacity=".22"/></filter>
+  </defs>
+  <rect width="1600" height="900" rx="44" fill="url(#bg)"/>
+  <circle cx="1440" cy="110" r="190" fill="#43d38c" opacity=".07"/>
+  <circle cx="130" cy="825" r="250" fill="#58a6ff" opacity=".06"/>
+  <text x="96" y="105" fill="#64e7a9" font-family="Arial, Microsoft YaHei, sans-serif" font-size="24" font-weight="700" letter-spacing="4">PATENT AI COMPETITIVE INTELLIGENCE</text>
+  <text x="96" y="178" fill="#f4fff9" font-family="Arial, Microsoft YaHei, sans-serif" font-size="58" font-weight="800">把零散动态变成持续判断</text>
+  <text x="96" y="226" fill="#b8d1c6" font-family="Arial, Microsoft YaHei, sans-serif" font-size="25">5 个监测周期 · 2026.07—10 · 固定窗口与同一证据口径</text>
+
+  <g font-family="Arial, Microsoft YaHei, sans-serif" filter="url(#shadow)">
+    <g transform="translate(90 320)">
+      <rect width="220" height="220" rx="28" fill="#f7fffb"/>
+      <text x="28" y="48" fill="#087444" font-size="18" font-weight="700">01 SIGNALS</text>
+      <text x="28" y="102" fill="#11251d" font-size="30" font-weight="800">公开信号</text>
+      <text x="28" y="143" fill="#53675e" font-size="19">产品更新</text><text x="28" y="175" fill="#53675e" font-size="19">发布与文档</text>
+    </g>
+    <g transform="translate(335 320)">
+      <rect width="220" height="220" rx="28" fill="#f7fffb"/>
+      <text x="28" y="48" fill="#087444" font-size="18" font-weight="700">02 VERIFY</text>
+      <text x="28" y="102" fill="#11251d" font-size="30" font-weight="800">证据核验</text>
+      <text x="28" y="143" fill="#53675e" font-size="19">事件日期</text><text x="28" y="175" fill="#53675e" font-size="19">来源与边界</text>
+    </g>
+    <g transform="translate(580 320)">
+      <rect width="220" height="220" rx="28" fill="#f7fffb"/>
+      <text x="28" y="48" fill="#087444" font-size="18" font-weight="700">03 PRIORITIZE</text>
+      <text x="28" y="102" fill="#11251d" font-size="30" font-weight="800">信号分级</text>
+      <text x="28" y="143" fill="#53675e" font-size="19">P0 · P1</text><text x="28" y="175" fill="#53675e" font-size="19">Watch</text>
+    </g>
+    <g transform="translate(825 320)">
+      <rect width="220" height="220" rx="28" fill="#f7fffb"/>
+      <text x="28" y="48" fill="#087444" font-size="18" font-weight="700">04 MAP</text>
+      <text x="28" y="102" fill="#11251d" font-size="30" font-weight="800">工作流映射</text>
+      <text x="28" y="143" fill="#53675e" font-size="19">入口与机制</text><text x="28" y="175" fill="#53675e" font-size="19">任务与交付</text>
+    </g>
+    <g transform="translate(1070 320)">
+      <rect width="220" height="220" rx="28" fill="#f7fffb"/>
+      <text x="28" y="48" fill="#087444" font-size="18" font-weight="700">05 DECIDE</text>
+      <text x="28" y="102" fill="#11251d" font-size="30" font-weight="800">行动建议</text>
+      <text x="28" y="143" fill="#53675e" font-size="19">验证什么</text><text x="28" y="175" fill="#53675e" font-size="19">暂不做什么</text>
+    </g>
+    <g transform="translate(1315 320)">
+      <rect width="195" height="220" rx="28" fill="url(#accent)"/>
+      <text x="26" y="48" fill="#06271b" font-size="18" font-weight="700">06 REVIEW</text>
+      <text x="26" y="102" fill="#06271b" font-size="30" font-weight="800">下期复盘</text>
+      <text x="26" y="143" fill="#164c39" font-size="18">变化 / 未变</text><text x="26" y="175" fill="#164c39" font-size="18">证据是否升级</text>
+    </g>
+  </g>
+
+  <path d="M200 595 C450 700 1120 700 1400 595" fill="none" stroke="url(#accent)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M1390 580 L1430 595 L1395 620" fill="none" stroke="#58a6ff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="800" y="752" text-anchor="middle" fill="#e9fff5" font-family="Arial, Microsoft YaHei, sans-serif" font-size="30" font-weight="700">不是一次性“搜新闻”，而是持续验证同一组判断</text>
+  <text x="800" y="804" text-anchor="middle" fill="#a9c8bb" font-family="Arial, Microsoft YaHei, sans-serif" font-size="21">Signal → Evidence → Mechanism → Workflow → Decision → Review</text>
+</svg>
